@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102945">
+  <title>Azienda Zero · Governance BI</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/vendor/quicksight-embedding-js-sdk.min.js"></script>
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="identity"><div class="monogram" aria-hidden="true">AZ</div><div><strong>Azienda Zero</strong><span>Governance Accreditamenti</span></div></div>
+      <div class="sidebar-section">Cruscotti</div>
+      <nav class="main-nav" aria-label="Cruscotti BI">
+        <button data-view="control-tower" class="nav-item active"><span class="nav-icon">◫</span><span>Control Tower</span></button>
+        <button data-view="strutture" class="nav-item"><span class="nav-icon">▦</span><span>Strutture e titoli</span></button>
+        <button data-view="autorizzazione" class="nav-item"><span class="nav-icon">◈</span><span>Autorizzazione</span></button>
+        <button data-view="accreditamento" class="nav-item"><span class="nav-icon">◇</span><span>Accreditamento</span></button>
+        <button data-view="visite" class="nav-item"><span class="nav-icon">◎</span><span>Visite e valutatori</span></button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer"><span class="demo-dot"></span><div><strong>Ambiente dimostrativo</strong><span>Dati sintetici · nessun dato reale</span></div></div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar"><button class="menu-button" id="menuButton" aria-label="Apri menu">☰</button><span class="topbar-label">Governance / Business Intelligence</span><div class="topbar-right"><span class="environment-pill">DEMO</span><span class="user-avatar" title="Profilo dimostrativo">AZ</span></div></header>
+      <main id="main" aria-live="polite"><div class="loading">Caricamento della demo BI…</div></main>
+    </div>
+  </div>
+  <dialog id="detailDialog" class="detail-dialog"><button id="closeDialog" class="dialog-close" aria-label="Chiudi dettaglio">×</button><div id="detailContent"></div></dialog>
+</body>
+</html>

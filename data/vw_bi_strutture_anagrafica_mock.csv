@@ -1,0 +1,49 @@
+﻿struttura_id,struttura_nome,codice_regionale,tipologia_struttura,natura_giuridica,stato_struttura,data_attivazione,data_cessazione,ulss,territorio,comune_principale,ultimo_aggiornamento
+STR001,Struttura sanitaria A-01,AZ-0001,RSA,Pubblica,Attiva,2019-10-11,,ULSS 1 Dolomiti,Nord,Belluno,2026-11-22 06:00:00
+STR002,Struttura sanitaria B-02,AZ-0002,Centro diurno,Privata accreditata,Attiva,2019-11-11,,ULSS 2 Marca trevigiana,Nord,Feltre,2026-11-22 06:00:00
+STR003,Struttura sanitaria C-03,AZ-0003,Poliambulatorio,Privata non accreditata,Attiva,2019-12-12,,ULSS 3 Serenissima,Centro,Treviso,2026-11-22 06:00:00
+STR004,Struttura sanitaria D-04,AZ-0004,Comunità alloggio,Fondazione,Attiva,2020-01-12,,ULSS 4 Veneto Orientale,Est,Conegliano,2026-11-22 06:00:00
+STR005,Struttura sanitaria E-05,AZ-0005,Hospice,Pubblica,Attiva,2020-02-12,,ULSS 5 Polesana,Sud,Venezia,2026-11-22 06:00:00
+STR006,Struttura sanitaria F-06,AZ-0006,Riabilitazione,Privata accreditata,Attiva,2020-03-14,,ULSS 6 Euganea,Centro,Mestre,2026-11-22 06:00:00
+STR007,Struttura sanitaria G-07,AZ-0007,RSA,Privata non accreditata,Attiva,2020-04-14,,ULSS 7 Pedemontana,Nord,Jesolo,2026-11-22 06:00:00
+STR008,Struttura sanitaria H-08,AZ-0008,Centro diurno,Fondazione,Attiva,2020-05-15,,ULSS 8 Berica,Ovest,Rovigo,2026-11-22 06:00:00
+STR009,Struttura sanitaria I-09,AZ-0009,Poliambulatorio,Pubblica,Attiva,2020-06-15,,ULSS 9 Scaligera,Ovest,Adria,2026-11-22 06:00:00
+STR010,Struttura sanitaria J-10,AZ-0010,Comunità alloggio,Privata accreditata,Attiva,2020-07-16,,ULSS 1 Dolomiti,Nord,Padova,2026-11-22 06:00:00
+STR011,Struttura sanitaria K-11,AZ-0011,Hospice,Privata non accreditata,Sospesa,2020-08-16,,ULSS 2 Marca trevigiana,Nord,Este,2026-11-22 06:00:00
+STR012,Struttura sanitaria L-12,AZ-0012,Riabilitazione,Fondazione,Attiva,2020-09-16,,ULSS 3 Serenissima,Centro,Vicenza,2026-11-22 06:00:00
+STR013,Struttura sanitaria M-13,AZ-0013,RSA,Pubblica,Attiva,2020-10-17,,ULSS 4 Veneto Orientale,Est,Thiene,2026-11-22 06:00:00
+STR014,Struttura sanitaria N-14,AZ-0014,Centro diurno,Privata accreditata,Attiva,2020-11-17,,ULSS 5 Polesana,Sud,Verona,2026-11-22 06:00:00
+STR015,Struttura sanitaria O-15,AZ-0015,Poliambulatorio,Privata non accreditata,Attiva,2020-12-18,,ULSS 6 Euganea,Centro,Legnago,2026-11-22 06:00:00
+STR016,Struttura sanitaria P-16,AZ-0016,Comunità alloggio,Fondazione,Attiva,2021-01-18,,ULSS 7 Pedemontana,Nord,Belluno,2026-11-22 06:00:00
+STR017,Struttura sanitaria Q-17,AZ-0017,Hospice,Pubblica,Attiva,2021-02-18,,ULSS 8 Berica,Ovest,Feltre,2026-11-22 06:00:00
+STR018,Struttura sanitaria R-18,AZ-0018,Riabilitazione,Privata accreditata,Attiva,2021-03-21,,ULSS 9 Scaligera,Ovest,Treviso,2026-11-22 06:00:00
+STR019,Struttura sanitaria S-19,AZ-0019,RSA,Privata non accreditata,Attiva,2021-04-21,,ULSS 1 Dolomiti,Nord,Conegliano,2026-11-22 06:00:00
+STR020,Struttura sanitaria T-20,AZ-0020,Centro diurno,Fondazione,Attiva,2021-05-22,,ULSS 2 Marca trevigiana,Nord,Venezia,2026-11-22 06:00:00
+STR021,Struttura sanitaria U-21,AZ-0021,Poliambulatorio,Pubblica,Attiva,2021-06-22,,ULSS 3 Serenissima,Centro,Mestre,2026-11-22 06:00:00
+STR022,Struttura sanitaria V-22,AZ-0022,Comunità alloggio,Privata accreditata,Sospesa,2021-07-23,,ULSS 4 Veneto Orientale,Est,Jesolo,2026-11-22 06:00:00
+STR023,Struttura sanitaria W-23,AZ-0023,Hospice,Privata non accreditata,Cessata,2021-08-23,2026-09-07,ULSS 5 Polesana,Sud,Rovigo,2026-11-22 06:00:00
+STR024,Struttura sanitaria X-24,AZ-0024,Riabilitazione,Fondazione,Attiva,2021-09-23,,ULSS 6 Euganea,Centro,Adria,2026-11-22 06:00:00
+STR025,Struttura sanitaria Y-25,AZ-0025,RSA,Pubblica,Attiva,2021-10-24,,ULSS 7 Pedemontana,Nord,Padova,2026-11-22 06:00:00
+STR026,Struttura sanitaria Z-26,AZ-0026,Centro diurno,Privata accreditata,Attiva,2021-11-24,,ULSS 8 Berica,Ovest,Este,2026-11-22 06:00:00
+STR027,Struttura sanitaria A-27,AZ-0027,Poliambulatorio,Privata non accreditata,Attiva,2021-12-25,,ULSS 9 Scaligera,Ovest,Vicenza,2026-11-22 06:00:00
+STR028,Struttura sanitaria B-28,AZ-0028,Comunità alloggio,Fondazione,Attiva,2022-01-25,,ULSS 1 Dolomiti,Nord,Thiene,2026-11-22 06:00:00
+STR029,Struttura sanitaria C-29,AZ-0029,Hospice,Pubblica,Attiva,2022-02-25,,ULSS 2 Marca trevigiana,Nord,Verona,2026-11-22 06:00:00
+STR030,Struttura sanitaria D-30,AZ-0030,Riabilitazione,Privata accreditata,Attiva,2022-03-28,,ULSS 3 Serenissima,Centro,Legnago,2026-11-22 06:00:00
+STR031,Struttura sanitaria E-31,AZ-0031,RSA,Privata non accreditata,Attiva,2022-04-28,,ULSS 4 Veneto Orientale,Est,Belluno,2026-11-22 06:00:00
+STR032,Struttura sanitaria F-32,AZ-0032,Centro diurno,Fondazione,Attiva,2022-05-29,,ULSS 5 Polesana,Sud,Feltre,2026-11-22 06:00:00
+STR033,Struttura sanitaria G-33,AZ-0033,Poliambulatorio,Pubblica,Sospesa,2022-06-29,,ULSS 6 Euganea,Centro,Treviso,2026-11-22 06:00:00
+STR034,Struttura sanitaria H-34,AZ-0034,Comunità alloggio,Privata accreditata,Attiva,2022-07-30,,ULSS 7 Pedemontana,Nord,Conegliano,2026-11-22 06:00:00
+STR035,Struttura sanitaria I-35,AZ-0035,Hospice,Privata non accreditata,Attiva,2022-08-30,,ULSS 8 Berica,Ovest,Venezia,2026-11-22 06:00:00
+STR036,Struttura sanitaria J-36,AZ-0036,Riabilitazione,Fondazione,Attiva,2022-09-30,,ULSS 9 Scaligera,Ovest,Mestre,2026-11-22 06:00:00
+STR037,Struttura sanitaria K-37,AZ-0037,RSA,Pubblica,Attiva,2022-10-31,,ULSS 1 Dolomiti,Nord,Jesolo,2026-11-22 06:00:00
+STR038,Struttura sanitaria L-38,AZ-0038,Centro diurno,Privata accreditata,Attiva,2022-12-01,,ULSS 2 Marca trevigiana,Nord,Rovigo,2026-11-22 06:00:00
+STR039,Struttura sanitaria M-39,AZ-0039,Poliambulatorio,Privata non accreditata,Attiva,2023-01-01,,ULSS 3 Serenissima,Centro,Adria,2026-11-22 06:00:00
+STR040,Struttura sanitaria N-40,AZ-0040,Comunità alloggio,Fondazione,Attiva,2023-02-01,,ULSS 4 Veneto Orientale,Est,Padova,2026-11-22 06:00:00
+STR041,Struttura sanitaria O-41,AZ-0041,Hospice,Pubblica,Attiva,2023-03-04,,ULSS 5 Polesana,Sud,Este,2026-11-22 06:00:00
+STR042,Struttura sanitaria P-42,AZ-0042,Riabilitazione,Privata accreditata,Attiva,2023-04-04,,ULSS 6 Euganea,Centro,Vicenza,2026-11-22 06:00:00
+STR043,Struttura sanitaria Q-43,AZ-0043,RSA,Privata non accreditata,Attiva,2023-05-05,,ULSS 7 Pedemontana,Nord,Thiene,2026-11-22 06:00:00
+STR044,Struttura sanitaria R-44,AZ-0044,Centro diurno,Fondazione,Sospesa,2023-06-05,,ULSS 8 Berica,Ovest,Verona,2026-11-22 06:00:00
+STR045,Struttura sanitaria S-45,AZ-0045,Poliambulatorio,Pubblica,Attiva,2023-07-06,,ULSS 9 Scaligera,Ovest,Legnago,2026-11-22 06:00:00
+STR046,Struttura sanitaria T-46,AZ-0046,Comunità alloggio,Privata accreditata,Cessata,2023-08-06,2026-08-15,ULSS 1 Dolomiti,Nord,Belluno,2026-11-22 06:00:00
+STR047,Struttura sanitaria U-47,AZ-0047,Hospice,Privata non accreditata,Attiva,2023-09-06,,ULSS 2 Marca trevigiana,Nord,Feltre,2026-11-22 06:00:00
+STR048,Struttura sanitaria V-48,AZ-0048,Riabilitazione,Fondazione,Attiva,2023-10-07,,ULSS 3 Serenissima,Centro,Treviso,2026-11-22 06:00:00

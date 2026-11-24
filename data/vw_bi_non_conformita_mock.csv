@@ -1,0 +1,21 @@
+﻿nc_id,visita_id,struttura_id,categoria_nc,gravita,descrizione_breve,stato_nc,data_apertura,data_chiusura,flag_recidiva
+NC001,VIS013,STR007,Organizzativa,Grave,Rilievo 1 emerso in visita,Aperta,2026-09-01,,No
+NC002,VIS003,STR010,Strutturale,Lieve,Rilievo 2 emerso in visita,Aperta,2026-09-02,,No
+NC003,VIS005,STR019,Assistenziale,Media,Rilievo 3 emerso in visita,Aperta,2026-09-09,,No
+NC004,VIS006,STR023,Documentale,Lieve,Rilievo 4 emerso in visita,Chiusa,2026-09-08,2026-09-30,No
+NC005,VIS006,STR023,Organizzativa,Lieve,Rilievo 5 emerso in visita,In verifica,2026-09-09,,No
+NC006,VIS011,STR046,Strutturale,Media,Rilievo 6 emerso in visita,Aperta,2026-09-23,,Sì
+NC007,VIS012,STR002,Assistenziale,Grave,Rilievo 7 emerso in visita,Aperta,2026-09-27,,No
+NC008,VIS012,STR002,Documentale,Lieve,Rilievo 8 emerso in visita,Chiusa,2026-09-28,2026-10-24,No
+NC009,VIS014,STR011,Organizzativa,Media,Rilievo 9 emerso in visita,Aperta,2026-10-05,,No
+NC010,VIS017,STR025,Strutturale,Lieve,Rilievo 10 emerso in visita,In verifica,2026-10-12,,No
+NC011,VIS018,STR029,Assistenziale,Lieve,Rilievo 11 emerso in visita,Aperta,2026-10-16,,No
+NC012,VIS018,STR029,Documentale,Media,Rilievo 12 emerso in visita,Chiusa,2026-10-17,2026-11-16,Sì
+NC013,VIS020,STR038,Organizzativa,Lieve,Rilievo 13 emerso in visita,Aperta,2026-10-24,,No
+NC014,VIS021,STR043,Strutturale,Grave,Rilievo 14 emerso in visita,Aperta,2026-10-23,,No
+NC015,VIS021,STR043,Assistenziale,Media,Rilievo 15 emerso in visita,In verifica,2026-10-24,,No
+NC016,VIS024,STR008,Documentale,Lieve,Rilievo 16 emerso in visita,Chiusa,2026-11-04,2026-12-08,No
+NC017,VIS024,STR008,Organizzativa,Lieve,Rilievo 17 emerso in visita,Aperta,2026-11-05,,No
+NC018,VIS026,STR017,Strutturale,Media,Rilievo 18 emerso in visita,Aperta,2026-11-07,,Sì
+NC019,VIS027,STR022,Assistenziale,Lieve,Rilievo 19 emerso in visita,Aperta,2026-11-11,,No
+NC020,VIS027,STR022,Documentale,Lieve,Rilievo 20 emerso in visita,Chiusa,2026-11-12,2026-11-30,No

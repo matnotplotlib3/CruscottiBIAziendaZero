@@ -1,0 +1,31 @@
+﻿prescrizione_id,nc_id,visita_id,descrizione_prescrizione,responsabile_adempimento,data_scadenza,stato_prescrizione,data_verifica,data_chiusura,giorni_residui
+PRE001,NC001,VIS013,Azione correttiva 1 collegata a NC001,Legale rappresentante,2026-11-15,Scaduta,,,-8
+PRE002,NC002,VIS003,Azione correttiva 2 collegata a NC002,Coordinatore UdO,2026-11-01,Scaduta,,,-22
+PRE003,NC002,VIS003,Azione correttiva 3 collegata a NC002,Responsabile qualità,2026-11-16,Scaduta,,,-7
+PRE004,NC003,VIS005,Azione correttiva 4 collegata a NC003,Direttore sanitario,2026-10-09,Scaduta,,,-45
+PRE005,NC004,VIS006,Azione correttiva 5 collegata a NC004,Legale rappresentante,2026-10-23,Chiusa,2026-10-20,2026-10-18,-31
+PRE006,NC004,VIS006,Azione correttiva 6 collegata a NC004,Coordinatore UdO,2026-11-07,Scaduta,,,-16
+PRE007,NC005,VIS006,Azione correttiva 7 collegata a NC005,Responsabile qualità,2026-11-23,In scadenza,,,0
+PRE008,NC006,VIS011,Azione correttiva 8 collegata a NC006,Direttore sanitario,2026-10-23,Scaduta,,,-31
+PRE009,NC006,VIS011,Azione correttiva 9 collegata a NC006,Legale rappresentante,2026-11-07,Scaduta,,,-16
+PRE010,NC007,VIS012,Azione correttiva 10 collegata a NC007,Coordinatore UdO,2026-11-26,Chiusa,2026-11-23,2026-11-21,3
+PRE011,NC008,VIS012,Azione correttiva 11 collegata a NC008,Responsabile qualità,2026-12-12,In scadenza,,,19
+PRE012,NC008,VIS012,Azione correttiva 12 collegata a NC008,Direttore sanitario,2026-10-28,Scaduta,,,-26
+PRE013,NC009,VIS014,Azione correttiva 13 collegata a NC009,Legale rappresentante,2026-11-19,Scaduta,,,-4
+PRE014,NC010,VIS017,Azione correttiva 14 collegata a NC010,Coordinatore UdO,2026-12-11,In scadenza,,,18
+PRE015,NC010,VIS017,Azione correttiva 15 collegata a NC010,Responsabile qualità,2026-12-26,Chiusa,2026-12-23,2026-12-21,33
+PRE016,NC011,VIS018,Azione correttiva 16 collegata a NC011,Direttore sanitario,2026-11-15,Scaduta,,,-8
+PRE017,NC012,VIS018,Azione correttiva 17 collegata a NC012,Legale rappresentante,2026-12-01,In scadenza,,,8
+PRE018,NC012,VIS018,Azione correttiva 18 collegata a NC012,Coordinatore UdO,2026-12-16,In scadenza,,,23
+PRE019,NC013,VIS020,Azione correttiva 19 collegata a NC013,Responsabile qualità,2027-01-07,Aperta,,,45
+PRE020,NC014,VIS021,Azione correttiva 20 collegata a NC014,Direttore sanitario,2026-11-22,Chiusa,2026-11-19,2026-11-17,-1
+PRE021,NC014,VIS021,Azione correttiva 21 collegata a NC014,Legale rappresentante,2026-12-07,In scadenza,,,14
+PRE022,NC015,VIS021,Azione correttiva 22 collegata a NC015,Coordinatore UdO,2026-12-23,In scadenza,,,30
+PRE023,NC016,VIS024,Azione correttiva 23 collegata a NC016,Responsabile qualità,2027-01-18,Aperta,,,56
+PRE024,NC016,VIS024,Azione correttiva 24 collegata a NC016,Direttore sanitario,2026-12-04,In scadenza,,,11
+PRE025,NC017,VIS024,Azione correttiva 25 collegata a NC017,Legale rappresentante,2026-12-20,Chiusa,2026-12-17,2026-12-15,27
+PRE026,NC018,VIS026,Azione correttiva 26 collegata a NC018,Coordinatore UdO,2027-01-06,Aperta,,,44
+PRE027,NC018,VIS026,Azione correttiva 27 collegata a NC018,Responsabile qualità,2027-01-21,Aperta,,,59
+PRE028,NC019,VIS027,Azione correttiva 28 collegata a NC019,Direttore sanitario,2026-12-11,In scadenza,,,18
+PRE029,NC020,VIS027,Azione correttiva 29 collegata a NC020,Legale rappresentante,2026-12-27,Aperta,,,34
+PRE030,NC020,VIS027,Azione correttiva 30 collegata a NC020,Coordinatore UdO,2027-01-11,Chiusa,2027-01-08,2027-01-06,49

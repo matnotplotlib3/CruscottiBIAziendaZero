@@ -1,0 +1,433 @@
+﻿fase_evento_id,procedimento_id,ordine_fase,fase,data_ingresso_fase,data_uscita_fase,durata_giorni,flag_fase_corrente,esito_fase,ufficio,responsabile_fase
+FAS001,PRC001,1,Protocollo,2026-03-28,2026-04-06,9,No,Completata,Ufficio accreditamenti,L. Conti
+FAS002,PRC001,2,Istruttoria,2026-04-09,2026-04-19,10,No,Completata,Segreteria tecnica,M. Esposito
+FAS003,PRC001,3,Pareri,2026-04-21,,216,Sì,In corso,Coordinamento ispezioni,S. Ferri
+FAS004,PRC002,1,Protocollo,2026-04-10,2026-04-20,10,No,Completata,Segreteria tecnica,M. Esposito
+FAS005,PRC002,2,Istruttoria,2026-04-23,2026-05-04,11,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS006,PRC002,3,Pareri,2026-05-06,2026-05-18,12,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS007,PRC002,4,Visita,2026-05-19,,188,Sì,In corso,Ufficio accreditamenti,E. Sala
+FAS008,PRC003,1,Protocollo,2026-04-23,2026-05-04,11,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS009,PRC003,2,Istruttoria,2026-05-07,2026-05-19,12,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS010,PRC003,3,Pareri,2026-05-21,2026-06-03,13,No,Completata,Ufficio accreditamenti,E. Sala
+FAS011,PRC003,4,Visita,2026-06-04,2026-06-18,14,No,Completata,Segreteria tecnica,A. Bianchi
+FAS012,PRC003,5,Provvedimento,2026-06-18,,158,Sì,In corso,Coordinamento ispezioni,L. Conti
+FAS013,PRC004,1,Protocollo,2026-05-06,2026-05-18,12,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS014,PRC004,2,Istruttoria,2026-05-21,2026-06-03,13,No,Completata,Ufficio accreditamenti,E. Sala
+FAS015,PRC004,3,Pareri,2026-06-05,,171,Sì,In corso,Segreteria tecnica,A. Bianchi
+FAS016,PRC005,1,Protocollo,2026-05-19,2026-06-01,13,No,Completata,Ufficio accreditamenti,E. Sala
+FAS017,PRC005,2,Istruttoria,2026-06-04,2026-06-18,14,No,Completata,Segreteria tecnica,A. Bianchi
+FAS018,PRC005,3,Pareri,2026-06-20,2026-07-05,15,No,Completata,Coordinamento ispezioni,L. Conti
+FAS019,PRC005,4,Visita,2026-07-06,2026-07-22,16,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS020,PRC006,1,Protocollo,2026-06-01,2026-06-15,14,No,Completata,Segreteria tecnica,A. Bianchi
+FAS021,PRC006,2,Istruttoria,2026-06-13,2026-06-28,15,No,Completata,Coordinamento ispezioni,L. Conti
+FAS022,PRC006,3,Pareri,2026-06-25,2026-07-11,16,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS023,PRC006,4,Visita,2026-07-07,2026-07-24,17,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS024,PRC006,5,Provvedimento,2026-07-19,,127,Sì,In corso,Segreteria tecnica,G. Riva
+FAS025,PRC007,1,Protocollo,2026-06-14,2026-06-29,15,No,Completata,Coordinamento ispezioni,L. Conti
+FAS026,PRC007,2,Istruttoria,2026-06-27,2026-07-13,16,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS027,PRC007,3,Pareri,2026-07-10,,136,Sì,In corso,Ufficio accreditamenti,S. Ferri
+FAS028,PRC008,1,Protocollo,2026-06-27,2026-07-13,16,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS029,PRC008,2,Istruttoria,2026-07-11,2026-07-28,17,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS030,PRC008,3,Pareri,2026-07-25,2026-08-02,8,No,Completata,Segreteria tecnica,G. Riva
+FAS031,PRC008,4,Visita,2026-08-08,,107,Sì,In corso,Coordinamento ispezioni,E. Sala
+FAS032,PRC009,1,Protocollo,2026-07-10,2026-07-27,17,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS033,PRC009,2,Istruttoria,2026-07-25,2026-08-02,8,No,Completata,Segreteria tecnica,G. Riva
+FAS034,PRC009,3,Pareri,2026-08-09,2026-08-18,9,No,Richiesta integrazione,Coordinamento ispezioni,E. Sala
+FAS035,PRC009,4,Visita,2026-08-24,2026-09-03,10,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS036,PRC009,5,Provvedimento,2026-09-08,,76,Sì,In corso,Ufficio accreditamenti,L. Conti
+FAS037,PRC010,1,Protocollo,2026-07-23,2026-07-31,8,No,Completata,Segreteria tecnica,G. Riva
+FAS038,PRC010,2,Istruttoria,2026-08-08,2026-08-17,9,No,Richiesta integrazione,Coordinamento ispezioni,E. Sala
+FAS039,PRC010,3,Pareri,2026-08-24,2026-09-03,10,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS040,PRC011,1,Protocollo,2026-08-05,2026-08-14,9,No,Richiesta integrazione,Coordinamento ispezioni,E. Sala
+FAS041,PRC011,2,Istruttoria,2026-08-17,2026-08-27,10,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS042,PRC011,3,Pareri,2026-08-29,2026-09-09,11,No,Completata,Ufficio accreditamenti,L. Conti
+FAS043,PRC011,4,Visita,2026-09-10,,74,Sì,In corso,Segreteria tecnica,M. Esposito
+FAS044,PRC012,1,Protocollo,2026-08-18,2026-08-28,10,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS045,PRC012,2,Istruttoria,2026-08-31,2026-09-11,11,No,Completata,Ufficio accreditamenti,L. Conti
+FAS046,PRC012,3,Pareri,2026-09-13,2026-09-25,12,No,Completata,Segreteria tecnica,M. Esposito
+FAS047,PRC012,4,Visita,2026-09-26,2026-10-09,13,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS048,PRC012,5,Provvedimento,2026-10-09,,45,Sì,In corso,Ufficio autorizzazioni,G. Riva
+FAS049,PRC013,1,Protocollo,2026-08-31,2026-09-11,11,No,Completata,Ufficio accreditamenti,L. Conti
+FAS050,PRC013,2,Istruttoria,2026-09-14,2026-09-26,12,No,Completata,Segreteria tecnica,M. Esposito
+FAS051,PRC013,3,Pareri,2026-09-28,,56,Sì,In corso,Coordinamento ispezioni,S. Ferri
+FAS052,PRC014,1,Protocollo,2026-09-13,2026-09-25,12,No,Completata,Segreteria tecnica,M. Esposito
+FAS053,PRC014,2,Istruttoria,2026-09-28,2026-10-11,13,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS054,PRC014,3,Pareri,2026-10-13,2026-10-27,14,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS055,PRC014,4,Visita,2026-10-28,,26,Sì,In corso,Ufficio accreditamenti,E. Sala
+FAS056,PRC015,1,Protocollo,2026-09-26,2026-10-09,13,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS057,PRC015,2,Istruttoria,2026-10-12,2026-10-26,14,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS058,PRC015,3,Pareri,2026-10-28,2026-11-12,15,No,Completata,Ufficio accreditamenti,E. Sala
+FAS059,PRC015,4,Visita,2026-11-13,2026-11-29,16,No,Completata,Segreteria tecnica,A. Bianchi
+FAS060,PRC015,5,Provvedimento,2026-11-29,2026-12-16,17,No,Completata,Coordinamento ispezioni,L. Conti
+FAS061,PRC016,1,Protocollo,2026-10-09,2026-10-23,14,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS062,PRC016,2,Istruttoria,2026-10-21,2026-11-05,15,No,Completata,Ufficio accreditamenti,E. Sala
+FAS063,PRC016,3,Pareri,2026-11-02,,21,Sì,In corso,Segreteria tecnica,A. Bianchi
+FAS064,PRC017,1,Protocollo,2026-10-22,2026-11-06,15,No,Completata,Ufficio accreditamenti,E. Sala
+FAS065,PRC017,2,Istruttoria,2026-11-04,2026-11-20,16,No,Completata,Segreteria tecnica,A. Bianchi
+FAS066,PRC017,3,Pareri,2026-11-17,2026-12-04,17,No,Completata,Coordinamento ispezioni,L. Conti
+FAS067,PRC017,4,Visita,2026-11-30,,-7,Sì,In corso,Ufficio autorizzazioni,M. Esposito
+FAS068,PRC018,1,Protocollo,2026-04-08,2026-04-24,16,No,Completata,Segreteria tecnica,A. Bianchi
+FAS069,PRC018,2,Istruttoria,2026-04-22,2026-05-09,17,No,Completata,Coordinamento ispezioni,L. Conti
+FAS070,PRC018,3,Pareri,2026-05-06,2026-05-14,8,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS071,PRC018,4,Visita,2026-05-20,2026-05-29,9,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS072,PRC018,5,Provvedimento,2026-06-03,,173,Sì,In corso,Segreteria tecnica,G. Riva
+FAS073,PRC019,1,Protocollo,2026-04-21,2026-05-08,17,No,Completata,Coordinamento ispezioni,L. Conti
+FAS074,PRC019,2,Istruttoria,2026-05-06,2026-05-14,8,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS075,PRC019,3,Pareri,2026-05-21,,186,Sì,In corso,Ufficio accreditamenti,S. Ferri
+FAS076,PRC020,1,Protocollo,2026-05-04,2026-05-12,8,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS077,PRC020,2,Istruttoria,2026-05-20,2026-05-29,9,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS078,PRC020,3,Pareri,2026-06-05,2026-06-15,10,No,Richiesta integrazione,Segreteria tecnica,G. Riva
+FAS079,PRC020,4,Visita,2026-06-21,2026-07-02,11,No,Completata,Coordinamento ispezioni,E. Sala
+FAS080,PRC021,1,Protocollo,2026-05-17,2026-05-26,9,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS081,PRC021,2,Istruttoria,2026-05-29,2026-06-08,10,No,Richiesta integrazione,Segreteria tecnica,G. Riva
+FAS082,PRC021,3,Pareri,2026-06-10,2026-06-21,11,No,Completata,Coordinamento ispezioni,E. Sala
+FAS083,PRC021,4,Visita,2026-06-22,2026-07-04,12,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS084,PRC021,5,Provvedimento,2026-07-04,,142,Sì,In corso,Ufficio accreditamenti,L. Conti
+FAS085,PRC022,1,Protocollo,2026-05-30,2026-06-09,10,No,Richiesta integrazione,Segreteria tecnica,G. Riva
+FAS086,PRC022,2,Istruttoria,2026-06-12,2026-06-23,11,No,Completata,Coordinamento ispezioni,E. Sala
+FAS087,PRC022,3,Pareri,2026-06-25,,151,Sì,In corso,Ufficio autorizzazioni,A. Bianchi
+FAS088,PRC023,1,Protocollo,2026-06-12,2026-06-23,11,No,Completata,Coordinamento ispezioni,E. Sala
+FAS089,PRC023,2,Istruttoria,2026-06-26,2026-07-08,12,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS090,PRC023,3,Pareri,2026-07-10,2026-07-23,13,No,Completata,Ufficio accreditamenti,L. Conti
+FAS091,PRC023,4,Visita,2026-07-24,,122,Sì,In corso,Segreteria tecnica,M. Esposito
+FAS092,PRC024,1,Protocollo,2026-06-25,2026-07-07,12,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS093,PRC024,2,Istruttoria,2026-07-10,2026-07-23,13,No,Completata,Ufficio accreditamenti,L. Conti
+FAS094,PRC024,3,Pareri,2026-07-25,2026-08-08,14,No,Completata,Segreteria tecnica,M. Esposito
+FAS095,PRC024,4,Visita,2026-08-09,2026-08-24,15,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS096,PRC024,5,Provvedimento,2026-08-24,,91,Sì,In corso,Ufficio autorizzazioni,G. Riva
+FAS097,PRC025,1,Protocollo,2026-07-08,2026-07-21,13,No,Completata,Ufficio accreditamenti,L. Conti
+FAS098,PRC025,2,Istruttoria,2026-07-24,2026-08-07,14,No,Completata,Segreteria tecnica,M. Esposito
+FAS099,PRC025,3,Pareri,2026-08-09,2026-08-24,15,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS100,PRC026,1,Protocollo,2026-07-21,2026-08-04,14,No,Completata,Segreteria tecnica,M. Esposito
+FAS101,PRC026,2,Istruttoria,2026-08-02,2026-08-17,15,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS102,PRC026,3,Pareri,2026-08-14,2026-08-30,16,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS103,PRC026,4,Visita,2026-08-26,,89,Sì,In corso,Ufficio accreditamenti,E. Sala
+FAS104,PRC027,1,Protocollo,2026-08-03,2026-08-18,15,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS105,PRC027,2,Istruttoria,2026-08-16,2026-09-01,16,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS106,PRC027,3,Pareri,2026-08-29,2026-09-15,17,No,Completata,Ufficio accreditamenti,E. Sala
+FAS107,PRC027,4,Visita,2026-09-11,2026-09-19,8,No,Completata,Segreteria tecnica,A. Bianchi
+FAS108,PRC027,5,Provvedimento,2026-09-24,,60,Sì,In corso,Coordinamento ispezioni,L. Conti
+FAS109,PRC028,1,Protocollo,2026-08-16,2026-09-01,16,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS110,PRC028,2,Istruttoria,2026-08-30,2026-09-16,17,No,Completata,Ufficio accreditamenti,E. Sala
+FAS111,PRC028,3,Pareri,2026-09-13,,71,Sì,In corso,Segreteria tecnica,A. Bianchi
+FAS112,PRC029,1,Protocollo,2026-08-29,2026-09-15,17,No,Completata,Ufficio accreditamenti,E. Sala
+FAS113,PRC029,2,Istruttoria,2026-09-13,2026-09-21,8,No,Completata,Segreteria tecnica,A. Bianchi
+FAS114,PRC029,3,Pareri,2026-09-28,2026-10-07,9,No,Completata,Coordinamento ispezioni,L. Conti
+FAS115,PRC029,4,Visita,2026-10-13,,41,Sì,In corso,Ufficio autorizzazioni,M. Esposito
+FAS116,PRC030,1,Protocollo,2026-09-11,2026-09-19,8,No,Completata,Segreteria tecnica,A. Bianchi
+FAS117,PRC030,2,Istruttoria,2026-09-27,2026-10-06,9,No,Completata,Coordinamento ispezioni,L. Conti
+FAS118,PRC030,3,Pareri,2026-10-13,2026-10-23,10,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS119,PRC030,4,Visita,2026-10-29,2026-11-09,11,No,Richiesta integrazione,Ufficio accreditamenti,S. Ferri
+FAS120,PRC030,5,Provvedimento,2026-11-14,2026-11-26,12,No,Completata,Segreteria tecnica,G. Riva
+FAS121,PRC031,1,Protocollo,2026-09-24,2026-10-03,9,No,Completata,Coordinamento ispezioni,L. Conti
+FAS122,PRC031,2,Istruttoria,2026-10-06,2026-10-16,10,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS123,PRC031,3,Pareri,2026-10-18,,36,Sì,In corso,Ufficio accreditamenti,S. Ferri
+FAS124,PRC032,1,Protocollo,2026-10-07,2026-10-17,10,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS125,PRC032,2,Istruttoria,2026-10-20,2026-10-31,11,No,Richiesta integrazione,Ufficio accreditamenti,S. Ferri
+FAS126,PRC032,3,Pareri,2026-11-02,2026-11-14,12,No,Completata,Segreteria tecnica,G. Riva
+FAS127,PRC032,4,Visita,2026-11-15,,8,Sì,In corso,Coordinamento ispezioni,E. Sala
+FAS128,PRC033,1,Protocollo,2026-10-20,2026-10-31,11,No,Richiesta integrazione,Ufficio accreditamenti,S. Ferri
+FAS129,PRC033,2,Istruttoria,2026-11-03,2026-11-15,12,No,Completata,Segreteria tecnica,G. Riva
+FAS130,PRC033,3,Pareri,2026-11-17,2026-11-30,13,No,Completata,Coordinamento ispezioni,E. Sala
+FAS131,PRC033,4,Visita,2026-12-01,2026-12-15,14,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS132,PRC033,5,Provvedimento,2026-12-15,,-22,Sì,In corso,Ufficio accreditamenti,L. Conti
+FAS133,PRC034,1,Protocollo,2026-04-06,2026-04-18,12,No,Completata,Segreteria tecnica,G. Riva
+FAS134,PRC034,2,Istruttoria,2026-04-21,2026-05-04,13,No,Completata,Coordinamento ispezioni,E. Sala
+FAS135,PRC034,3,Pareri,2026-05-06,,201,Sì,In corso,Ufficio autorizzazioni,A. Bianchi
+FAS136,PRC035,1,Protocollo,2026-04-19,2026-05-02,13,No,Completata,Coordinamento ispezioni,E. Sala
+FAS137,PRC035,2,Istruttoria,2026-05-05,2026-05-19,14,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS138,PRC035,3,Pareri,2026-05-21,2026-06-05,15,No,Completata,Ufficio accreditamenti,L. Conti
+FAS139,PRC035,4,Visita,2026-06-06,2026-06-22,16,No,Completata,Segreteria tecnica,M. Esposito
+FAS140,PRC036,1,Protocollo,2026-05-02,2026-05-16,14,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS141,PRC036,2,Istruttoria,2026-05-14,2026-05-29,15,No,Completata,Ufficio accreditamenti,L. Conti
+FAS142,PRC036,3,Pareri,2026-05-26,2026-06-11,16,No,Completata,Segreteria tecnica,M. Esposito
+FAS143,PRC036,4,Visita,2026-06-07,2026-06-24,17,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS144,PRC036,5,Provvedimento,2026-06-19,,157,Sì,In corso,Ufficio autorizzazioni,G. Riva
+FAS145,PRC037,1,Protocollo,2026-05-15,2026-05-30,15,No,Completata,Ufficio accreditamenti,L. Conti
+FAS146,PRC037,2,Istruttoria,2026-05-28,2026-06-13,16,No,Completata,Segreteria tecnica,M. Esposito
+FAS147,PRC037,3,Pareri,2026-06-10,,166,Sì,In corso,Coordinamento ispezioni,S. Ferri
+FAS148,PRC038,1,Protocollo,2026-05-28,2026-06-13,16,No,Completata,Segreteria tecnica,M. Esposito
+FAS149,PRC038,2,Istruttoria,2026-06-11,2026-06-28,17,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS150,PRC038,3,Pareri,2026-06-25,2026-07-03,8,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS151,PRC038,4,Visita,2026-07-09,,137,Sì,In corso,Ufficio accreditamenti,E. Sala
+FAS152,PRC039,1,Protocollo,2026-06-10,2026-06-27,17,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS153,PRC039,2,Istruttoria,2026-06-25,2026-07-03,8,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS154,PRC039,3,Pareri,2026-07-10,2026-07-19,9,No,Completata,Ufficio accreditamenti,E. Sala
+FAS155,PRC039,4,Visita,2026-07-25,2026-08-04,10,No,Completata,Segreteria tecnica,A. Bianchi
+FAS156,PRC039,5,Provvedimento,2026-08-09,,106,Sì,In corso,Coordinamento ispezioni,L. Conti
+FAS157,PRC040,1,Protocollo,2026-06-23,2026-07-01,8,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS158,PRC040,2,Istruttoria,2026-07-09,2026-07-18,9,No,Completata,Ufficio accreditamenti,E. Sala
+FAS159,PRC040,3,Pareri,2026-07-25,2026-08-04,10,No,Completata,Segreteria tecnica,A. Bianchi
+FAS160,PRC041,1,Protocollo,2026-07-06,2026-07-15,9,No,Completata,Ufficio accreditamenti,E. Sala
+FAS161,PRC041,2,Istruttoria,2026-07-18,2026-07-28,10,No,Completata,Segreteria tecnica,A. Bianchi
+FAS162,PRC041,3,Pareri,2026-07-30,2026-08-10,11,No,Completata,Coordinamento ispezioni,L. Conti
+FAS163,PRC041,4,Visita,2026-08-11,,104,Sì,In corso,Ufficio autorizzazioni,M. Esposito
+FAS164,PRC042,1,Protocollo,2026-07-19,2026-07-29,10,No,Completata,Segreteria tecnica,A. Bianchi
+FAS165,PRC042,2,Istruttoria,2026-08-01,2026-08-12,11,No,Completata,Coordinamento ispezioni,L. Conti
+FAS166,PRC042,3,Pareri,2026-08-14,2026-08-26,12,No,Richiesta integrazione,Ufficio autorizzazioni,M. Esposito
+FAS167,PRC042,4,Visita,2026-08-27,2026-09-09,13,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS168,PRC042,5,Provvedimento,2026-09-09,,75,Sì,In corso,Segreteria tecnica,G. Riva
+FAS169,PRC043,1,Protocollo,2026-08-01,2026-08-12,11,No,Completata,Coordinamento ispezioni,L. Conti
+FAS170,PRC043,2,Istruttoria,2026-08-15,2026-08-27,12,No,Richiesta integrazione,Ufficio autorizzazioni,M. Esposito
+FAS171,PRC043,3,Pareri,2026-08-29,,86,Sì,In corso,Ufficio accreditamenti,S. Ferri
+FAS172,PRC044,1,Protocollo,2026-08-14,2026-08-26,12,No,Richiesta integrazione,Ufficio autorizzazioni,M. Esposito
+FAS173,PRC044,2,Istruttoria,2026-08-29,2026-09-11,13,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS174,PRC044,3,Pareri,2026-09-13,2026-09-27,14,No,Completata,Segreteria tecnica,G. Riva
+FAS175,PRC044,4,Visita,2026-09-28,,56,Sì,In corso,Coordinamento ispezioni,E. Sala
+FAS176,PRC045,1,Protocollo,2026-08-27,2026-09-09,13,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS177,PRC045,2,Istruttoria,2026-09-12,2026-09-26,14,No,Completata,Segreteria tecnica,G. Riva
+FAS178,PRC045,3,Pareri,2026-09-28,2026-10-13,15,No,Completata,Coordinamento ispezioni,E. Sala
+FAS179,PRC045,4,Visita,2026-10-14,2026-10-30,16,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS180,PRC045,5,Provvedimento,2026-10-30,2026-11-16,17,No,Completata,Ufficio accreditamenti,L. Conti
+FAS181,PRC046,1,Protocollo,2026-09-09,2026-09-23,14,No,Completata,Segreteria tecnica,G. Riva
+FAS182,PRC046,2,Istruttoria,2026-09-21,2026-10-06,15,No,Completata,Coordinamento ispezioni,E. Sala
+FAS183,PRC046,3,Pareri,2026-10-03,,51,Sì,In corso,Ufficio autorizzazioni,A. Bianchi
+FAS184,PRC047,1,Protocollo,2026-09-22,2026-10-07,15,No,Completata,Coordinamento ispezioni,E. Sala
+FAS185,PRC047,2,Istruttoria,2026-10-05,2026-10-21,16,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS186,PRC047,3,Pareri,2026-10-18,2026-11-04,17,No,Completata,Ufficio accreditamenti,L. Conti
+FAS187,PRC047,4,Visita,2026-10-31,,23,Sì,In corso,Segreteria tecnica,M. Esposito
+FAS188,PRC048,1,Protocollo,2026-10-05,2026-10-21,16,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS189,PRC048,2,Istruttoria,2026-10-19,2026-11-05,17,No,Completata,Ufficio accreditamenti,L. Conti
+FAS190,PRC048,3,Pareri,2026-11-02,2026-11-10,8,No,Completata,Segreteria tecnica,M. Esposito
+FAS191,PRC048,4,Visita,2026-11-16,2026-11-25,9,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS192,PRC048,5,Provvedimento,2026-11-30,,-7,Sì,In corso,Ufficio autorizzazioni,G. Riva
+FAS193,PRC049,1,Protocollo,2026-10-18,2026-11-04,17,No,Completata,Ufficio accreditamenti,L. Conti
+FAS194,PRC049,2,Istruttoria,2026-11-02,2026-11-10,8,No,Completata,Segreteria tecnica,M. Esposito
+FAS195,PRC049,3,Pareri,2026-11-17,,6,Sì,In corso,Coordinamento ispezioni,S. Ferri
+FAS196,PRC050,1,Protocollo,2026-04-04,2026-04-12,8,No,Completata,Segreteria tecnica,M. Esposito
+FAS197,PRC050,2,Istruttoria,2026-04-20,2026-04-29,9,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS198,PRC050,3,Pareri,2026-05-06,2026-05-16,10,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS199,PRC050,4,Visita,2026-05-22,2026-06-02,11,No,Completata,Ufficio accreditamenti,E. Sala
+FAS200,PRC051,1,Protocollo,2026-04-17,2026-04-26,9,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS201,PRC051,2,Istruttoria,2026-04-29,2026-05-09,10,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS202,PRC051,3,Pareri,2026-05-11,2026-05-22,11,No,Completata,Ufficio accreditamenti,E. Sala
+FAS203,PRC051,4,Visita,2026-05-23,2026-06-04,12,No,Completata,Segreteria tecnica,A. Bianchi
+FAS204,PRC051,5,Provvedimento,2026-06-04,,172,Sì,In corso,Coordinamento ispezioni,L. Conti
+FAS205,PRC052,1,Protocollo,2026-04-30,2026-05-10,10,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS206,PRC052,2,Istruttoria,2026-05-13,2026-05-24,11,No,Completata,Ufficio accreditamenti,E. Sala
+FAS207,PRC052,3,Pareri,2026-05-26,,181,Sì,In corso,Segreteria tecnica,A. Bianchi
+FAS208,PRC053,1,Protocollo,2026-05-13,2026-05-24,11,No,Completata,Ufficio accreditamenti,E. Sala
+FAS209,PRC053,2,Istruttoria,2026-05-27,2026-06-08,12,No,Completata,Segreteria tecnica,A. Bianchi
+FAS210,PRC053,3,Pareri,2026-06-10,2026-06-23,13,No,Richiesta integrazione,Coordinamento ispezioni,L. Conti
+FAS211,PRC053,4,Visita,2026-06-24,,152,Sì,In corso,Ufficio autorizzazioni,M. Esposito
+FAS212,PRC054,1,Protocollo,2026-05-26,2026-06-07,12,No,Completata,Segreteria tecnica,A. Bianchi
+FAS213,PRC054,2,Istruttoria,2026-06-10,2026-06-23,13,No,Richiesta integrazione,Coordinamento ispezioni,L. Conti
+FAS214,PRC054,3,Pareri,2026-06-25,2026-07-09,14,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS215,PRC054,4,Visita,2026-07-10,2026-07-25,15,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS216,PRC054,5,Provvedimento,2026-07-25,,121,Sì,In corso,Segreteria tecnica,G. Riva
+FAS217,PRC055,1,Protocollo,2026-06-08,2026-06-21,13,No,Richiesta integrazione,Coordinamento ispezioni,L. Conti
+FAS218,PRC055,2,Istruttoria,2026-06-24,2026-07-08,14,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS219,PRC055,3,Pareri,2026-07-10,2026-07-25,15,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS220,PRC056,1,Protocollo,2026-06-21,2026-07-05,14,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS221,PRC056,2,Istruttoria,2026-07-03,2026-07-18,15,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS222,PRC056,3,Pareri,2026-07-15,2026-07-31,16,No,Completata,Segreteria tecnica,G. Riva
+FAS223,PRC056,4,Visita,2026-07-27,,119,Sì,In corso,Coordinamento ispezioni,E. Sala
+FAS224,PRC057,1,Protocollo,2026-07-04,2026-07-19,15,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS225,PRC057,2,Istruttoria,2026-07-17,2026-08-02,16,No,Completata,Segreteria tecnica,G. Riva
+FAS226,PRC057,3,Pareri,2026-07-30,2026-08-16,17,No,Completata,Coordinamento ispezioni,E. Sala
+FAS227,PRC057,4,Visita,2026-08-12,2026-08-20,8,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS228,PRC057,5,Provvedimento,2026-08-25,,90,Sì,In corso,Ufficio accreditamenti,L. Conti
+FAS229,PRC058,1,Protocollo,2026-07-17,2026-08-02,16,No,Completata,Segreteria tecnica,G. Riva
+FAS230,PRC058,2,Istruttoria,2026-07-31,2026-08-17,17,No,Completata,Coordinamento ispezioni,E. Sala
+FAS231,PRC058,3,Pareri,2026-08-14,,101,Sì,In corso,Ufficio autorizzazioni,A. Bianchi
+FAS232,PRC059,1,Protocollo,2026-07-30,2026-08-16,17,No,Completata,Coordinamento ispezioni,E. Sala
+FAS233,PRC059,2,Istruttoria,2026-08-14,2026-08-22,8,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS234,PRC059,3,Pareri,2026-08-29,2026-09-07,9,No,Completata,Ufficio accreditamenti,L. Conti
+FAS235,PRC059,4,Visita,2026-09-13,,71,Sì,In corso,Segreteria tecnica,M. Esposito
+FAS236,PRC060,1,Protocollo,2026-08-12,2026-08-20,8,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS237,PRC060,2,Istruttoria,2026-08-28,2026-09-06,9,No,Completata,Ufficio accreditamenti,L. Conti
+FAS238,PRC060,3,Pareri,2026-09-13,2026-09-23,10,No,Completata,Segreteria tecnica,M. Esposito
+FAS239,PRC060,4,Visita,2026-09-29,2026-10-10,11,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS240,PRC060,5,Provvedimento,2026-10-15,2026-10-27,12,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS241,PRC061,1,Protocollo,2026-08-25,2026-09-03,9,No,Completata,Ufficio accreditamenti,L. Conti
+FAS242,PRC061,2,Istruttoria,2026-09-06,2026-09-16,10,No,Completata,Segreteria tecnica,M. Esposito
+FAS243,PRC061,3,Pareri,2026-09-18,,66,Sì,In corso,Coordinamento ispezioni,S. Ferri
+FAS244,PRC062,1,Protocollo,2026-09-07,2026-09-17,10,No,Completata,Segreteria tecnica,M. Esposito
+FAS245,PRC062,2,Istruttoria,2026-09-20,2026-10-01,11,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS246,PRC062,3,Pareri,2026-10-03,2026-10-15,12,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS247,PRC062,4,Visita,2026-10-16,,38,Sì,In corso,Ufficio accreditamenti,E. Sala
+FAS248,PRC063,1,Protocollo,2026-09-20,2026-10-01,11,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS249,PRC063,2,Istruttoria,2026-10-04,2026-10-16,12,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS250,PRC063,3,Pareri,2026-10-18,2026-10-31,13,No,Completata,Ufficio accreditamenti,E. Sala
+FAS251,PRC063,4,Visita,2026-11-01,2026-11-15,14,No,Richiesta integrazione,Segreteria tecnica,A. Bianchi
+FAS252,PRC063,5,Provvedimento,2026-11-15,,8,Sì,In corso,Coordinamento ispezioni,L. Conti
+FAS253,PRC064,1,Protocollo,2026-10-03,2026-10-15,12,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS254,PRC064,2,Istruttoria,2026-10-18,2026-10-31,13,No,Completata,Ufficio accreditamenti,E. Sala
+FAS255,PRC064,3,Pareri,2026-11-02,,21,Sì,In corso,Segreteria tecnica,A. Bianchi
+FAS256,PRC065,1,Protocollo,2026-10-16,2026-10-29,13,No,Completata,Ufficio accreditamenti,E. Sala
+FAS257,PRC065,2,Istruttoria,2026-11-01,2026-11-15,14,No,Richiesta integrazione,Segreteria tecnica,A. Bianchi
+FAS258,PRC065,3,Pareri,2026-11-17,2026-12-02,15,No,Completata,Coordinamento ispezioni,L. Conti
+FAS259,PRC065,4,Visita,2026-12-03,2026-12-19,16,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS260,PRC066,1,Protocollo,2026-04-02,2026-04-16,14,No,Richiesta integrazione,Segreteria tecnica,A. Bianchi
+FAS261,PRC066,2,Istruttoria,2026-04-14,2026-04-29,15,No,Completata,Coordinamento ispezioni,L. Conti
+FAS262,PRC066,3,Pareri,2026-04-26,2026-05-12,16,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS263,PRC066,4,Visita,2026-05-08,2026-05-25,17,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS264,PRC066,5,Provvedimento,2026-05-20,,187,Sì,In corso,Segreteria tecnica,G. Riva
+FAS265,PRC067,1,Protocollo,2026-04-15,2026-04-30,15,No,Completata,Coordinamento ispezioni,L. Conti
+FAS266,PRC067,2,Istruttoria,2026-04-28,2026-05-14,16,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS267,PRC067,3,Pareri,2026-05-11,,196,Sì,In corso,Ufficio accreditamenti,S. Ferri
+FAS268,PRC068,1,Protocollo,2026-04-28,2026-05-14,16,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS269,PRC068,2,Istruttoria,2026-05-12,2026-05-29,17,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS270,PRC068,3,Pareri,2026-05-26,2026-06-03,8,No,Completata,Segreteria tecnica,G. Riva
+FAS271,PRC068,4,Visita,2026-06-09,,167,Sì,In corso,Coordinamento ispezioni,E. Sala
+FAS272,PRC069,1,Protocollo,2026-05-11,2026-05-28,17,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS273,PRC069,2,Istruttoria,2026-05-26,2026-06-03,8,No,Completata,Segreteria tecnica,G. Riva
+FAS274,PRC069,3,Pareri,2026-06-10,2026-06-19,9,No,Completata,Coordinamento ispezioni,E. Sala
+FAS275,PRC069,4,Visita,2026-06-25,2026-07-05,10,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS276,PRC069,5,Provvedimento,2026-07-10,,136,Sì,In corso,Ufficio accreditamenti,L. Conti
+FAS277,PRC070,1,Protocollo,2026-05-24,2026-06-01,8,No,Completata,Segreteria tecnica,G. Riva
+FAS278,PRC070,2,Istruttoria,2026-06-09,2026-06-18,9,No,Completata,Coordinamento ispezioni,E. Sala
+FAS279,PRC070,3,Pareri,2026-06-25,2026-07-05,10,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS280,PRC071,1,Protocollo,2026-06-06,2026-06-15,9,No,Completata,Coordinamento ispezioni,E. Sala
+FAS281,PRC071,2,Istruttoria,2026-06-18,2026-06-28,10,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS282,PRC071,3,Pareri,2026-06-30,2026-07-11,11,No,Completata,Ufficio accreditamenti,L. Conti
+FAS283,PRC071,4,Visita,2026-07-12,,134,Sì,In corso,Segreteria tecnica,M. Esposito
+FAS284,PRC072,1,Protocollo,2026-06-19,2026-06-29,10,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS285,PRC072,2,Istruttoria,2026-07-02,2026-07-13,11,No,Completata,Ufficio accreditamenti,L. Conti
+FAS286,PRC072,3,Pareri,2026-07-15,2026-07-27,12,No,Completata,Segreteria tecnica,M. Esposito
+FAS287,PRC072,4,Visita,2026-07-28,2026-08-10,13,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS288,PRC072,5,Provvedimento,2026-08-10,,105,Sì,In corso,Ufficio autorizzazioni,G. Riva
+FAS289,PRC073,1,Protocollo,2026-07-02,2026-07-13,11,No,Completata,Ufficio accreditamenti,L. Conti
+FAS290,PRC073,2,Istruttoria,2026-07-16,2026-07-28,12,No,Completata,Segreteria tecnica,M. Esposito
+FAS291,PRC073,3,Pareri,2026-07-30,,116,Sì,In corso,Coordinamento ispezioni,S. Ferri
+FAS292,PRC074,1,Protocollo,2026-07-15,2026-07-27,12,No,Completata,Segreteria tecnica,M. Esposito
+FAS293,PRC074,2,Istruttoria,2026-07-30,2026-08-12,13,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS294,PRC074,3,Pareri,2026-08-14,2026-08-28,14,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS295,PRC074,4,Visita,2026-08-29,,86,Sì,In corso,Ufficio accreditamenti,E. Sala
+FAS296,PRC075,1,Protocollo,2026-07-28,2026-08-10,13,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS297,PRC075,2,Istruttoria,2026-08-13,2026-08-27,14,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS298,PRC075,3,Pareri,2026-08-29,2026-09-13,15,No,Richiesta integrazione,Ufficio accreditamenti,E. Sala
+FAS299,PRC075,4,Visita,2026-09-14,2026-09-30,16,No,Completata,Segreteria tecnica,A. Bianchi
+FAS300,PRC075,5,Provvedimento,2026-09-30,2026-10-17,17,No,Completata,Coordinamento ispezioni,L. Conti
+FAS301,PRC076,1,Protocollo,2026-08-10,2026-08-24,14,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS302,PRC076,2,Istruttoria,2026-08-22,2026-09-06,15,No,Richiesta integrazione,Ufficio accreditamenti,E. Sala
+FAS303,PRC076,3,Pareri,2026-09-03,,81,Sì,In corso,Segreteria tecnica,A. Bianchi
+FAS304,PRC077,1,Protocollo,2026-08-23,2026-09-07,15,No,Richiesta integrazione,Ufficio accreditamenti,E. Sala
+FAS305,PRC077,2,Istruttoria,2026-09-05,2026-09-21,16,No,Completata,Segreteria tecnica,A. Bianchi
+FAS306,PRC077,3,Pareri,2026-09-18,2026-10-05,17,No,Completata,Coordinamento ispezioni,L. Conti
+FAS307,PRC077,4,Visita,2026-10-01,,53,Sì,In corso,Ufficio autorizzazioni,M. Esposito
+FAS308,PRC078,1,Protocollo,2026-09-05,2026-09-21,16,No,Completata,Segreteria tecnica,A. Bianchi
+FAS309,PRC078,2,Istruttoria,2026-09-19,2026-10-06,17,No,Completata,Coordinamento ispezioni,L. Conti
+FAS310,PRC078,3,Pareri,2026-10-03,2026-10-11,8,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS311,PRC078,4,Visita,2026-10-17,2026-10-26,9,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS312,PRC078,5,Provvedimento,2026-10-31,,23,Sì,In corso,Segreteria tecnica,G. Riva
+FAS313,PRC079,1,Protocollo,2026-09-18,2026-10-05,17,No,Completata,Coordinamento ispezioni,L. Conti
+FAS314,PRC079,2,Istruttoria,2026-10-03,2026-10-11,8,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS315,PRC079,3,Pareri,2026-10-18,,36,Sì,In corso,Ufficio accreditamenti,S. Ferri
+FAS316,PRC080,1,Protocollo,2026-10-01,2026-10-09,8,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS317,PRC080,2,Istruttoria,2026-10-17,2026-10-26,9,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS318,PRC080,3,Pareri,2026-11-02,2026-11-12,10,No,Completata,Segreteria tecnica,G. Riva
+FAS319,PRC080,4,Visita,2026-11-18,2026-11-29,11,No,Completata,Coordinamento ispezioni,E. Sala
+FAS320,PRC081,1,Protocollo,2026-10-14,2026-10-23,9,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS321,PRC081,2,Istruttoria,2026-10-26,2026-11-05,10,No,Completata,Segreteria tecnica,G. Riva
+FAS322,PRC081,3,Pareri,2026-11-07,2026-11-18,11,No,Completata,Coordinamento ispezioni,E. Sala
+FAS323,PRC081,4,Visita,2026-11-19,2026-12-01,12,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS324,PRC081,5,Provvedimento,2026-12-01,,-8,Sì,In corso,Ufficio accreditamenti,L. Conti
+FAS325,PRC082,1,Protocollo,2026-03-31,2026-04-10,10,No,Completata,Segreteria tecnica,G. Riva
+FAS326,PRC082,2,Istruttoria,2026-04-13,2026-04-24,11,No,Completata,Coordinamento ispezioni,E. Sala
+FAS327,PRC082,3,Pareri,2026-04-26,,211,Sì,In corso,Ufficio autorizzazioni,A. Bianchi
+FAS328,PRC083,1,Protocollo,2026-04-13,2026-04-24,11,No,Completata,Coordinamento ispezioni,E. Sala
+FAS329,PRC083,2,Istruttoria,2026-04-27,2026-05-09,12,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS330,PRC083,3,Pareri,2026-05-11,2026-05-24,13,No,Completata,Ufficio accreditamenti,L. Conti
+FAS331,PRC083,4,Visita,2026-05-25,,182,Sì,In corso,Segreteria tecnica,M. Esposito
+FAS332,PRC084,1,Protocollo,2026-04-26,2026-05-08,12,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS333,PRC084,2,Istruttoria,2026-05-11,2026-05-24,13,No,Completata,Ufficio accreditamenti,L. Conti
+FAS334,PRC084,3,Pareri,2026-05-26,2026-06-09,14,No,Completata,Segreteria tecnica,M. Esposito
+FAS335,PRC084,4,Visita,2026-06-10,2026-06-25,15,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS336,PRC084,5,Provvedimento,2026-06-25,,151,Sì,In corso,Ufficio autorizzazioni,G. Riva
+FAS337,PRC085,1,Protocollo,2026-05-09,2026-05-22,13,No,Completata,Ufficio accreditamenti,L. Conti
+FAS338,PRC085,2,Istruttoria,2026-05-25,2026-06-08,14,No,Completata,Segreteria tecnica,M. Esposito
+FAS339,PRC085,3,Pareri,2026-06-10,2026-06-25,15,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS340,PRC086,1,Protocollo,2026-05-22,2026-06-05,14,No,Completata,Segreteria tecnica,M. Esposito
+FAS341,PRC086,2,Istruttoria,2026-06-03,2026-06-18,15,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS342,PRC086,3,Pareri,2026-06-15,2026-07-01,16,No,Richiesta integrazione,Ufficio autorizzazioni,G. Riva
+FAS343,PRC086,4,Visita,2026-06-27,,149,Sì,In corso,Ufficio accreditamenti,E. Sala
+FAS344,PRC087,1,Protocollo,2026-06-04,2026-06-19,15,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS345,PRC087,2,Istruttoria,2026-06-17,2026-07-03,16,No,Richiesta integrazione,Ufficio autorizzazioni,G. Riva
+FAS346,PRC087,3,Pareri,2026-06-30,2026-07-17,17,No,Completata,Ufficio accreditamenti,E. Sala
+FAS347,PRC087,4,Visita,2026-07-13,2026-07-21,8,No,Completata,Segreteria tecnica,A. Bianchi
+FAS348,PRC087,5,Provvedimento,2026-07-26,,120,Sì,In corso,Coordinamento ispezioni,L. Conti
+FAS349,PRC088,1,Protocollo,2026-06-17,2026-07-03,16,No,Richiesta integrazione,Ufficio autorizzazioni,G. Riva
+FAS350,PRC088,2,Istruttoria,2026-07-01,2026-07-18,17,No,Completata,Ufficio accreditamenti,E. Sala
+FAS351,PRC088,3,Pareri,2026-07-15,,131,Sì,In corso,Segreteria tecnica,A. Bianchi
+FAS352,PRC089,1,Protocollo,2026-06-30,2026-07-17,17,No,Completata,Ufficio accreditamenti,E. Sala
+FAS353,PRC089,2,Istruttoria,2026-07-15,2026-07-23,8,No,Completata,Segreteria tecnica,A. Bianchi
+FAS354,PRC089,3,Pareri,2026-07-30,2026-08-08,9,No,Completata,Coordinamento ispezioni,L. Conti
+FAS355,PRC089,4,Visita,2026-08-14,,101,Sì,In corso,Ufficio autorizzazioni,M. Esposito
+FAS356,PRC090,1,Protocollo,2026-07-13,2026-07-21,8,No,Completata,Segreteria tecnica,A. Bianchi
+FAS357,PRC090,2,Istruttoria,2026-07-29,2026-08-07,9,No,Completata,Coordinamento ispezioni,L. Conti
+FAS358,PRC090,3,Pareri,2026-08-14,2026-08-24,10,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS359,PRC090,4,Visita,2026-08-30,2026-09-10,11,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS360,PRC090,5,Provvedimento,2026-09-15,2026-09-27,12,No,Completata,Segreteria tecnica,G. Riva
+FAS361,PRC091,1,Protocollo,2026-07-26,2026-08-04,9,No,Completata,Coordinamento ispezioni,L. Conti
+FAS362,PRC091,2,Istruttoria,2026-08-07,2026-08-17,10,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS363,PRC091,3,Pareri,2026-08-19,,96,Sì,In corso,Ufficio accreditamenti,S. Ferri
+FAS364,PRC092,1,Protocollo,2026-08-08,2026-08-18,10,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS365,PRC092,2,Istruttoria,2026-08-21,2026-09-01,11,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS366,PRC092,3,Pareri,2026-09-03,2026-09-15,12,No,Completata,Segreteria tecnica,G. Riva
+FAS367,PRC092,4,Visita,2026-09-16,,68,Sì,In corso,Coordinamento ispezioni,E. Sala
+FAS368,PRC093,1,Protocollo,2026-08-21,2026-09-01,11,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS369,PRC093,2,Istruttoria,2026-09-04,2026-09-16,12,No,Completata,Segreteria tecnica,G. Riva
+FAS370,PRC093,3,Pareri,2026-09-18,2026-10-01,13,No,Completata,Coordinamento ispezioni,E. Sala
+FAS371,PRC093,4,Visita,2026-10-02,2026-10-16,14,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS372,PRC093,5,Provvedimento,2026-10-16,,38,Sì,In corso,Ufficio accreditamenti,L. Conti
+FAS373,PRC094,1,Protocollo,2026-09-03,2026-09-15,12,No,Completata,Segreteria tecnica,G. Riva
+FAS374,PRC094,2,Istruttoria,2026-09-18,2026-10-01,13,No,Completata,Coordinamento ispezioni,E. Sala
+FAS375,PRC094,3,Pareri,2026-10-03,,51,Sì,In corso,Ufficio autorizzazioni,A. Bianchi
+FAS376,PRC095,1,Protocollo,2026-09-16,2026-09-29,13,No,Completata,Coordinamento ispezioni,E. Sala
+FAS377,PRC095,2,Istruttoria,2026-10-02,2026-10-16,14,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS378,PRC095,3,Pareri,2026-10-18,2026-11-02,15,No,Completata,Ufficio accreditamenti,L. Conti
+FAS379,PRC095,4,Visita,2026-11-03,2026-11-19,16,No,Completata,Segreteria tecnica,M. Esposito
+FAS380,PRC096,1,Protocollo,2026-09-29,2026-10-13,14,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS381,PRC096,2,Istruttoria,2026-10-11,2026-10-26,15,No,Completata,Ufficio accreditamenti,L. Conti
+FAS382,PRC096,3,Pareri,2026-10-23,2026-11-08,16,No,Completata,Segreteria tecnica,M. Esposito
+FAS383,PRC096,4,Visita,2026-11-04,2026-11-21,17,No,Richiesta integrazione,Coordinamento ispezioni,S. Ferri
+FAS384,PRC096,5,Provvedimento,2026-11-16,,7,Sì,In corso,Ufficio autorizzazioni,G. Riva
+FAS385,PRC097,1,Protocollo,2026-10-12,2026-10-27,15,No,Completata,Ufficio accreditamenti,L. Conti
+FAS386,PRC097,2,Istruttoria,2026-10-25,2026-11-10,16,No,Completata,Segreteria tecnica,M. Esposito
+FAS387,PRC097,3,Pareri,2026-11-07,,16,Sì,In corso,Coordinamento ispezioni,S. Ferri
+FAS388,PRC098,1,Protocollo,2026-03-29,2026-04-14,16,No,Completata,Segreteria tecnica,M. Esposito
+FAS389,PRC098,2,Istruttoria,2026-04-12,2026-04-29,17,No,Richiesta integrazione,Coordinamento ispezioni,S. Ferri
+FAS390,PRC098,3,Pareri,2026-04-26,2026-05-04,8,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS391,PRC098,4,Visita,2026-05-10,,197,Sì,In corso,Ufficio accreditamenti,E. Sala
+FAS392,PRC099,1,Protocollo,2026-04-11,2026-04-28,17,No,Richiesta integrazione,Coordinamento ispezioni,S. Ferri
+FAS393,PRC099,2,Istruttoria,2026-04-26,2026-05-04,8,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS394,PRC099,3,Pareri,2026-05-11,2026-05-20,9,No,Completata,Ufficio accreditamenti,E. Sala
+FAS395,PRC099,4,Visita,2026-05-26,2026-06-05,10,No,Completata,Segreteria tecnica,A. Bianchi
+FAS396,PRC099,5,Provvedimento,2026-06-10,,166,Sì,In corso,Coordinamento ispezioni,L. Conti
+FAS397,PRC100,1,Protocollo,2026-04-24,2026-05-02,8,No,Completata,Ufficio autorizzazioni,G. Riva
+FAS398,PRC100,2,Istruttoria,2026-05-10,2026-05-19,9,No,Completata,Ufficio accreditamenti,E. Sala
+FAS399,PRC100,3,Pareri,2026-05-26,2026-06-05,10,No,Completata,Segreteria tecnica,A. Bianchi
+FAS400,PRC101,1,Protocollo,2026-05-07,2026-05-16,9,No,Completata,Ufficio accreditamenti,E. Sala
+FAS401,PRC101,2,Istruttoria,2026-05-19,2026-05-29,10,No,Completata,Segreteria tecnica,A. Bianchi
+FAS402,PRC101,3,Pareri,2026-05-31,2026-06-11,11,No,Completata,Coordinamento ispezioni,L. Conti
+FAS403,PRC101,4,Visita,2026-06-12,,164,Sì,In corso,Ufficio autorizzazioni,M. Esposito
+FAS404,PRC102,1,Protocollo,2026-05-20,2026-05-30,10,No,Completata,Segreteria tecnica,A. Bianchi
+FAS405,PRC102,2,Istruttoria,2026-06-02,2026-06-13,11,No,Completata,Coordinamento ispezioni,L. Conti
+FAS406,PRC102,3,Pareri,2026-06-15,2026-06-27,12,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS407,PRC102,4,Visita,2026-06-28,2026-07-11,13,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS408,PRC102,5,Provvedimento,2026-07-11,,135,Sì,In corso,Segreteria tecnica,G. Riva
+FAS409,PRC103,1,Protocollo,2026-06-02,2026-06-13,11,No,Completata,Coordinamento ispezioni,L. Conti
+FAS410,PRC103,2,Istruttoria,2026-06-16,2026-06-28,12,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS411,PRC103,3,Pareri,2026-06-30,,146,Sì,In corso,Ufficio accreditamenti,S. Ferri
+FAS412,PRC104,1,Protocollo,2026-06-15,2026-06-27,12,No,Completata,Ufficio autorizzazioni,M. Esposito
+FAS413,PRC104,2,Istruttoria,2026-06-30,2026-07-13,13,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS414,PRC104,3,Pareri,2026-07-15,2026-07-29,14,No,Completata,Segreteria tecnica,G. Riva
+FAS415,PRC104,4,Visita,2026-07-30,,116,Sì,In corso,Coordinamento ispezioni,E. Sala
+FAS416,PRC105,1,Protocollo,2026-06-28,2026-07-11,13,No,Completata,Ufficio accreditamenti,S. Ferri
+FAS417,PRC105,2,Istruttoria,2026-07-14,2026-07-28,14,No,Completata,Segreteria tecnica,G. Riva
+FAS418,PRC105,3,Pareri,2026-07-30,2026-08-14,15,No,Completata,Coordinamento ispezioni,E. Sala
+FAS419,PRC105,4,Visita,2026-08-15,2026-08-31,16,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS420,PRC105,5,Provvedimento,2026-08-31,2026-09-17,17,No,Completata,Ufficio accreditamenti,L. Conti
+FAS421,PRC106,1,Protocollo,2026-07-11,2026-07-25,14,No,Completata,Segreteria tecnica,G. Riva
+FAS422,PRC106,2,Istruttoria,2026-07-23,2026-08-07,15,No,Completata,Coordinamento ispezioni,E. Sala
+FAS423,PRC106,3,Pareri,2026-08-04,,111,Sì,In corso,Ufficio autorizzazioni,A. Bianchi
+FAS424,PRC107,1,Protocollo,2026-07-24,2026-08-08,15,No,Completata,Coordinamento ispezioni,E. Sala
+FAS425,PRC107,2,Istruttoria,2026-08-06,2026-08-22,16,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS426,PRC107,3,Pareri,2026-08-19,2026-09-05,17,No,Completata,Ufficio accreditamenti,L. Conti
+FAS427,PRC107,4,Visita,2026-09-01,,83,Sì,In corso,Segreteria tecnica,M. Esposito
+FAS428,PRC108,1,Protocollo,2026-08-06,2026-08-22,16,No,Completata,Ufficio autorizzazioni,A. Bianchi
+FAS429,PRC108,2,Istruttoria,2026-08-20,2026-09-06,17,No,Completata,Ufficio accreditamenti,L. Conti
+FAS430,PRC108,3,Pareri,2026-09-03,2026-09-11,8,No,Richiesta integrazione,Segreteria tecnica,M. Esposito
+FAS431,PRC108,4,Visita,2026-09-17,2026-09-26,9,No,Completata,Coordinamento ispezioni,S. Ferri
+FAS432,PRC108,5,Provvedimento,2026-10-01,,53,Sì,In corso,Ufficio autorizzazioni,G. Riva

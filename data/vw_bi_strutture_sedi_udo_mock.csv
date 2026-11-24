@@ -1,0 +1,97 @@
+﻿struttura_id,sede_id,udo_id,sede_nome,indirizzo,comune,cap,stato_sede,data_inizio_validita_sede,udo_nome,tipologia_udo,capacita_posti,stato_udo,ultimo_aggiornamento
+STR001,STR001-SED1,UDO001,Sede 1 di Struttura sanitaria A-01,Via della Salute 11,Feltre,35011,Attiva,2021-12-19,Salute mentale 1,Salute mentale,23,Attiva,2026-11-22 06:00:00
+STR001,STR001-SED1,UDO002,Sede 1 di Struttura sanitaria A-01,Via della Salute 11,Feltre,35011,Attiva,2021-12-19,Riabilitazione 2,Riabilitazione,36,Attiva,2026-11-22 06:00:00
+STR001,STR001-SED2,UDO003,Sede 2 di Struttura sanitaria A-01,Via della Salute 12,Treviso,35022,Attiva,2021-12-19,Salute mentale 1,Salute mentale,23,Attiva,2026-11-22 06:00:00
+STR002,STR002-SED1,UDO004,Sede 1 di Struttura sanitaria B-02,Via della Salute 18,Treviso,35048,Attiva,2022-01-05,Riabilitazione 1,Riabilitazione,32,Attiva,2026-11-22 06:00:00
+STR003,STR003-SED1,UDO005,Sede 1 di Struttura sanitaria C-03,Via della Salute 25,Conegliano,35085,Attiva,2022-01-22,Cure palliative 1,Cure palliative,41,Attiva,2026-11-22 06:00:00
+STR003,STR003-SED1,UDO006,Sede 1 di Struttura sanitaria C-03,Via della Salute 25,Conegliano,35085,Attiva,2022-01-22,Specialistica ambulatoriale 2,Specialistica ambulatoriale,54,Attiva,2026-11-22 06:00:00
+STR004,STR004-SED1,UDO007,Sede 1 di Struttura sanitaria D-04,Via della Salute 32,Venezia,35122,Attiva,2022-02-08,Specialistica ambulatoriale 1,Specialistica ambulatoriale,50,Attiva,2026-11-22 06:00:00
+STR004,STR004-SED2,UDO008,Sede 2 di Struttura sanitaria D-04,Via della Salute 33,Mestre,35133,Attiva,2022-02-08,Specialistica ambulatoriale 1,Specialistica ambulatoriale,50,Attiva,2026-11-22 06:00:00
+STR004,STR004-SED2,UDO009,Sede 2 di Struttura sanitaria D-04,Via della Salute 33,Mestre,35133,Attiva,2022-02-08,Disabilità 2,Disabilità,63,Attiva,2026-11-22 06:00:00
+STR005,STR005-SED1,UDO010,Sede 1 di Struttura sanitaria E-05,Via della Salute 39,Mestre,35159,Attiva,2022-02-25,Disabilità 1,Disabilità,59,Attiva,2026-11-22 06:00:00
+STR005,STR005-SED1,UDO011,Sede 1 di Struttura sanitaria E-05,Via della Salute 39,Mestre,35159,Attiva,2022-02-25,Assistenza anziani 2,Assistenza anziani,72,Attiva,2026-11-22 06:00:00
+STR006,STR006-SED1,UDO012,Sede 1 di Struttura sanitaria F-06,Via della Salute 46,Jesolo,35196,Attiva,2022-03-14,Assistenza anziani 1,Assistenza anziani,68,Attiva,2026-11-22 06:00:00
+STR007,STR007-SED1,UDO013,Sede 1 di Struttura sanitaria G-07,Via della Salute 53,Rovigo,35233,Attiva,2022-03-31,Salute mentale 1,Salute mentale,77,Attiva,2026-11-22 06:00:00
+STR007,STR007-SED1,UDO014,Sede 1 di Struttura sanitaria G-07,Via della Salute 53,Rovigo,35233,Attiva,2022-03-31,Riabilitazione 2,Riabilitazione,15,Attiva,2026-11-22 06:00:00
+STR007,STR007-SED2,UDO015,Sede 2 di Struttura sanitaria G-07,Via della Salute 54,Adria,35244,Attiva,2022-03-31,Salute mentale 1,Salute mentale,77,Attiva,2026-11-22 06:00:00
+STR008,STR008-SED1,UDO016,Sede 1 di Struttura sanitaria H-08,Via della Salute 60,Adria,35270,Attiva,2022-04-17,Riabilitazione 1,Riabilitazione,11,Attiva,2026-11-22 06:00:00
+STR009,STR009-SED1,UDO017,Sede 1 di Struttura sanitaria I-09,Via della Salute 67,Padova,35307,Attiva,2022-05-04,Cure palliative 1,Cure palliative,20,Attiva,2026-11-22 06:00:00
+STR009,STR009-SED1,UDO018,Sede 1 di Struttura sanitaria I-09,Via della Salute 67,Padova,35307,Attiva,2022-05-04,Specialistica ambulatoriale 2,Specialistica ambulatoriale,33,Attiva,2026-11-22 06:00:00
+STR010,STR010-SED1,UDO019,Sede 1 di Struttura sanitaria J-10,Via della Salute 74,Este,35344,Attiva,2022-05-21,Specialistica ambulatoriale 1,Specialistica ambulatoriale,29,Attiva,2026-11-22 06:00:00
+STR010,STR010-SED2,UDO020,Sede 2 di Struttura sanitaria J-10,Via della Salute 75,Vicenza,35355,Attiva,2022-05-21,Specialistica ambulatoriale 1,Specialistica ambulatoriale,29,Attiva,2026-11-22 06:00:00
+STR010,STR010-SED2,UDO021,Sede 2 di Struttura sanitaria J-10,Via della Salute 75,Vicenza,35355,Attiva,2022-05-21,Disabilità 2,Disabilità,42,Attiva,2026-11-22 06:00:00
+STR011,STR011-SED1,UDO022,Sede 1 di Struttura sanitaria K-11,Via della Salute 81,Vicenza,35381,Attiva,2022-06-07,Disabilità 1,Disabilità,38,Sospesa,2026-11-22 06:00:00
+STR011,STR011-SED1,UDO023,Sede 1 di Struttura sanitaria K-11,Via della Salute 81,Vicenza,35381,Attiva,2022-06-07,Assistenza anziani 2,Assistenza anziani,51,Sospesa,2026-11-22 06:00:00
+STR012,STR012-SED1,UDO024,Sede 1 di Struttura sanitaria L-12,Via della Salute 88,Thiene,35418,Attiva,2022-06-24,Assistenza anziani 1,Assistenza anziani,47,Attiva,2026-11-22 06:00:00
+STR013,STR013-SED1,UDO025,Sede 1 di Struttura sanitaria M-13,Via della Salute 95,Verona,35455,Attiva,2022-07-11,Salute mentale 1,Salute mentale,56,Attiva,2026-11-22 06:00:00
+STR013,STR013-SED1,UDO026,Sede 1 di Struttura sanitaria M-13,Via della Salute 95,Verona,35455,Attiva,2022-07-11,Riabilitazione 2,Riabilitazione,69,Attiva,2026-11-22 06:00:00
+STR013,STR013-SED2,UDO027,Sede 2 di Struttura sanitaria M-13,Via della Salute 96,Legnago,35466,Attiva,2022-07-11,Salute mentale 1,Salute mentale,56,Attiva,2026-11-22 06:00:00
+STR014,STR014-SED1,UDO028,Sede 1 di Struttura sanitaria N-14,Via della Salute 13,Legnago,35492,Attiva,2022-07-28,Riabilitazione 1,Riabilitazione,65,Attiva,2026-11-22 06:00:00
+STR015,STR015-SED1,UDO029,Sede 1 di Struttura sanitaria O-15,Via della Salute 20,Belluno,35529,Attiva,2022-08-14,Cure palliative 1,Cure palliative,74,Attiva,2026-11-22 06:00:00
+STR015,STR015-SED1,UDO030,Sede 1 di Struttura sanitaria O-15,Via della Salute 20,Belluno,35529,Attiva,2022-08-14,Specialistica ambulatoriale 2,Specialistica ambulatoriale,12,Attiva,2026-11-22 06:00:00
+STR016,STR016-SED1,UDO031,Sede 1 di Struttura sanitaria P-16,Via della Salute 27,Feltre,35566,Attiva,2022-08-31,Specialistica ambulatoriale 1,Specialistica ambulatoriale,83,Attiva,2026-11-22 06:00:00
+STR016,STR016-SED2,UDO032,Sede 2 di Struttura sanitaria P-16,Via della Salute 28,Treviso,35577,Attiva,2022-08-31,Specialistica ambulatoriale 1,Specialistica ambulatoriale,83,Attiva,2026-11-22 06:00:00
+STR016,STR016-SED2,UDO033,Sede 2 di Struttura sanitaria P-16,Via della Salute 28,Treviso,35577,Attiva,2022-08-31,Disabilità 2,Disabilità,21,Attiva,2026-11-22 06:00:00
+STR017,STR017-SED1,UDO034,Sede 1 di Struttura sanitaria Q-17,Via della Salute 34,Treviso,35603,Attiva,2022-09-17,Disabilità 1,Disabilità,17,Attiva,2026-11-22 06:00:00
+STR017,STR017-SED1,UDO035,Sede 1 di Struttura sanitaria Q-17,Via della Salute 34,Treviso,35603,Attiva,2022-09-17,Assistenza anziani 2,Assistenza anziani,30,Attiva,2026-11-22 06:00:00
+STR018,STR018-SED1,UDO036,Sede 1 di Struttura sanitaria R-18,Via della Salute 41,Conegliano,35640,Attiva,2022-10-04,Assistenza anziani 1,Assistenza anziani,26,Attiva,2026-11-22 06:00:00
+STR019,STR019-SED1,UDO037,Sede 1 di Struttura sanitaria S-19,Via della Salute 48,Venezia,35677,Attiva,2022-10-21,Salute mentale 1,Salute mentale,35,Attiva,2026-11-22 06:00:00
+STR019,STR019-SED1,UDO038,Sede 1 di Struttura sanitaria S-19,Via della Salute 48,Venezia,35677,Attiva,2022-10-21,Riabilitazione 2,Riabilitazione,48,Attiva,2026-11-22 06:00:00
+STR019,STR019-SED2,UDO039,Sede 2 di Struttura sanitaria S-19,Via della Salute 49,Mestre,35688,Attiva,2022-10-21,Salute mentale 1,Salute mentale,35,Attiva,2026-11-22 06:00:00
+STR020,STR020-SED1,UDO040,Sede 1 di Struttura sanitaria T-20,Via della Salute 55,Mestre,35714,Attiva,2022-11-07,Riabilitazione 1,Riabilitazione,44,Attiva,2026-11-22 06:00:00
+STR021,STR021-SED1,UDO041,Sede 1 di Struttura sanitaria U-21,Via della Salute 62,Jesolo,35751,Attiva,2022-11-24,Cure palliative 1,Cure palliative,53,Attiva,2026-11-22 06:00:00
+STR021,STR021-SED1,UDO042,Sede 1 di Struttura sanitaria U-21,Via della Salute 62,Jesolo,35751,Attiva,2022-11-24,Specialistica ambulatoriale 2,Specialistica ambulatoriale,66,Attiva,2026-11-22 06:00:00
+STR022,STR022-SED1,UDO043,Sede 1 di Struttura sanitaria V-22,Via della Salute 69,Rovigo,35788,Attiva,2022-12-11,Specialistica ambulatoriale 1,Specialistica ambulatoriale,62,Sospesa,2026-11-22 06:00:00
+STR022,STR022-SED2,UDO044,Sede 2 di Struttura sanitaria V-22,Via della Salute 70,Adria,35799,Attiva,2022-12-11,Specialistica ambulatoriale 1,Specialistica ambulatoriale,62,Sospesa,2026-11-22 06:00:00
+STR022,STR022-SED2,UDO045,Sede 2 di Struttura sanitaria V-22,Via della Salute 70,Adria,35799,Attiva,2022-12-11,Disabilità 2,Disabilità,75,Sospesa,2026-11-22 06:00:00
+STR023,STR023-SED1,UDO046,Sede 1 di Struttura sanitaria W-23,Via della Salute 76,Adria,35825,Cessata,2022-12-28,Disabilità 1,Disabilità,71,Cessata,2026-11-22 06:00:00
+STR023,STR023-SED1,UDO047,Sede 1 di Struttura sanitaria W-23,Via della Salute 76,Adria,35825,Cessata,2022-12-28,Assistenza anziani 2,Assistenza anziani,84,Cessata,2026-11-22 06:00:00
+STR024,STR024-SED1,UDO048,Sede 1 di Struttura sanitaria X-24,Via della Salute 83,Padova,35862,Attiva,2023-01-14,Assistenza anziani 1,Assistenza anziani,80,Attiva,2026-11-22 06:00:00
+STR025,STR025-SED1,UDO049,Sede 1 di Struttura sanitaria Y-25,Via della Salute 90,Este,35899,Attiva,2023-01-31,Salute mentale 1,Salute mentale,14,Attiva,2026-11-22 06:00:00
+STR025,STR025-SED1,UDO050,Sede 1 di Struttura sanitaria Y-25,Via della Salute 90,Este,35899,Attiva,2023-01-31,Riabilitazione 2,Riabilitazione,27,Attiva,2026-11-22 06:00:00
+STR025,STR025-SED2,UDO051,Sede 2 di Struttura sanitaria Y-25,Via della Salute 91,Vicenza,35910,Attiva,2023-01-31,Salute mentale 1,Salute mentale,14,Attiva,2026-11-22 06:00:00
+STR026,STR026-SED1,UDO052,Sede 1 di Struttura sanitaria Z-26,Via della Salute 97,Vicenza,35936,Attiva,2023-02-17,Riabilitazione 1,Riabilitazione,23,Attiva,2026-11-22 06:00:00
+STR027,STR027-SED1,UDO053,Sede 1 di Struttura sanitaria A-27,Via della Salute 15,Thiene,35973,Attiva,2023-03-06,Cure palliative 1,Cure palliative,32,Attiva,2026-11-22 06:00:00
+STR027,STR027-SED1,UDO054,Sede 1 di Struttura sanitaria A-27,Via della Salute 15,Thiene,35973,Attiva,2023-03-06,Specialistica ambulatoriale 2,Specialistica ambulatoriale,45,Attiva,2026-11-22 06:00:00
+STR028,STR028-SED1,UDO055,Sede 1 di Struttura sanitaria B-28,Via della Salute 22,Verona,35010,Attiva,2023-03-23,Specialistica ambulatoriale 1,Specialistica ambulatoriale,41,Attiva,2026-11-22 06:00:00
+STR028,STR028-SED2,UDO056,Sede 2 di Struttura sanitaria B-28,Via della Salute 23,Legnago,35021,Attiva,2023-03-23,Specialistica ambulatoriale 1,Specialistica ambulatoriale,41,Attiva,2026-11-22 06:00:00
+STR028,STR028-SED2,UDO057,Sede 2 di Struttura sanitaria B-28,Via della Salute 23,Legnago,35021,Attiva,2023-03-23,Disabilità 2,Disabilità,54,Attiva,2026-11-22 06:00:00
+STR029,STR029-SED1,UDO058,Sede 1 di Struttura sanitaria C-29,Via della Salute 29,Legnago,35047,Attiva,2023-04-09,Disabilità 1,Disabilità,50,Attiva,2026-11-22 06:00:00
+STR029,STR029-SED1,UDO059,Sede 1 di Struttura sanitaria C-29,Via della Salute 29,Legnago,35047,Attiva,2023-04-09,Assistenza anziani 2,Assistenza anziani,63,Attiva,2026-11-22 06:00:00
+STR030,STR030-SED1,UDO060,Sede 1 di Struttura sanitaria D-30,Via della Salute 36,Belluno,35084,Attiva,2023-04-26,Assistenza anziani 1,Assistenza anziani,59,Attiva,2026-11-22 06:00:00
+STR031,STR031-SED1,UDO061,Sede 1 di Struttura sanitaria E-31,Via della Salute 43,Feltre,35121,Attiva,2023-05-13,Salute mentale 1,Salute mentale,68,Attiva,2026-11-22 06:00:00
+STR031,STR031-SED1,UDO062,Sede 1 di Struttura sanitaria E-31,Via della Salute 43,Feltre,35121,Attiva,2023-05-13,Riabilitazione 2,Riabilitazione,81,Attiva,2026-11-22 06:00:00
+STR031,STR031-SED2,UDO063,Sede 2 di Struttura sanitaria E-31,Via della Salute 44,Treviso,35132,Attiva,2023-05-13,Salute mentale 1,Salute mentale,68,Attiva,2026-11-22 06:00:00
+STR032,STR032-SED1,UDO064,Sede 1 di Struttura sanitaria F-32,Via della Salute 50,Treviso,35158,Attiva,2023-05-30,Riabilitazione 1,Riabilitazione,77,Attiva,2026-11-22 06:00:00
+STR033,STR033-SED1,UDO065,Sede 1 di Struttura sanitaria G-33,Via della Salute 57,Conegliano,35195,Attiva,2023-06-16,Cure palliative 1,Cure palliative,11,Sospesa,2026-11-22 06:00:00
+STR033,STR033-SED1,UDO066,Sede 1 di Struttura sanitaria G-33,Via della Salute 57,Conegliano,35195,Attiva,2023-06-16,Specialistica ambulatoriale 2,Specialistica ambulatoriale,24,Sospesa,2026-11-22 06:00:00
+STR034,STR034-SED1,UDO067,Sede 1 di Struttura sanitaria H-34,Via della Salute 64,Venezia,35232,Attiva,2023-07-03,Specialistica ambulatoriale 1,Specialistica ambulatoriale,20,Attiva,2026-11-22 06:00:00
+STR034,STR034-SED2,UDO068,Sede 2 di Struttura sanitaria H-34,Via della Salute 65,Mestre,35243,Attiva,2023-07-03,Specialistica ambulatoriale 1,Specialistica ambulatoriale,20,Attiva,2026-11-22 06:00:00
+STR034,STR034-SED2,UDO069,Sede 2 di Struttura sanitaria H-34,Via della Salute 65,Mestre,35243,Attiva,2023-07-03,Disabilità 2,Disabilità,33,Attiva,2026-11-22 06:00:00
+STR035,STR035-SED1,UDO070,Sede 1 di Struttura sanitaria I-35,Via della Salute 71,Mestre,35269,Attiva,2023-07-20,Disabilità 1,Disabilità,29,Attiva,2026-11-22 06:00:00
+STR035,STR035-SED1,UDO071,Sede 1 di Struttura sanitaria I-35,Via della Salute 71,Mestre,35269,Attiva,2023-07-20,Assistenza anziani 2,Assistenza anziani,42,Attiva,2026-11-22 06:00:00
+STR036,STR036-SED1,UDO072,Sede 1 di Struttura sanitaria J-36,Via della Salute 78,Jesolo,35306,Attiva,2023-08-06,Assistenza anziani 1,Assistenza anziani,38,Attiva,2026-11-22 06:00:00
+STR037,STR037-SED1,UDO073,Sede 1 di Struttura sanitaria K-37,Via della Salute 85,Rovigo,35343,Attiva,2023-08-23,Salute mentale 1,Salute mentale,47,Attiva,2026-11-22 06:00:00
+STR037,STR037-SED1,UDO074,Sede 1 di Struttura sanitaria K-37,Via della Salute 85,Rovigo,35343,Attiva,2023-08-23,Riabilitazione 2,Riabilitazione,60,Attiva,2026-11-22 06:00:00
+STR037,STR037-SED2,UDO075,Sede 2 di Struttura sanitaria K-37,Via della Salute 86,Adria,35354,Attiva,2023-08-23,Salute mentale 1,Salute mentale,47,Attiva,2026-11-22 06:00:00
+STR038,STR038-SED1,UDO076,Sede 1 di Struttura sanitaria L-38,Via della Salute 92,Adria,35380,Attiva,2023-09-09,Riabilitazione 1,Riabilitazione,56,Attiva,2026-11-22 06:00:00
+STR039,STR039-SED1,UDO077,Sede 1 di Struttura sanitaria M-39,Via della Salute 10,Padova,35417,Attiva,2023-09-26,Cure palliative 1,Cure palliative,65,Attiva,2026-11-22 06:00:00
+STR039,STR039-SED1,UDO078,Sede 1 di Struttura sanitaria M-39,Via della Salute 10,Padova,35417,Attiva,2023-09-26,Specialistica ambulatoriale 2,Specialistica ambulatoriale,78,Attiva,2026-11-22 06:00:00
+STR040,STR040-SED1,UDO079,Sede 1 di Struttura sanitaria N-40,Via della Salute 17,Este,35454,Attiva,2023-10-13,Specialistica ambulatoriale 1,Specialistica ambulatoriale,74,Attiva,2026-11-22 06:00:00
+STR040,STR040-SED2,UDO080,Sede 2 di Struttura sanitaria N-40,Via della Salute 18,Vicenza,35465,Attiva,2023-10-13,Specialistica ambulatoriale 1,Specialistica ambulatoriale,74,Attiva,2026-11-22 06:00:00
+STR040,STR040-SED2,UDO081,Sede 2 di Struttura sanitaria N-40,Via della Salute 18,Vicenza,35465,Attiva,2023-10-13,Disabilità 2,Disabilità,12,Attiva,2026-11-22 06:00:00
+STR041,STR041-SED1,UDO082,Sede 1 di Struttura sanitaria O-41,Via della Salute 24,Vicenza,35491,Attiva,2023-10-30,Disabilità 1,Disabilità,83,Attiva,2026-11-22 06:00:00
+STR041,STR041-SED1,UDO083,Sede 1 di Struttura sanitaria O-41,Via della Salute 24,Vicenza,35491,Attiva,2023-10-30,Assistenza anziani 2,Assistenza anziani,21,Attiva,2026-11-22 06:00:00
+STR042,STR042-SED1,UDO084,Sede 1 di Struttura sanitaria P-42,Via della Salute 31,Thiene,35528,Attiva,2023-11-16,Assistenza anziani 1,Assistenza anziani,17,Attiva,2026-11-22 06:00:00
+STR043,STR043-SED1,UDO085,Sede 1 di Struttura sanitaria Q-43,Via della Salute 38,Verona,35565,Attiva,2023-12-03,Salute mentale 1,Salute mentale,26,Attiva,2026-11-22 06:00:00
+STR043,STR043-SED1,UDO086,Sede 1 di Struttura sanitaria Q-43,Via della Salute 38,Verona,35565,Attiva,2023-12-03,Riabilitazione 2,Riabilitazione,39,Attiva,2026-11-22 06:00:00
+STR043,STR043-SED2,UDO087,Sede 2 di Struttura sanitaria Q-43,Via della Salute 39,Legnago,35576,Attiva,2023-12-03,Salute mentale 1,Salute mentale,26,Attiva,2026-11-22 06:00:00
+STR044,STR044-SED1,UDO088,Sede 1 di Struttura sanitaria R-44,Via della Salute 45,Legnago,35602,Attiva,2023-12-20,Riabilitazione 1,Riabilitazione,35,Sospesa,2026-11-22 06:00:00
+STR045,STR045-SED1,UDO089,Sede 1 di Struttura sanitaria S-45,Via della Salute 52,Belluno,35639,Attiva,2024-01-06,Cure palliative 1,Cure palliative,44,Attiva,2026-11-22 06:00:00
+STR045,STR045-SED1,UDO090,Sede 1 di Struttura sanitaria S-45,Via della Salute 52,Belluno,35639,Attiva,2024-01-06,Specialistica ambulatoriale 2,Specialistica ambulatoriale,57,Attiva,2026-11-22 06:00:00
+STR046,STR046-SED1,UDO091,Sede 1 di Struttura sanitaria T-46,Via della Salute 59,Feltre,35676,Cessata,2024-01-23,Specialistica ambulatoriale 1,Specialistica ambulatoriale,53,Cessata,2026-11-22 06:00:00
+STR046,STR046-SED2,UDO092,Sede 2 di Struttura sanitaria T-46,Via della Salute 60,Treviso,35687,Cessata,2024-01-23,Specialistica ambulatoriale 1,Specialistica ambulatoriale,53,Cessata,2026-11-22 06:00:00
+STR046,STR046-SED2,UDO093,Sede 2 di Struttura sanitaria T-46,Via della Salute 60,Treviso,35687,Cessata,2024-01-23,Disabilità 2,Disabilità,66,Cessata,2026-11-22 06:00:00
+STR047,STR047-SED1,UDO094,Sede 1 di Struttura sanitaria U-47,Via della Salute 66,Treviso,35713,Attiva,2024-02-09,Disabilità 1,Disabilità,62,Attiva,2026-11-22 06:00:00
+STR047,STR047-SED1,UDO095,Sede 1 di Struttura sanitaria U-47,Via della Salute 66,Treviso,35713,Attiva,2024-02-09,Assistenza anziani 2,Assistenza anziani,75,Attiva,2026-11-22 06:00:00
+STR048,STR048-SED1,UDO096,Sede 1 di Struttura sanitaria V-48,Via della Salute 73,Conegliano,35750,Attiva,2024-02-26,Assistenza anziani 1,Assistenza anziani,71,Attiva,2026-11-22 06:00:00

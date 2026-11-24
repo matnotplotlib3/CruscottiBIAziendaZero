@@ -1,0 +1,121 @@
+﻿parere_id,richiesta_id,ente_parere,tipo_parere,data_richiesta,data_termine,data_ricezione,stato_parere,esito_parere
+PAR001,RAC001,CRITE,Igienico sanitario,2026-08-26,2026-09-25,2026-09-08,Ricevuto,Favorevole
+PAR002,RAC001,Regione Veneto,Organizzativo,2026-09-06,2026-10-06,2026-09-20,Ricevuto,Favorevole
+PAR003,RAC002,Regione Veneto,Organizzativo,2026-08-31,2026-09-30,2026-09-14,Ricevuto,Favorevole
+PAR004,RAC002,Comune competente,Commissione,2026-09-11,2026-10-11,2026-09-26,Ricevuto,Favorevole
+PAR005,RAC002,ULSS competente,Tecnico,2026-09-22,2026-10-22,,Mancante oltre termine,
+PAR006,RAC003,Comune competente,Commissione,2026-09-05,2026-10-05,2026-09-20,Ricevuto,Favorevole
+PAR007,RAC003,ULSS competente,Tecnico,2026-09-16,2026-10-16,,Mancante oltre termine,
+PAR008,RAC004,ULSS competente,Tecnico,2026-09-10,2026-10-10,,Mancante oltre termine,
+PAR009,RAC004,CRITE,Igienico sanitario,2026-09-21,2026-10-21,2026-10-08,Ricevuto,Favorevole
+PAR010,RAC004,Regione Veneto,Organizzativo,2026-10-02,2026-11-01,2026-10-20,Ricevuto,Favorevole
+PAR011,RAC005,CRITE,Igienico sanitario,2026-09-15,2026-10-15,2026-10-02,Ricevuto,Favorevole
+PAR012,RAC005,Regione Veneto,Organizzativo,2026-09-26,2026-10-26,2026-10-14,Ricevuto,Favorevole
+PAR013,RAC006,Regione Veneto,Organizzativo,2026-09-20,2026-10-20,2026-10-08,Ricevuto,Favorevole
+PAR014,RAC006,Comune competente,Commissione,2026-10-01,2026-10-31,2026-10-20,Ricevuto,Favorevole
+PAR015,RAC006,ULSS competente,Tecnico,2026-10-12,2026-11-11,,Mancante oltre termine,
+PAR016,RAC007,Comune competente,Commissione,2026-09-25,2026-10-25,2026-10-14,Ricevuto,Favorevole
+PAR017,RAC007,ULSS competente,Tecnico,2026-10-06,2026-11-05,,Mancante oltre termine,
+PAR018,RAC008,ULSS competente,Tecnico,2026-09-30,2026-10-30,,Mancante oltre termine,
+PAR019,RAC008,CRITE,Igienico sanitario,2026-10-11,2026-11-10,2026-11-01,Ricevuto,Non favorevole
+PAR020,RAC008,Regione Veneto,Organizzativo,2026-10-22,2026-11-21,2026-11-13,Ricevuto,Favorevole
+PAR021,RAC009,CRITE,Igienico sanitario,2026-10-05,2026-11-04,2026-10-26,Ricevuto,Non favorevole
+PAR022,RAC009,Regione Veneto,Organizzativo,2026-10-16,2026-11-15,2026-11-07,Ricevuto,Favorevole
+PAR023,RAC010,Regione Veneto,Organizzativo,2026-10-10,2026-11-09,2026-11-01,Ricevuto,Favorevole
+PAR024,RAC010,Comune competente,Commissione,2026-10-21,2026-11-20,2026-11-13,Ricevuto,Favorevole
+PAR025,RAC010,ULSS competente,Tecnico,2026-11-01,2026-12-01,,In attesa,
+PAR026,RAC011,Comune competente,Commissione,2026-10-15,2026-11-14,2026-11-07,Ricevuto,Favorevole
+PAR027,RAC011,ULSS competente,Tecnico,2026-10-26,2026-11-25,,In attesa,
+PAR028,RAC012,ULSS competente,Tecnico,2026-10-20,2026-11-19,,Mancante oltre termine,
+PAR029,RAC012,CRITE,Igienico sanitario,2026-10-31,2026-11-30,2026-11-25,Ricevuto,Favorevole
+PAR030,RAC012,Regione Veneto,Organizzativo,2026-11-11,2026-12-11,2026-12-07,Ricevuto,Favorevole
+PAR031,RAC013,CRITE,Igienico sanitario,2026-10-25,2026-11-24,2026-11-19,Ricevuto,Favorevole
+PAR032,RAC013,Regione Veneto,Organizzativo,2026-11-05,2026-12-05,2026-12-01,Ricevuto,Favorevole
+PAR033,RAC014,Regione Veneto,Organizzativo,2026-10-30,2026-11-29,2026-11-25,Ricevuto,Favorevole
+PAR034,RAC014,Comune competente,Commissione,2026-11-10,2026-12-10,2026-12-07,Ricevuto,Favorevole
+PAR035,RAC014,ULSS competente,Tecnico,2026-11-21,2026-12-21,,In attesa,
+PAR036,RAC015,Comune competente,Commissione,2026-11-04,2026-12-04,2026-12-01,Ricevuto,Favorevole
+PAR037,RAC015,ULSS competente,Tecnico,2026-11-15,2026-12-15,,In attesa,
+PAR038,RAC016,ULSS competente,Tecnico,2026-11-09,2026-12-09,,In attesa,
+PAR039,RAC016,CRITE,Igienico sanitario,2026-11-20,2026-12-20,2026-12-19,Ricevuto,Favorevole
+PAR040,RAC016,Regione Veneto,Organizzativo,2026-08-23,2026-09-22,2026-09-22,Ricevuto,Non favorevole
+PAR041,RAC017,CRITE,Igienico sanitario,2026-11-14,2026-12-14,2026-12-13,Ricevuto,Favorevole
+PAR042,RAC017,Regione Veneto,Organizzativo,2026-08-17,2026-09-16,2026-09-16,Ricevuto,Non favorevole
+PAR043,RAC018,Regione Veneto,Organizzativo,2026-11-19,2026-12-19,2026-12-19,Ricevuto,Non favorevole
+PAR044,RAC018,Comune competente,Commissione,2026-08-22,2026-09-21,2026-09-22,Ricevuto oltre termine,Favorevole
+PAR045,RAC018,ULSS competente,Tecnico,2026-09-02,2026-10-02,,Mancante oltre termine,
+PAR046,RAC019,Comune competente,Commissione,2026-08-16,2026-09-15,2026-09-16,Ricevuto oltre termine,Favorevole
+PAR047,RAC019,ULSS competente,Tecnico,2026-08-27,2026-09-26,,Mancante oltre termine,
+PAR048,RAC020,ULSS competente,Tecnico,2026-08-21,2026-09-20,,Mancante oltre termine,
+PAR049,RAC020,CRITE,Igienico sanitario,2026-09-01,2026-10-01,2026-10-04,Ricevuto oltre termine,Favorevole
+PAR050,RAC020,Regione Veneto,Organizzativo,2026-09-12,2026-10-12,2026-10-16,Ricevuto oltre termine,Favorevole
+PAR051,RAC021,CRITE,Igienico sanitario,2026-08-26,2026-09-25,2026-09-28,Ricevuto oltre termine,Favorevole
+PAR052,RAC021,Regione Veneto,Organizzativo,2026-09-06,2026-10-06,2026-10-10,Ricevuto oltre termine,Favorevole
+PAR053,RAC022,Regione Veneto,Organizzativo,2026-08-31,2026-09-30,2026-10-04,Ricevuto oltre termine,Favorevole
+PAR054,RAC022,Comune competente,Commissione,2026-09-11,2026-10-11,2026-10-16,Ricevuto oltre termine,Favorevole
+PAR055,RAC022,ULSS competente,Tecnico,2026-09-22,2026-10-22,,Mancante oltre termine,
+PAR056,RAC023,Comune competente,Commissione,2026-09-05,2026-10-05,2026-10-10,Ricevuto oltre termine,Favorevole
+PAR057,RAC023,ULSS competente,Tecnico,2026-09-16,2026-10-16,,Mancante oltre termine,
+PAR058,RAC024,ULSS competente,Tecnico,2026-09-10,2026-10-10,,Mancante oltre termine,
+PAR059,RAC024,CRITE,Igienico sanitario,2026-09-21,2026-10-21,2026-10-28,Ricevuto oltre termine,Favorevole
+PAR060,RAC024,Regione Veneto,Organizzativo,2026-10-02,2026-11-01,2026-11-09,Ricevuto oltre termine,Favorevole
+PAR061,RAC025,CRITE,Igienico sanitario,2026-09-15,2026-10-15,2026-10-22,Ricevuto oltre termine,Favorevole
+PAR062,RAC025,Regione Veneto,Organizzativo,2026-09-26,2026-10-26,2026-11-03,Ricevuto oltre termine,Favorevole
+PAR063,RAC026,Regione Veneto,Organizzativo,2026-09-20,2026-10-20,2026-10-28,Ricevuto oltre termine,Favorevole
+PAR064,RAC026,Comune competente,Commissione,2026-10-01,2026-10-31,2026-11-09,Ricevuto oltre termine,Non favorevole
+PAR065,RAC026,ULSS competente,Tecnico,2026-10-12,2026-11-11,,Mancante oltre termine,
+PAR066,RAC027,Comune competente,Commissione,2026-09-25,2026-10-25,2026-11-03,Ricevuto oltre termine,Non favorevole
+PAR067,RAC027,ULSS competente,Tecnico,2026-10-06,2026-11-05,,Mancante oltre termine,
+PAR068,RAC028,ULSS competente,Tecnico,2026-09-30,2026-10-30,,Mancante oltre termine,
+PAR069,RAC028,CRITE,Igienico sanitario,2026-10-11,2026-11-10,2026-10-23,Ricevuto,Favorevole
+PAR070,RAC028,Regione Veneto,Organizzativo,2026-10-22,2026-11-21,2026-11-04,Ricevuto,Favorevole
+PAR071,RAC029,CRITE,Igienico sanitario,2026-10-05,2026-11-04,2026-10-17,Ricevuto,Favorevole
+PAR072,RAC029,Regione Veneto,Organizzativo,2026-10-16,2026-11-15,2026-10-29,Ricevuto,Favorevole
+PAR073,RAC030,Regione Veneto,Organizzativo,2026-10-10,2026-11-09,2026-10-23,Ricevuto,Favorevole
+PAR074,RAC030,Comune competente,Commissione,2026-10-21,2026-11-20,2026-11-04,Ricevuto,Favorevole
+PAR075,RAC030,ULSS competente,Tecnico,2026-11-01,2026-12-01,,In attesa,
+PAR076,RAC031,Comune competente,Commissione,2026-10-15,2026-11-14,2026-10-29,Ricevuto,Favorevole
+PAR077,RAC031,ULSS competente,Tecnico,2026-10-26,2026-11-25,,In attesa,
+PAR078,RAC032,ULSS competente,Tecnico,2026-10-20,2026-11-19,,Mancante oltre termine,
+PAR079,RAC032,CRITE,Igienico sanitario,2026-10-31,2026-11-30,2026-11-16,Ricevuto,Favorevole
+PAR080,RAC032,Regione Veneto,Organizzativo,2026-11-11,2026-12-11,2026-11-28,Ricevuto,Favorevole
+PAR081,RAC033,CRITE,Igienico sanitario,2026-10-25,2026-11-24,2026-11-10,Ricevuto,Favorevole
+PAR082,RAC033,Regione Veneto,Organizzativo,2026-11-05,2026-12-05,2026-11-22,Ricevuto,Favorevole
+PAR083,RAC034,Regione Veneto,Organizzativo,2026-10-30,2026-11-29,2026-11-16,Ricevuto,Favorevole
+PAR084,RAC034,Comune competente,Commissione,2026-11-10,2026-12-10,2026-11-28,Ricevuto,Favorevole
+PAR085,RAC034,ULSS competente,Tecnico,2026-11-21,2026-12-21,,In attesa,
+PAR086,RAC035,Comune competente,Commissione,2026-11-04,2026-12-04,2026-11-22,Ricevuto,Favorevole
+PAR087,RAC035,ULSS competente,Tecnico,2026-11-15,2026-12-15,,In attesa,
+PAR088,RAC036,ULSS competente,Tecnico,2026-11-09,2026-12-09,,In attesa,
+PAR089,RAC036,CRITE,Igienico sanitario,2026-11-20,2026-12-20,2026-12-10,Ricevuto,Favorevole
+PAR090,RAC036,Regione Veneto,Organizzativo,2026-08-23,2026-09-22,2026-09-13,Ricevuto,Favorevole
+PAR091,RAC037,CRITE,Igienico sanitario,2026-11-14,2026-12-14,2026-12-04,Ricevuto,Favorevole
+PAR092,RAC037,Regione Veneto,Organizzativo,2026-08-17,2026-09-16,2026-09-07,Ricevuto,Favorevole
+PAR093,RAC038,Regione Veneto,Organizzativo,2026-11-19,2026-12-19,2026-12-10,Ricevuto,Favorevole
+PAR094,RAC038,Comune competente,Commissione,2026-08-22,2026-09-21,2026-09-13,Ricevuto,Favorevole
+PAR095,RAC038,ULSS competente,Tecnico,2026-09-02,2026-10-02,,Mancante oltre termine,
+PAR096,RAC039,Comune competente,Commissione,2026-08-16,2026-09-15,2026-09-07,Ricevuto,Favorevole
+PAR097,RAC039,ULSS competente,Tecnico,2026-08-27,2026-09-26,,Mancante oltre termine,
+PAR098,RAC040,ULSS competente,Tecnico,2026-08-21,2026-09-20,,Mancante oltre termine,
+PAR099,RAC040,CRITE,Igienico sanitario,2026-09-01,2026-10-01,2026-09-25,Ricevuto,Favorevole
+PAR100,RAC040,Regione Veneto,Organizzativo,2026-09-12,2026-10-12,2026-10-07,Ricevuto,Favorevole
+PAR101,RAC041,CRITE,Igienico sanitario,2026-08-26,2026-09-25,2026-09-19,Ricevuto,Favorevole
+PAR102,RAC041,Regione Veneto,Organizzativo,2026-09-06,2026-10-06,2026-10-01,Ricevuto,Favorevole
+PAR103,RAC042,Regione Veneto,Organizzativo,2026-08-31,2026-09-30,2026-09-25,Ricevuto,Favorevole
+PAR104,RAC042,Comune competente,Commissione,2026-09-11,2026-10-11,2026-10-07,Ricevuto,Favorevole
+PAR105,RAC042,ULSS competente,Tecnico,2026-09-22,2026-10-22,,Mancante oltre termine,
+PAR106,RAC043,Comune competente,Commissione,2026-09-05,2026-10-05,2026-10-01,Ricevuto,Favorevole
+PAR107,RAC043,ULSS competente,Tecnico,2026-09-16,2026-10-16,,Mancante oltre termine,
+PAR108,RAC044,ULSS competente,Tecnico,2026-09-10,2026-10-10,,Mancante oltre termine,
+PAR109,RAC044,CRITE,Igienico sanitario,2026-09-21,2026-10-21,2026-10-19,Ricevuto,Non favorevole
+PAR110,RAC044,Regione Veneto,Organizzativo,2026-10-02,2026-11-01,2026-10-31,Ricevuto,Favorevole
+PAR111,RAC045,CRITE,Igienico sanitario,2026-09-15,2026-10-15,2026-10-13,Ricevuto,Non favorevole
+PAR112,RAC045,Regione Veneto,Organizzativo,2026-09-26,2026-10-26,2026-10-25,Ricevuto,Favorevole
+PAR113,RAC046,Regione Veneto,Organizzativo,2026-09-20,2026-10-20,2026-10-19,Ricevuto,Favorevole
+PAR114,RAC046,Comune competente,Commissione,2026-10-01,2026-10-31,2026-10-31,Ricevuto,Favorevole
+PAR115,RAC046,ULSS competente,Tecnico,2026-10-12,2026-11-11,,Mancante oltre termine,
+PAR116,RAC047,Comune competente,Commissione,2026-09-25,2026-10-25,2026-10-25,Ricevuto,Favorevole
+PAR117,RAC047,ULSS competente,Tecnico,2026-10-06,2026-11-05,,Mancante oltre termine,
+PAR118,RAC048,ULSS competente,Tecnico,2026-09-30,2026-10-30,,Mancante oltre termine,
+PAR119,RAC048,CRITE,Igienico sanitario,2026-10-11,2026-11-10,2026-11-12,Ricevuto oltre termine,Favorevole
+PAR120,RAC048,Regione Veneto,Organizzativo,2026-10-22,2026-11-21,2026-11-24,Ricevuto oltre termine,Favorevole

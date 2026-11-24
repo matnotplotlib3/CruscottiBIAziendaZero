@@ -1,0 +1,23 @@
+{
+  "region": "eu-central-1",
+  "accountId": "123456789012",
+  "userArn": "arn:aws:quicksight:eu-central-1:123456789012:user/default/utente-demo",
+  "analysisId": "ID_ANALISI",
+  "awsProfile": "NOME_PROFILO_SSO",
+  "awsCliPath": "aws",
+  "datasetIds": {},
+  "dashboards": {
+    "control-tower": "ID_DASHBOARD",
+    "strutture": "ID_DASHBOARD",
+    "autorizzazione": "ID_DASHBOARD",
+    "accreditamento": "ID_DASHBOARD",
+    "visite": "ID_DASHBOARD"
+  },
+  "sheets": {
+    "control-tower": "az-control-tower",
+    "strutture": "az-strutture",
+    "autorizzazione": "az-autorizzazione",
+    "accreditamento": "az-accreditamento",
+    "visite": "az-visite"
+  }
+}

@@ -1,0 +1,49 @@
+﻿valutatore_id,valutatore_nome,periodo_riferimento,competenza_prevalente,area_territoriale,ore_capacita_dichiarata,ore_impegnate,ore_disponibili,saturazione_percentuale,stato_valutatore
+VLT001,R. Neri,2026-10,Clinica,Nord,120,68,52,57,Temporaneamente non disponibile
+VLT001,R. Neri,2026-11,Clinica,Nord,120,85,35,71,Temporaneamente non disponibile
+VLT001,R. Neri,2026-12,Clinica,Nord,120,102,18,85,Temporaneamente non disponibile
+VLT001,R. Neri,2027-01,Clinica,Nord,120,119,1,99,Temporaneamente non disponibile
+VLT002,C. Fontana,2026-10,Organizzativa,Centro,140,79,61,56,Attivo
+VLT002,C. Fontana,2026-11,Organizzativa,Centro,140,96,44,69,Attivo
+VLT002,C. Fontana,2026-12,Organizzativa,Centro,140,113,27,81,Attivo
+VLT002,C. Fontana,2027-01,Organizzativa,Centro,140,130,10,93,Attivo
+VLT003,P. De Luca,2026-10,Strutturale,Est,160,90,70,56,Attivo
+VLT003,P. De Luca,2026-11,Strutturale,Est,160,107,53,67,Attivo
+VLT003,P. De Luca,2026-12,Strutturale,Est,160,124,36,78,Attivo
+VLT003,P. De Luca,2027-01,Strutturale,Est,160,141,19,88,Attivo
+VLT004,V. Rossetti,2026-10,Qualità,Ovest,120,101,19,84,Attivo
+VLT004,V. Rossetti,2026-11,Qualità,Ovest,120,118,2,98,Attivo
+VLT004,V. Rossetti,2026-12,Qualità,Ovest,120,135,-15,113,Attivo
+VLT004,V. Rossetti,2027-01,Qualità,Ovest,120,152,-32,127,Attivo
+VLT005,D. Greco,2026-10,Clinica,Sud,140,112,28,80,Attivo
+VLT005,D. Greco,2026-11,Clinica,Sud,140,129,11,92,Attivo
+VLT005,D. Greco,2026-12,Clinica,Sud,140,146,-6,104,Attivo
+VLT005,D. Greco,2027-01,Clinica,Sud,140,58,82,41,Attivo
+VLT006,I. Vitale,2026-10,Organizzativa,Nord,160,123,37,77,Attivo
+VLT006,I. Vitale,2026-11,Organizzativa,Nord,160,140,20,88,Attivo
+VLT006,I. Vitale,2026-12,Organizzativa,Nord,160,157,3,98,Attivo
+VLT006,I. Vitale,2027-01,Organizzativa,Nord,160,69,91,43,Attivo
+VLT007,A. Gallo,2026-10,Strutturale,Centro,120,134,-14,112,Attivo
+VLT007,A. Gallo,2026-11,Strutturale,Centro,120,151,-31,126,Attivo
+VLT007,A. Gallo,2026-12,Strutturale,Centro,120,63,57,53,Attivo
+VLT007,A. Gallo,2027-01,Strutturale,Centro,120,80,40,67,Attivo
+VLT008,F. Serra,2026-10,Qualità,Est,140,145,-5,104,Attivo
+VLT008,F. Serra,2026-11,Qualità,Est,140,57,83,41,Attivo
+VLT008,F. Serra,2026-12,Qualità,Est,140,74,66,53,Attivo
+VLT008,F. Serra,2027-01,Qualità,Est,140,91,49,65,Attivo
+VLT009,M. Longo,2026-10,Clinica,Ovest,160,156,4,98,Attivo
+VLT009,M. Longo,2026-11,Clinica,Ovest,160,68,92,43,Attivo
+VLT009,M. Longo,2026-12,Clinica,Ovest,160,85,75,53,Attivo
+VLT009,M. Longo,2027-01,Clinica,Ovest,160,102,58,64,Attivo
+VLT010,N. Costa,2026-10,Organizzativa,Sud,120,62,58,52,Attivo
+VLT010,N. Costa,2026-11,Organizzativa,Sud,120,79,41,66,Attivo
+VLT010,N. Costa,2026-12,Organizzativa,Sud,120,96,24,80,Attivo
+VLT010,N. Costa,2027-01,Organizzativa,Sud,120,113,7,94,Attivo
+VLT011,E. Romano,2026-10,Strutturale,Nord,140,73,67,52,Attivo
+VLT011,E. Romano,2026-11,Strutturale,Nord,140,90,50,64,Attivo
+VLT011,E. Romano,2026-12,Strutturale,Nord,140,107,33,76,Attivo
+VLT011,E. Romano,2027-01,Strutturale,Nord,140,124,16,89,Attivo
+VLT012,T. Martini,2026-10,Qualità,Centro,160,84,76,53,Temporaneamente non disponibile
+VLT012,T. Martini,2026-11,Qualità,Centro,160,101,59,63,Temporaneamente non disponibile
+VLT012,T. Martini,2026-12,Qualità,Centro,160,118,42,74,Temporaneamente non disponibile
+VLT012,T. Martini,2027-01,Qualità,Centro,160,135,25,84,Temporaneamente non disponibile
