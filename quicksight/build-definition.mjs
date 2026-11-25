@@ -15,6 +15,7 @@ const dataset = {
   phases: 'vw_bi_control_tower_storico_fasi_mock.csv',
   deadlines: 'vw_bi_control_tower_scadenze_mock.csv',
   structures: 'vw_bi_strutture_anagrafica_mock.csv',
+  geo: 'vw_bi_strutture_sedi_geografia_mock_20261125.csv',
   units: 'vw_bi_strutture_sedi_udo_mock.csv',
   titles: 'vw_bi_strutture_titoli_scadenze_mock.csv',
   requests: 'vw_bi_accreditamenti_pareri_rinnovi_mock.csv',
@@ -78,6 +79,16 @@ function bar(id, label, ds, category, value, orientation = 'HORIZONTAL', aggrega
     }
   } };
 }
+function pie(id, label, ds, category, value, { donut = false, aggregation = 'COUNT' } = {}) {
+  return { PieChartVisual: {
+    VisualId: id, Title: title(label),
+    ChartConfiguration: {
+      FieldWells: { PieChartAggregatedFieldWells: { Category: [dimension(ds, category, id)], Values: [measure(ds, value, id, aggregation)] } },
+      ...(donut ? { DonutOptions: { ArcOptions: { ArcThickness: 'MEDIUM' } } } : {}),
+      DataLabels: { Visibility: 'VISIBLE', LabelContent: 'PERCENT', Overlap: 'DISABLE_OVERLAP' }
+    }
+  } };
+}
 function line(id, label, ds, date, value, aggregation = 'COUNT') {
   return { LineChartVisual: {
     VisualId: id, Title: title(label),
@@ -88,13 +99,13 @@ function line(id, label, ds, date, value, aggregation = 'COUNT') {
     }
   } };
 }
-function heatmap(id, label, ds, row, column, value, { monthly = false, aggregation = 'COUNT' } = {}) {
+function heatmap(id, label, ds, row, column, value, { dateGranularity = 'DAY', aggregation = 'COUNT' } = {}) {
   return { HeatMapVisual: {
     VisualId: id, Title: title(label),
     ChartConfiguration: {
       FieldWells: { HeatMapAggregatedFieldWells: {
         Rows: [dimension(ds, row, id)],
-        Columns: [dimension(ds, column, id, monthly ? 'MONTH' : 'DAY')],
+        Columns: [dimension(ds, column, id, dateGranularity)],
         Values: [measure(ds, value, id, aggregation)]
       } },
       DataLabels: { Visibility: 'VISIBLE', Overlap: 'DISABLE_OVERLAP' },
@@ -102,17 +113,72 @@ function heatmap(id, label, ds, row, column, value, { monthly = false, aggregati
     }
   } };
 }
-function pointMap(id, label, ds, place, value) {
+function treemap(id, label, ds, group, value, aggregation = 'COUNT') {
+  return { TreeMapVisual: {
+    VisualId: id, Title: title(label),
+    ChartConfiguration: {
+      FieldWells: { TreeMapAggregatedFieldWells: { Groups: [dimension(ds, group, id)], Sizes: [measure(ds, value, id, aggregation)] } },
+      DataLabels: { Visibility: 'VISIBLE', Overlap: 'DISABLE_OVERLAP' }
+    }
+  } };
+}
+function sankey(id, label, ds, source, destination, value) {
+  return { SankeyDiagramVisual: {
+    VisualId: id, Title: title(label),
+    ChartConfiguration: {
+      FieldWells: { SankeyDiagramAggregatedFieldWells: {
+        Source: [dimension(ds, source, id)], Destination: [dimension(ds, destination, id)],
+        Weight: [measure(ds, value, id, 'COUNT')]
+      } },
+      DataLabels: { Visibility: 'VISIBLE', Overlap: 'DISABLE_OVERLAP' }
+    }
+  } };
+}
+function clickFilter(visualId, label, column, targets) {
+  return { CustomActionId: `${visualId}-filter`, Name: label, Trigger: 'DATA_POINT_CLICK', Status: 'ENABLED',
+    ActionOperations: [{ FilterOperation: {
+      SelectedFieldsConfiguration: { SelectedFields: [fieldId(visualId, column, 'dim')] },
+      TargetVisualsConfiguration: { SameSheetTargetVisualConfiguration: { TargetVisuals: targets } }
+    } }]
+  };
+}
+function filledMap(id, label, ds, place, value, targets) {
+  return { FilledMapVisual: {
+    VisualId: id, Title: title(label), Subtitle: subtitle('Seleziona una provincia per filtrare i pin e le ULSS'),
+    Actions: [clickFilter(id, 'Esplora la provincia', place, targets)],
+    ChartConfiguration: {
+      FieldWells: { FilledMapAggregatedFieldWells: {
+        Geospatial: [dimension(ds, place, id)], Values: [measure(ds, value, id, 'SUM')]
+      } },
+      MapStyleOptions: { BaseMapStyle: 'LIGHT_GRAY' },
+      WindowOptions: { MapZoomMode: 'AUTO' }
+    }
+  } };
+}
+function sitePointMap(id, label, ds) {
   return { GeospatialMapVisual: {
     VisualId: id, Title: title(label),
     ChartConfiguration: {
       FieldWells: { GeospatialMapAggregatedFieldWells: {
-        Geospatial: [dimension(ds, place, id)],
-        Values: [measure(ds, value, id, 'COUNT')]
+        Geospatial: [dimension(ds, 'latitudine', id), dimension(ds, 'longitudine', id)],
+        Colors: [dimension(ds, 'ulss_nome', id)],
+        Values: [measure(ds, 'numero_sedi', id, 'SUM')]
       } },
-      VisualPalette: { ChartColor: '#17669F' }
+      MapStyleOptions: { BaseMapStyle: 'LIGHT_GRAY' },
+      PointStyleOptions: { SelectedPointStyle: 'POINT' },
+      WindowOptions: { MapZoomMode: 'AUTO' },
+      Tooltip: { SelectedTooltipType: 'DETAILED', TooltipVisibility: 'VISIBLE', FieldBasedTooltip: {
+        TooltipTitleType: 'NONE', TooltipFields: ['sede_nome', 'struttura_nome', 'comune', 'provincia', 'ulss_nome', 'stato_sede'].map(name => ({
+          ColumnTooltipItem: { Column: col(ds, name), Label: tableLabels[name] || name, Visibility: 'VISIBLE' }
+        }))
+      } }
     }
   } };
+}
+function ulssTree(id, label, ds, targets) {
+  const visual = treemap(id, label, ds, 'ulss_nome', 'numero_sedi', 'SUM');
+  visual.TreeMapVisual.Actions = [clickFilter(id, 'Esplora la ULSS', 'ulss_nome', targets)];
+  return visual;
 }
 const tableLabels = {
   numero_procedimento: 'Pratica', tipologia_procedimento: 'Tipo', struttura_id: 'Struttura',
@@ -126,7 +192,9 @@ const tableLabels = {
   assegnazione_id: 'Assegnazione', valutatore_id: 'Valutatore', stato_conferma: 'Conferma', ore_stimate: 'Ore previste',
   titolo_id: 'Titolo', tipo_titolo: 'Tipo titolo', stato_titolo: 'Stato titolo', data_scadenza: 'Scadenza',
   scadenza_id: 'Attività', procedimento_id: 'Pratica', tipo_azione: 'Azione',
-  stato_azione: 'Stato attività', responsabile_azione: 'Profilo', priorita: 'Priorità'
+  stato_azione: 'Stato attività', responsabile_azione: 'Profilo', priorita: 'Priorità',
+  sede_id: 'ID sede', sede_nome: 'Sede', provincia: 'Provincia', comune: 'Comune',
+  ulss_nome: 'ULSS', stato_sede: 'Stato sede'
 };
 const tableWidths = {
   numero_procedimento: '150px', tipologia_procedimento: '190px', struttura_id: '135px',
@@ -137,7 +205,8 @@ const tableWidths = {
   tipo_visita: '170px', data_pianificata: '145px', esito_visita: '155px',
   ente_parere: '185px', data_termine: '145px', data_scadenza: '145px',
   data_scadenza_procedimento: '145px', tipo_azione: '185px',
-  responsabile_azione: '155px', priorita: '125px'
+  responsabile_azione: '155px', priorita: '125px',
+  sede_nome: '235px', provincia: '145px', comune: '155px', ulss_nome: '190px', stato_sede: '130px'
 };
 const tableStatusColors = {
   stato_corrente: { Chiuso: '#DCEFE9', Sospeso: '#F9E8D0' },
@@ -147,7 +216,8 @@ const tableStatusColors = {
   stato_parere: { Ricevuto: '#DCEFE9', 'In attesa': '#F9E8D0', 'Mancante oltre termine': '#F7E0E3' },
   stato_visita: { Eseguita: '#DCEFE9', Pianificata: '#E1F0F8', Annullata: '#F7E0E3' },
   stato_azione: { Completata: '#DCEFE9', Scaduta: '#F7E0E3' },
-  priorita: { Alta: '#F7E0E3', Media: '#F9E8D0', Ordinaria: '#E1F0F8' }
+  priorita: { Alta: '#F7E0E3', Media: '#F9E8D0', Ordinaria: '#E1F0F8' },
+  stato_sede: { Attiva: '#DCEFE9', Sospesa: '#F9E8D0', Cessata: '#F7E0E3' }
 };
 function table(id, label, ds, columns) {
   const visual = { TableVisual: {
@@ -190,10 +260,10 @@ function element(id, type, column, span, row, height, background) {
   return result;
 }
 const layouts = {
-  'az-control-tower': { charts: [[0, 23, 6, 17], [23, 13, 6, 17], [0, 36, 24, 11]], detail: [0, 36, 36, 17] },
-  'az-strutture': { charts: [[0, 25, 6, 17], [25, 11, 6, 17], [0, 36, 24, 11]], extras: [[0, 36, 54, 14]], detail: [0, 36, 36, 17] },
-  'az-autorizzazione': { charts: [[0, 36, 6, 13], [0, 23, 20, 16], [23, 13, 20, 16]], detail: [0, 36, 37, 17] },
-  'az-accreditamento': { charts: [[0, 23, 6, 17], [23, 13, 6, 17], [0, 36, 24, 11]], extras: [[0, 36, 54, 14]], detail: [0, 36, 36, 17] },
+  'az-control-tower': { charts: [[0, 14, 6, 17], [14, 22, 6, 17], [0, 36, 24, 11]], detail: [0, 36, 36, 17] },
+  'az-strutture': { charts: [[0, 18, 6, 18], [18, 18, 6, 18], [0, 23, 25, 13], [23, 13, 25, 13]], extras: [[0, 36, 57, 15]], detail: [0, 36, 39, 17] },
+  'az-autorizzazione': { charts: [[0, 36, 6, 16], [0, 21, 23, 13], [21, 15, 23, 13]], detail: [0, 36, 37, 17] },
+  'az-accreditamento': { charts: [[0, 36, 6, 16], [0, 21, 23, 15], [21, 15, 23, 15]], extras: [[0, 36, 57, 15]], detail: [0, 36, 39, 17] },
   'az-visite': { charts: [[0, 36, 6, 17], [0, 14, 24, 13], [14, 22, 24, 13]], extras: [[0, 36, 55, 14]], detail: [0, 36, 38, 16] },
   'az-scrivania': { charts: [[0, 22, 27, 15], [22, 14, 27, 15]], detail: [0, 36, 6, 20] }
 };
@@ -229,23 +299,24 @@ sheet('az-control-tower', '01 · Direzionale', 'Control Tower', 'Procedimenti, r
   kpi('ct-risk', 'A rischio SLA', dataset.ct, 'procedimento_id', 'COUNT', 'Fuori SLA o rischio alto/medio'),
   kpi('ct-days', 'Tempo medio netto', dataset.ct, 'giorni_netti', 'AVERAGE', 'Giorni, sospensioni escluse')
 ], [
-  heatmap('ct-risk-matrix', 'Rischio SLA × fase corrente', dataset.ct, 'fase_corrente', 'classe_rischio_sla', 'procedimento_id'),
+  treemap('ct-risk-tree', 'Composizione del rischio SLA', dataset.ct, 'classe_rischio_sla', 'procedimento_id'),
   bar('ct-status', 'Procedimenti per stato', dataset.ct, 'stato_corrente', 'procedimento_id'),
-  bar('ct-phases', 'Pratiche per fase', dataset.ct, 'fase_corrente', 'procedimento_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
+  line('ct-sla-timeline', 'Scadenze SLA per mese', dataset.ct, 'data_scadenza_sla', 'procedimento_id')
 ], table('ct-detail', 'Registro procedimenti', dataset.ct, ['numero_procedimento', 'tipologia_procedimento', 'struttura_id', 'stato_corrente', 'fase_corrente', 'data_scadenza_sla']));
 categoryFilter('ct-open-only', dataset.ct, 'stato_corrente', ['Chiuso'], 'az-control-tower', ['ct-open'], 'DOES_NOT_CONTAIN');
 categoryFilter('ct-risk-only', dataset.ct, 'classe_rischio_sla', ['Fuori SLA', 'Alto', 'Medio'], 'az-control-tower', ['ct-risk']);
 
-sheet('az-strutture', '02 · Strutture', 'Strutture, UdO e titoli', 'Perimetro autorizzato, distribuzione territoriale e scadenze', [
-  kpi('st-structures', 'Strutture', dataset.structures, 'struttura_id', 'DISTINCT_COUNT', 'Anagrafica'),
-  kpi('st-udo', 'Unità di offerta', dataset.units, 'udo_id', 'DISTINCT_COUNT', 'UdO attive e registrate'),
+sheet('az-strutture', '02 · Strutture', 'Strutture, sedi e titoli', 'Province venete, ULSS, sedi e scadenze dei titoli', [
+  kpi('st-structures', 'Strutture', dataset.geo, 'struttura_id', 'DISTINCT_COUNT', 'Anagrafica'),
+  kpi('st-sites', 'Sedi', dataset.geo, 'sede_id', 'DISTINCT_COUNT', 'Localizzate nel Veneto'),
   kpi('st-titles', 'Titoli', dataset.titles, 'titolo_id', 'DISTINCT_COUNT', 'Titoli registrati'),
   kpi('st-expiry', 'In scadenza 60 gg', dataset.titles, 'titolo_id', 'COUNT', 'Titoli da presidiare')
 ], [
-  heatmap('st-territory-matrix', 'ULSS × tipologia di struttura', dataset.structures, 'ulss', 'tipologia_struttura', 'struttura_id'),
-  bar('st-title-status', 'Stato dei titoli', dataset.titles, 'stato_titolo', 'titolo_id', 'HORIZONTAL', 'COUNT', '#228E87'),
-  pointMap('st-city-map', 'Strutture per comune · Veneto', dataset.structures, 'comune_principale', 'struttura_id')
-], table('st-detail', 'Anagrafica strutture', dataset.structures, ['struttura_nome', 'ulss', 'tipologia_struttura', 'natura_giuridica', 'stato_struttura', 'comune_principale']), [
+  filledMap('st-province-map', 'Sedi per provincia', dataset.geo, 'provincia', 'numero_sedi', ['st-site-points', 'st-ulss-tree', 'st-sites-table']),
+  sitePointMap('st-site-points', 'Pin delle singole sedi · colorati per ULSS', dataset.geo),
+  ulssTree('st-ulss-tree', 'Distribuzione delle sedi per ULSS', dataset.geo, ['st-province-map', 'st-site-points', 'st-sites-table']),
+  pie('st-title-status', 'Stato dei titoli', dataset.titles, 'stato_titolo', 'titolo_id')
+], table('st-sites-table', 'Elenco sedi nel territorio selezionato', dataset.geo, ['sede_nome', 'struttura_nome', 'provincia', 'ulss_nome', 'comune', 'stato_sede']), [
   table('st-titles-table', 'Titoli e date di scadenza', dataset.titles, ['titolo_id', 'struttura_id', 'tipo_titolo', 'stato_titolo', 'data_scadenza'])
 ]);
 categoryFilter('st-expiry-only', dataset.titles, 'flag_in_scadenza_60gg', ['Sì'], 'az-strutture', ['st-expiry']);
@@ -256,9 +327,9 @@ sheet('az-autorizzazione', '03 · Autorizzazione', 'Autorizzazione all’eserciz
   kpi('au-days', 'Tempo medio netto', dataset.ct, 'giorni_netti', 'AVERAGE', 'Giorni, sospensioni escluse'),
   kpi('au-overdue', 'Fuori SLA', dataset.ct, 'procedimento_id', 'COUNT', 'Da esaminare')
 ], [
+  sankey('au-priority-flow', 'Priorità delle pratiche → fase corrente', dataset.ct, 'priorita', 'fase_corrente', 'procedimento_id'),
   line('au-trend', 'Avvio dei procedimenti nel tempo', dataset.ct, 'data_avvio', 'procedimento_id'),
-  heatmap('au-office-phase', 'Carico istruttorio: ufficio × fase', dataset.ct, 'ufficio', 'fase_corrente', 'procedimento_id'),
-  bar('au-priority', 'Priorità', dataset.ct, 'priorita', 'procedimento_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
+  bar('au-office-days', 'Tempo medio netto per ufficio', dataset.ct, 'ufficio', 'giorni_netti', 'HORIZONTAL', 'AVERAGE', '#4C94A8')
 ], table('au-detail', 'Pratiche di autorizzazione', dataset.ct, ['numero_procedimento', 'struttura_id', 'fase_corrente', 'stato_corrente', 'giorni_netti', 'data_scadenza_sla']));
 categoryFilter('au-type-only', dataset.ct, 'tipologia_procedimento', ['Autorizzazione esercizio'], 'az-autorizzazione');
 categoryFilter('au-open-only', dataset.ct, 'stato_corrente', ['Chiuso'], 'az-autorizzazione', ['au-open'], 'DOES_NOT_CONTAIN');
@@ -270,8 +341,8 @@ sheet('az-accreditamento', '04 · Accreditamento', 'Accreditamento, pareri e rin
   kpi('ac-opinions', 'Pareri pendenti', dataset.opinions, 'parere_id', 'COUNT', 'Non ancora ricevuti'),
   kpi('ac-integrations', 'Integrazioni aperte', dataset.requests, 'richiesta_id', 'COUNT', 'Riscontro necessario')
 ], [
+  sankey('ac-request-flow', 'Tipo di richiesta → stato attuale', dataset.requests, 'tipo_richiesta', 'stato_richiesta', 'richiesta_id'),
   heatmap('ac-opinion-matrix', 'Pareri: ente × stato', dataset.opinions, 'ente_parere', 'stato_parere', 'parere_id'),
-  bar('ac-status', 'Stato delle richieste', dataset.requests, 'stato_richiesta', 'richiesta_id', 'HORIZONTAL', 'COUNT', '#B87924'),
   line('ac-trend', 'Richieste presentate nel tempo', dataset.requests, 'data_presentazione', 'richiesta_id')
 ], table('ac-detail', 'Domande e rinnovi', dataset.requests, ['richiesta_id', 'struttura_id', 'tipo_richiesta', 'stato_richiesta', 'fase_corrente', 'data_scadenza_procedimento']), [
   table('ac-opinion-detail', 'Pareri richiesti agli enti', dataset.opinions, ['parere_id', 'richiesta_id', 'ente_parere', 'stato_parere', 'data_termine'])
@@ -286,8 +357,8 @@ sheet('az-visite', '05 · Visite', 'Visite, valutatori e conformità', 'Pianific
   kpi('vi-nc', 'NC aperte', dataset.nc, 'nc_id', 'COUNT', 'Non conformità da seguire'),
   kpi('vi-prescriptions', 'Prescrizioni', dataset.prescriptions, 'prescrizione_id', 'DISTINCT_COUNT', 'Azioni correttive')
 ], [
-  heatmap('vi-calendar', 'Carico visite: tipo × mese', dataset.visits, 'tipo_visita', 'data_pianificata', 'visita_id', { monthly: true }),
-  bar('vi-gravity', 'Gravità non conformità', dataset.nc, 'gravita', 'nc_id', 'HORIZONTAL', 'COUNT', '#8A729F'),
+  heatmap('vi-calendar', 'Carico visite: tipo × mese', dataset.visits, 'tipo_visita', 'data_pianificata', 'visita_id', { dateGranularity: 'MONTH' }),
+  pie('vi-gravity', 'Gravità non conformità', dataset.nc, 'gravita', 'nc_id', { donut: true }),
   line('vi-schedule', 'Visite pianificate nel tempo', dataset.visits, 'data_pianificata', 'visita_id')
 ], table('vi-detail', 'Piano visite', dataset.visits, ['visita_id', 'struttura_id', 'tipo_visita', 'stato_visita', 'data_pianificata', 'esito_visita']), [
   table('vi-assignments', 'Valutatori assegnati', dataset.assignments, ['assegnazione_id', 'visita_id', 'valutatore_id', 'stato_conferma', 'ore_stimate'])
@@ -300,7 +371,7 @@ sheet('az-scrivania', '06 · La mia scrivania', 'La mia scrivania', 'Attività e
   kpi('wk-urgent', 'Urgenti', dataset.deadlines, 'scadenza_id', 'COUNT', 'Contrassegnate come urgenti'),
   kpi('wk-completed', 'Completate', dataset.deadlines, 'scadenza_id', 'COUNT', 'Azioni concluse')
 ], [
-  heatmap('wk-priority-matrix', 'Priorità × stato delle attività', dataset.deadlines, 'priorita', 'stato_azione', 'scadenza_id'),
+  heatmap('wk-weekly-calendar', 'Agenda scadenze: settimane × priorità', dataset.deadlines, 'priorita', 'data_scadenza', 'scadenza_id', { dateGranularity: 'WEEK' }),
   line('wk-deadline-trend', 'Scadenze per mese', dataset.deadlines, 'data_scadenza', 'scadenza_id')
 ], table('wk-detail', 'Attività e scadenze', dataset.deadlines, [
   'scadenza_id', 'procedimento_id', 'tipo_azione', 'data_scadenza', 'stato_azione', 'priorita', 'responsabile_azione'
@@ -334,7 +405,10 @@ function sheetControl(sheetId, id, ds, column, label, { type = 'MULTI_SELECT', d
 }
 sheetControl('az-control-tower', 'ct-type-control', dataset.ct, 'tipologia_procedimento', 'Tipologia procedimento');
 sheetControl('az-control-tower', 'ct-status-control', dataset.ct, 'stato_corrente', 'Stato pratica');
-sheetControl('az-strutture', 'st-structure-control', dataset.structures, 'struttura_id', 'Struttura');
+sheetControl('az-strutture', 'st-province-control', dataset.geo, 'provincia', 'Provincia');
+sheetControl('az-strutture', 'st-ulss-control', dataset.geo, 'ulss_nome', 'ULSS');
+sheetControl('az-strutture', 'st-type-control', dataset.geo, 'tipologia_struttura', 'Tipologia struttura');
+sheetControl('az-strutture', 'st-structure-control', dataset.geo, 'struttura_id', 'Struttura');
 sheetControl('az-autorizzazione', 'au-phase-control', dataset.ct, 'fase_corrente', 'Fase pratica');
 sheetControl('az-autorizzazione', 'au-office-control', dataset.ct, 'ufficio', 'Ufficio');
 sheetControl('az-accreditamento', 'ac-request-control', dataset.requests, 'richiesta_id', 'Richiesta');

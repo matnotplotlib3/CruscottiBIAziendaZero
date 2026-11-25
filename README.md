@@ -1,12 +1,14 @@
 # Cruscotti BI · Azienda Zero
 
-Demo **solo BI** per la Governance degli Accreditamenti. Comprende un portale web locale, un backend Node.js, 13 CSV sintetici e una dashboard Amazon QuickSight incorporabile. La self-BI è sviluppata separatamente. Lo stesso server offre due versioni della demo: quella completa e quella dedicata a QuickSight.
+Demo **solo BI** per la Governance degli Accreditamenti. Comprende un portale web locale, un backend Node.js, 14 CSV sintetici e una dashboard Amazon QuickSight incorporabile. La self-BI è sviluppata separatamente. Lo stesso server offre due versioni della demo: quella completa e quella dedicata a QuickSight.
 
 ## Cosa si può mostrare
 
 Il menu presenta cinque cruscotti: **Control Tower**, **Strutture e titoli**, **Autorizzazione**, **Accreditamento**, **Visite e valutatori**. Ogni area usa una composizione adatta al dominio: priorità SLA, copertura territoriale e titoli, flusso delle istruttorie, pareri e rinnovi, agenda visite e capacità dei valutatori.
 
-Nei fogli QuickSight, **Control Tower** incrocia fase e rischio SLA; **Strutture** mostra una matrice ULSS × tipologia e una mappa delle strutture per comune; **Autorizzazione** incrocia ufficio e fase; **Accreditamento** incrocia ente e stato dei pareri; **Visite** usa una matrice tipo × mese per il carico pianificato; **La mia scrivania** mette in primo piano l'elenco operativo e incrocia priorità e stato. Tutte le tabelle hanno intestazioni blu scuro, righe alternate e larghezze dedicate; le colonne di stato e priorità pertinenti hanno colori condizionali. La mappa localizza il **comune principale**, non la singola sede: per localizzare ogni sede con precisione servono coordinate o indirizzi geocodificati nel dataset delle sedi.
+Nei fogli QuickSight, **Control Tower** mostra la composizione del rischio SLA con una treemap e le scadenze nel tempo; **Strutture** affianca una mappa delle province, una mappa puntuale delle sedi, la distribuzione per ULSS e una torta dello stato dei titoli; **Autorizzazione** mostra un Sankey priorità → fase e i tempi per ufficio; **Accreditamento** mostra un Sankey tipo richiesta → stato attuale e la matrice dei pareri; **Visite** usa una heatmap tipo × mese e una ciambella per la gravità delle non conformità; **La mia scrivania** mette in primo piano le attività e una heatmap delle scadenze per settimana e priorità. I Sankey descrivono relazioni nello stato corrente, non una cronologia di transizioni. Tutte le tabelle hanno intestazioni blu scuro, righe alternate e larghezze dedicate; le colonne di stato e priorità pertinenti hanno colori condizionali.
+
+La vista geografica contiene una riga per ciascuna delle **72 sedi sintetiche**, distribuite nelle sette province del Veneto e nove ULSS. Selezionare una provincia sulla mappa colorata filtra pin, distribuzione ULSS ed elenco sedi; selezionare una ULSS filtra le due mappe e l'elenco. Sono disponibili anche filtri di foglio per provincia, ULSS, tipologia e struttura. Le coordinate dei pin sono approssimazioni dimostrative del comune e non indicano indirizzi reali. Le ULSS non sono poligoni geografici standard: la loro distribuzione è mostrata come treemap, non come confini sulla mappa. I KPI e le tabelle dei titoli derivano da altri dataset e non sono filtrati dalla selezione di una provincia o ULSS sulla mappa.
 
 **La mia scrivania** è un'area operativa trasversale. Nella demo completa è una pagina del portale che mostra azioni e scadenze assegnate a un profilo sintetico, con accesso al dettaglio della pratica. Nella versione QuickSight è un sesto foglio della dashboard, con indicatori, elenco delle attività e filtri per profilo, tipo e stato. I filtri servono alla dimostrazione: non autenticano gli utenti né limitano i dati per identità. In produzione il perimetro personale richiede autorizzazioni backend o RLS.
 
@@ -67,7 +69,7 @@ Per distribuire il portale a più utenti servono hosting HTTPS, autenticazione, 
 
 ## Rigenerare la definizione QuickSight
 
-I 13 CSV devono essere già caricati come dataset nell'account QuickSight. Dopo aver compilato `config.local.json`, eseguire:
+I 14 CSV devono essere già caricati come dataset nell'account QuickSight, compreso `vw_bi_strutture_sedi_geografia_mock_20261125.csv`. Dopo aver compilato `config.local.json`, eseguire:
 
 ```powershell
 node quicksight/snapshot-schemas.mjs
@@ -76,14 +78,14 @@ node quicksight/build-definition.mjs
 
 Il primo script legge via AWS CLI gli ID e le colonne dei dataset, usando l'analisi indicata in `analysisId` per risolvere eventuali dataset con lo stesso nome. Se serve, specificare l'ID corretto in `datasetIds` della configurazione locale. Il secondo genera la definizione a sei fogli e i JSON per `update-analysis`, `create-dashboard` o `update-dashboard`. I JSON generati sono esclusi da Git perché contengono ARN specifici dell'account.
 
-Per la mappa, assegnare al campo `comune_principale` del dataset strutture il ruolo geografico **CITY** prima di pubblicare la definizione. Lo script seguente legge e salva una copia della configurazione completa del dataset e prepara la richiesta di aggiornamento:
+Per le mappe delle sedi, assegnare i ruoli geografici a paese, regione, provincia, comune, latitudine e longitudine prima di pubblicare la definizione. Lo script seguente legge e salva una copia della configurazione completa del dataset e prepara la richiesta di aggiornamento:
 
 ```powershell
-node quicksight/prepare-geo-role.mjs
-aws quicksight update-data-set --cli-input-json file://quicksight/structures-geo.request.json --region eu-central-1 --profile NOME_PROFILO
+node quicksight/prepare-geo-role.mjs sedi
+aws quicksight update-data-set --cli-input-json file://quicksight/sedi-geo.request.json --region eu-central-1 --profile NOME_PROFILO
 ```
 
-`update-data-set` avvia una nuova ingestione del dataset SPICE esistente. Verificarne l'esito con `describe-ingestion` prima della pubblicazione. Non sostituire `comune_principale` con `ulss` nel campo geografico: ULSS è una classificazione amministrativa, non una posizione sulla mappa.
+`update-data-set` avvia una nuova ingestione del dataset SPICE esistente. Verificarne l'esito con `describe-ingestion` prima della pubblicazione. Il precedente profilo `structures` dello script resta disponibile per assegnare il ruolo **CITY** a `comune_principale` del dataset anagrafico, se serve ad altri visual. Non assegnare un ruolo geografico a `ulss_nome`: ULSS è una classificazione amministrativa, non una posizione sulla mappa.
 
 Per la prima pubblicazione usare `create-dashboard.request.json`. Per una dashboard esistente usare `update-dashboard.request.json`, poi rendere pubblicata la nuova versione con `update-dashboard-published-version`. Queste operazioni si eseguono con la AWS CLI nel profilo autorizzato; consultare la [documentazione AWS QuickSight CLI](https://docs.aws.amazon.com/cli/latest/reference/quicksight/).
 
@@ -97,9 +99,9 @@ node --test
 - `lib/data.mjs`: lettura CSV e calcolo delle viste.
 - `web/`: frontend responsive e QuickSight Embedding SDK.
 - `web/quicksight-only.html`: ingresso alla versione con soli fogli QuickSight.
-- `data/`: 13 dataset esclusivamente sintetici.
+- `data/`: 14 dataset esclusivamente sintetici, compresa la vista geografica delle sedi.
 - `quicksight/`: generazione della definizione dell'analisi e della dashboard.
-- `quicksight/prepare-geo-role.mjs`: richiesta riproducibile per il ruolo geografico del comune.
+- `quicksight/prepare-geo-role.mjs`: richieste riproducibili per i ruoli geografici dei dataset strutture e sedi.
 - `config.example.json`: struttura della configurazione; **non** contiene credenziali.
 
 L'Embedding SDK vendorizzato è la versione 2.12.1 del progetto [Amazon QuickSight Embedding SDK](https://github.com/awslabs/amazon-quicksight-embedding-sdk), con licenza Apache-2.0 e avviso in `web/vendor/`.

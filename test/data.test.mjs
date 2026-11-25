@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { loadData, buildView, buildDetail, buildWorkspace, parseCsv } from '../lib/data.mjs';
 
@@ -46,4 +47,16 @@ test('domain-specific summaries respect the selected territory', () => {
   const view = buildView(data, 'strutture', { ulss: 'ULSS 6 Euganea' });
   assert.ok(view.focus.territories.every(row => row.label === 'ULSS 6 Euganea'));
   assert.equal(view.focus.horizon.reduce((sum, [, count]) => sum + count, 0), data.titles.filter(row => view.rows.some(structure => structure.struttura_id === row.struttura_id)).length);
+});
+
+test('geographic demo has one valid Veneto pin per site', () => {
+  const csv = readFileSync(new URL('../data/vw_bi_strutture_sedi_geografia_mock_20261125.csv', import.meta.url), 'utf8');
+  const sites = parseCsv(csv);
+  assert.equal(sites.length, 72);
+  assert.equal(new Set(sites.map(site => site.sede_id)).size, sites.length);
+  assert.equal(new Set(sites.map(site => site.provincia)).size, 7);
+  assert.equal(new Set(sites.map(site => site.ulss_nome)).size, 9);
+  assert.ok(sites.every(site => Number(site.numero_sedi) === 1));
+  assert.ok(sites.every(site => Number(site.latitudine) >= 44 && Number(site.latitudine) <= 47.5));
+  assert.ok(sites.every(site => Number(site.longitudine) >= 10 && Number(site.longitudine) <= 14.5));
 });
