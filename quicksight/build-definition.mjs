@@ -39,11 +39,11 @@ function col(ds, name) {
 }
 function kind(ds, name) { return byName.get(ds).columns.find(column => column.name === name).type; }
 function fieldId(visualId, name, role) { return `${visualId}-${name}-${role}`.replace(/[^a-zA-Z0-9_-]/g, '-'); }
-function dimension(ds, name, visualId) {
+function dimension(ds, name, visualId, dateGranularity = 'DAY') {
   const base = { FieldId: fieldId(visualId, name, 'dim'), Column: col(ds, name) };
   const type = kind(ds, name);
   if (type === 'STRING') return { CategoricalDimensionField: base };
-  if (type === 'DATETIME') return { DateDimensionField: { ...base, FormatConfiguration: { DateTimeFormat: 'DD/MM/YYYY' } } };
+  if (type === 'DATETIME') return { DateDimensionField: { ...base, DateGranularity: dateGranularity, FormatConfiguration: { DateTimeFormat: dateGranularity === 'MONTH' ? 'MMM YYYY' : 'DD/MM/YYYY' } } };
   return { NumericalDimensionField: base };
 }
 function measure(ds, name, visualId, aggregation = 'COUNT') {
@@ -58,7 +58,8 @@ function kpi(id, label, ds, field, aggregation, detail) {
   return { KPIVisual: {
     VisualId: id, Title: title(label), Subtitle: subtitle(detail),
     ChartConfiguration: {
-      FieldWells: { Values: [measure(ds, field, id, aggregation)] }
+      FieldWells: { Values: [measure(ds, field, id, aggregation)] },
+      KPIOptions: { PrimaryValueFontConfiguration: { FontSize: { Absolute: '32px' } } }
     }
   } };
 }
@@ -77,23 +78,39 @@ function bar(id, label, ds, category, value, orientation = 'HORIZONTAL', aggrega
     }
   } };
 }
-function donut(id, label, ds, category, value, aggregation = 'COUNT') {
-  return { PieChartVisual: {
-    VisualId: id, Title: title(label),
-    ChartConfiguration: {
-      FieldWells: { PieChartAggregatedFieldWells: { Category: [dimension(ds, category, id)], Values: [measure(ds, value, id, aggregation)] } },
-      DonutOptions: { ArcOptions: { ArcThickness: 'MEDIUM' } },
-      DataLabels: { Visibility: 'VISIBLE', LabelContent: 'PERCENT', Overlap: 'DISABLE_OVERLAP' }
-    }
-  } };
-}
 function line(id, label, ds, date, value, aggregation = 'COUNT') {
   return { LineChartVisual: {
     VisualId: id, Title: title(label),
     ChartConfiguration: {
-      FieldWells: { LineChartAggregatedFieldWells: { Category: [dimension(ds, date, id)], Values: [measure(ds, value, id, aggregation)] } },
+      FieldWells: { LineChartAggregatedFieldWells: { Category: [dimension(ds, date, id, 'MONTH')], Values: [measure(ds, value, id, aggregation)] } },
       DataLabels: { Visibility: 'VISIBLE', Overlap: 'DISABLE_OVERLAP' },
       VisualPalette: { ChartColor: '#247E9A' }
+    }
+  } };
+}
+function heatmap(id, label, ds, row, column, value, { monthly = false, aggregation = 'COUNT' } = {}) {
+  return { HeatMapVisual: {
+    VisualId: id, Title: title(label),
+    ChartConfiguration: {
+      FieldWells: { HeatMapAggregatedFieldWells: {
+        Rows: [dimension(ds, row, id)],
+        Columns: [dimension(ds, column, id, monthly ? 'MONTH' : 'DAY')],
+        Values: [measure(ds, value, id, aggregation)]
+      } },
+      DataLabels: { Visibility: 'VISIBLE', Overlap: 'DISABLE_OVERLAP' },
+      ColorScale: { ColorFillType: 'GRADIENT', Colors: [{ Color: '#E8F3F7' }, { Color: '#17669F' }, { Color: '#12334F' }] }
+    }
+  } };
+}
+function pointMap(id, label, ds, place, value) {
+  return { GeospatialMapVisual: {
+    VisualId: id, Title: title(label),
+    ChartConfiguration: {
+      FieldWells: { GeospatialMapAggregatedFieldWells: {
+        Geospatial: [dimension(ds, place, id)],
+        Values: [measure(ds, value, id, 'COUNT')]
+      } },
+      VisualPalette: { ChartColor: '#17669F' }
     }
   } };
 }
@@ -111,25 +128,56 @@ const tableLabels = {
   scadenza_id: 'Attività', procedimento_id: 'Pratica', tipo_azione: 'Azione',
   stato_azione: 'Stato attività', responsabile_azione: 'Profilo', priorita: 'Priorità'
 };
+const tableWidths = {
+  numero_procedimento: '150px', tipologia_procedimento: '190px', struttura_id: '135px',
+  stato_corrente: '130px', fase_corrente: '155px', data_scadenza_sla: '145px',
+  struttura_nome: '260px', tipologia_struttura: '195px', natura_giuridica: '170px',
+  comune_principale: '160px', ulss: '145px', richiesta_id: '155px',
+  tipo_richiesta: '155px', stato_richiesta: '150px', visita_id: '145px',
+  tipo_visita: '170px', data_pianificata: '145px', esito_visita: '155px',
+  ente_parere: '185px', data_termine: '145px', data_scadenza: '145px',
+  data_scadenza_procedimento: '145px', tipo_azione: '185px',
+  responsabile_azione: '155px', priorita: '125px'
+};
+const tableStatusColors = {
+  stato_corrente: { Chiuso: '#DCEFE9', Sospeso: '#F9E8D0' },
+  stato_struttura: { Attiva: '#DCEFE9', Sospesa: '#F9E8D0', Cessata: '#F7E0E3' },
+  stato_titolo: { Valido: '#DCEFE9', Sospeso: '#F9E8D0', Scaduto: '#F7E0E3' },
+  stato_richiesta: { Conclusa: '#DCEFE9', Sospeso: '#F9E8D0' },
+  stato_parere: { Ricevuto: '#DCEFE9', 'In attesa': '#F9E8D0', 'Mancante oltre termine': '#F7E0E3' },
+  stato_visita: { Eseguita: '#DCEFE9', Pianificata: '#E1F0F8', Annullata: '#F7E0E3' },
+  stato_azione: { Completata: '#DCEFE9', Scaduta: '#F7E0E3' },
+  priorita: { Alta: '#F7E0E3', Media: '#F9E8D0', Ordinaria: '#E1F0F8' }
+};
 function table(id, label, ds, columns) {
-  return { TableVisual: {
+  const visual = { TableVisual: {
     VisualId: id, Title: title(label),
     ChartConfiguration: {
       FieldWells: { TableUnaggregatedFieldWells: { Values: columns.map(name => ({
         FieldId: fieldId(id, name, 'col'), Column: col(ds, name),
         ...(kind(ds, name) === 'DATETIME' ? { FormatConfiguration: { DateTimeFormatConfiguration: { DateTimeFormat: 'DD/MM/YYYY' } } } : {})
       })) } },
-      FieldOptions: { SelectedFieldOptions: columns.map(name => ({ FieldId: fieldId(id, name, 'col'), CustomLabel: tableLabels[name] || name })) },
+      FieldOptions: {
+        SelectedFieldOptions: columns.map(name => ({ FieldId: fieldId(id, name, 'col'), CustomLabel: tableLabels[name] || name, Width: tableWidths[name] || '145px' })),
+        PinnedFieldOptions: { PinnedLeftFields: [fieldId(id, columns[0], 'col')] }
+      },
       TableOptions: {
-        HeaderStyle: { BackgroundColor: '#18334D', FontConfiguration: { FontColor: '#FFFFFF' }, Height: 36 },
-        CellStyle: { Height: 31 },
-        RowAlternateColorOptions: { Status: 'ENABLED', RowAlternateColors: ['#F1F6FA'] }
+        HeaderStyle: { BackgroundColor: '#14334F', FontConfiguration: { FontColor: '#FFFFFF', FontSize: { Absolute: '13px' } }, Height: 42, TextWrap: 'WRAP', VerticalTextAlignment: 'MIDDLE' },
+        CellStyle: { BackgroundColor: '#FFFFFF', FontConfiguration: { FontColor: '#183B58', FontSize: { Absolute: '13px' } }, Height: 40, VerticalTextAlignment: 'MIDDLE', TextWrap: 'NONE' },
+        RowAlternateColorOptions: { Status: 'ENABLED', RowAlternateColors: ['#EDF4F8'] }
       }
     }
   } };
+  const rules = columns.flatMap(name => Object.entries(tableStatusColors[name] || {}).map(([value, color]) => ({
+    Cell: { FieldId: fieldId(id, name, 'col'), TextFormat: {
+      BackgroundColor: { Solid: { Expression: `{${name}} = '${value}'`, Color: color } }
+    } }
+  })));
+  if (rules.length) visual.TableVisual.ConditionalFormatting = { ConditionalFormattingOptions: rules };
+  return visual;
 }
 function textBox(id, heading, description) {
-  const content = `<text-box><inline font-size="22px"><b>${heading}</b></inline><br/><inline font-size="13px">${description} · dati sintetici aggiornati al 22/11/2026</inline></text-box>`;
+  const content = `<text-box><inline font-size="20px" color="#14334F"><b>${heading}</b></inline><br/><inline font-size="12px" color="#4B6780">${description} · dati sintetici aggiornati al 22/11/2026</inline></text-box>`;
   return { SheetTextBoxId: id, Content: content };
 }
 function element(id, type, column, span, row, height, background) {
@@ -142,24 +190,24 @@ function element(id, type, column, span, row, height, background) {
   return result;
 }
 const layouts = {
-  'az-control-tower': { charts: [[0, 21, 12, 13], [21, 15, 12, 13], [0, 36, 26, 11]], detail: [0, 36, 38, 17] },
-  'az-strutture': { charts: [[0, 36, 12, 12], [0, 18, 25, 13], [18, 18, 25, 13]], extras: [[0, 36, 39, 15]], detail: [0, 36, 55, 17] },
-  'az-autorizzazione': { charts: [[0, 36, 12, 13], [0, 20, 26, 13], [20, 16, 26, 13]], detail: [0, 36, 40, 17] },
-  'az-accreditamento': { charts: [[0, 20, 12, 13], [20, 16, 12, 13], [0, 36, 26, 12]], extras: [[0, 36, 39, 15]], detail: [0, 36, 55, 17] },
-  'az-visite': { charts: [[0, 36, 12, 13], [0, 18, 26, 13], [18, 18, 26, 13]], extras: [[0, 36, 40, 14]], detail: [0, 36, 55, 17] },
-  'az-scrivania': { charts: [[0, 18, 35, 14], [18, 18, 35, 14]], detail: [0, 36, 12, 21] }
+  'az-control-tower': { charts: [[0, 23, 6, 17], [23, 13, 6, 17], [0, 36, 24, 11]], detail: [0, 36, 36, 17] },
+  'az-strutture': { charts: [[0, 25, 6, 17], [25, 11, 6, 17], [0, 36, 24, 11]], extras: [[0, 36, 54, 14]], detail: [0, 36, 36, 17] },
+  'az-autorizzazione': { charts: [[0, 36, 6, 13], [0, 23, 20, 16], [23, 13, 20, 16]], detail: [0, 36, 37, 17] },
+  'az-accreditamento': { charts: [[0, 23, 6, 17], [23, 13, 6, 17], [0, 36, 24, 11]], extras: [[0, 36, 54, 14]], detail: [0, 36, 36, 17] },
+  'az-visite': { charts: [[0, 36, 6, 17], [0, 14, 24, 13], [14, 22, 24, 13]], extras: [[0, 36, 55, 14]], detail: [0, 36, 38, 16] },
+  'az-scrivania': { charts: [[0, 22, 27, 15], [22, 14, 27, 15]], detail: [0, 36, 6, 20] }
 };
 function sheet(id, name, heading, description, kpis, charts, detail, extras = []) {
   const visuals = [...kpis, ...charts, detail, ...extras];
   const headerId = `${id}-header`;
-  const elements = [element(headerId, 'TEXT_BOX', 0, 36, 0, 4, '#EAF3F8')];
-  kpis.forEach((item, index) => elements.push(element(Object.values(item)[0].VisualId, 'VISUAL', index * 9, 9, 5, 6, '#F6F9FC')));
+  const elements = [element(headerId, 'TEXT_BOX', 0, 36, 0, 2, '#EAF3F8')];
+  kpis.forEach((item, index) => elements.push(element(Object.values(item)[0].VisualId, 'VISUAL', index * 9, 9, 2, 3, '#F6F9FC')));
   const placement = layouts[id];
   charts.forEach((item, index) => elements.push(element(Object.values(item)[0].VisualId, 'VISUAL', ...placement.charts[index], '#FFFFFF')));
   elements.push(element(Object.values(detail)[0].VisualId, 'VISUAL', ...placement.detail, '#FFFFFF'));
   extras.forEach((item, index) => elements.push(element(Object.values(item)[0].VisualId, 'VISUAL', ...placement.extras[index], '#FFFFFF')));
   definition.Sheets.push({
-    SheetId: id, Name: name, Title: heading, ContentType: 'INTERACTIVE',
+    SheetId: id, Name: name, ContentType: 'INTERACTIVE',
     TextBoxes: [textBox(headerId, heading, description)], Visuals: visuals,
     Layouts: [{ Configuration: { GridLayout: { Elements: elements, CanvasSizeOptions: { ScreenCanvasSizeOptions: { ResizeOption: 'RESPONSIVE' } } } } }]
   });
@@ -181,8 +229,8 @@ sheet('az-control-tower', '01 · Direzionale', 'Control Tower', 'Procedimenti, r
   kpi('ct-risk', 'A rischio SLA', dataset.ct, 'procedimento_id', 'COUNT', 'Fuori SLA o rischio alto/medio'),
   kpi('ct-days', 'Tempo medio netto', dataset.ct, 'giorni_netti', 'AVERAGE', 'Giorni, sospensioni escluse')
 ], [
+  heatmap('ct-risk-matrix', 'Rischio SLA × fase corrente', dataset.ct, 'fase_corrente', 'classe_rischio_sla', 'procedimento_id'),
   bar('ct-status', 'Procedimenti per stato', dataset.ct, 'stato_corrente', 'procedimento_id'),
-  donut('ct-sla', 'Rischio SLA', dataset.ct, 'classe_rischio_sla', 'procedimento_id'),
   bar('ct-phases', 'Pratiche per fase', dataset.ct, 'fase_corrente', 'procedimento_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
 ], table('ct-detail', 'Registro procedimenti', dataset.ct, ['numero_procedimento', 'tipologia_procedimento', 'struttura_id', 'stato_corrente', 'fase_corrente', 'data_scadenza_sla']));
 categoryFilter('ct-open-only', dataset.ct, 'stato_corrente', ['Chiuso'], 'az-control-tower', ['ct-open'], 'DOES_NOT_CONTAIN');
@@ -194,9 +242,9 @@ sheet('az-strutture', '02 · Strutture', 'Strutture, UdO e titoli', 'Perimetro a
   kpi('st-titles', 'Titoli', dataset.titles, 'titolo_id', 'DISTINCT_COUNT', 'Titoli registrati'),
   kpi('st-expiry', 'In scadenza 60 gg', dataset.titles, 'titolo_id', 'COUNT', 'Titoli da presidiare')
 ], [
-  bar('st-ulss', 'Strutture per ULSS', dataset.structures, 'ulss', 'struttura_id'),
+  heatmap('st-territory-matrix', 'ULSS × tipologia di struttura', dataset.structures, 'ulss', 'tipologia_struttura', 'struttura_id'),
   bar('st-title-status', 'Stato dei titoli', dataset.titles, 'stato_titolo', 'titolo_id', 'HORIZONTAL', 'COUNT', '#228E87'),
-  bar('st-types', 'Tipologia di struttura', dataset.structures, 'tipologia_struttura', 'struttura_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
+  pointMap('st-city-map', 'Strutture per comune · Veneto', dataset.structures, 'comune_principale', 'struttura_id')
 ], table('st-detail', 'Anagrafica strutture', dataset.structures, ['struttura_nome', 'ulss', 'tipologia_struttura', 'natura_giuridica', 'stato_struttura', 'comune_principale']), [
   table('st-titles-table', 'Titoli e date di scadenza', dataset.titles, ['titolo_id', 'struttura_id', 'tipo_titolo', 'stato_titolo', 'data_scadenza'])
 ]);
@@ -209,7 +257,7 @@ sheet('az-autorizzazione', '03 · Autorizzazione', 'Autorizzazione all’eserciz
   kpi('au-overdue', 'Fuori SLA', dataset.ct, 'procedimento_id', 'COUNT', 'Da esaminare')
 ], [
   line('au-trend', 'Avvio dei procedimenti nel tempo', dataset.ct, 'data_avvio', 'procedimento_id'),
-  bar('au-phase', 'Fase corrente', dataset.ct, 'fase_corrente', 'procedimento_id'),
+  heatmap('au-office-phase', 'Carico istruttorio: ufficio × fase', dataset.ct, 'ufficio', 'fase_corrente', 'procedimento_id'),
   bar('au-priority', 'Priorità', dataset.ct, 'priorita', 'procedimento_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
 ], table('au-detail', 'Pratiche di autorizzazione', dataset.ct, ['numero_procedimento', 'struttura_id', 'fase_corrente', 'stato_corrente', 'giorni_netti', 'data_scadenza_sla']));
 categoryFilter('au-type-only', dataset.ct, 'tipologia_procedimento', ['Autorizzazione esercizio'], 'az-autorizzazione');
@@ -222,8 +270,8 @@ sheet('az-accreditamento', '04 · Accreditamento', 'Accreditamento, pareri e rin
   kpi('ac-opinions', 'Pareri pendenti', dataset.opinions, 'parere_id', 'COUNT', 'Non ancora ricevuti'),
   kpi('ac-integrations', 'Integrazioni aperte', dataset.requests, 'richiesta_id', 'COUNT', 'Riscontro necessario')
 ], [
-  bar('ac-status', 'Stato delle richieste', dataset.requests, 'stato_richiesta', 'richiesta_id'),
-  bar('ac-entities', 'Pareri per ente', dataset.opinions, 'ente_parere', 'parere_id', 'HORIZONTAL', 'COUNT', '#B87924'),
+  heatmap('ac-opinion-matrix', 'Pareri: ente × stato', dataset.opinions, 'ente_parere', 'stato_parere', 'parere_id'),
+  bar('ac-status', 'Stato delle richieste', dataset.requests, 'stato_richiesta', 'richiesta_id', 'HORIZONTAL', 'COUNT', '#B87924'),
   line('ac-trend', 'Richieste presentate nel tempo', dataset.requests, 'data_presentazione', 'richiesta_id')
 ], table('ac-detail', 'Domande e rinnovi', dataset.requests, ['richiesta_id', 'struttura_id', 'tipo_richiesta', 'stato_richiesta', 'fase_corrente', 'data_scadenza_procedimento']), [
   table('ac-opinion-detail', 'Pareri richiesti agli enti', dataset.opinions, ['parere_id', 'richiesta_id', 'ente_parere', 'stato_parere', 'data_termine'])
@@ -238,9 +286,9 @@ sheet('az-visite', '05 · Visite', 'Visite, valutatori e conformità', 'Pianific
   kpi('vi-nc', 'NC aperte', dataset.nc, 'nc_id', 'COUNT', 'Non conformità da seguire'),
   kpi('vi-prescriptions', 'Prescrizioni', dataset.prescriptions, 'prescrizione_id', 'DISTINCT_COUNT', 'Azioni correttive')
 ], [
-  line('vi-schedule', 'Calendario delle visite', dataset.visits, 'data_pianificata', 'visita_id'),
+  heatmap('vi-calendar', 'Carico visite: tipo × mese', dataset.visits, 'tipo_visita', 'data_pianificata', 'visita_id', { monthly: true }),
   bar('vi-gravity', 'Gravità non conformità', dataset.nc, 'gravita', 'nc_id', 'HORIZONTAL', 'COUNT', '#8A729F'),
-  bar('vi-status', 'Stato delle visite', dataset.visits, 'stato_visita', 'visita_id')
+  line('vi-schedule', 'Visite pianificate nel tempo', dataset.visits, 'data_pianificata', 'visita_id')
 ], table('vi-detail', 'Piano visite', dataset.visits, ['visita_id', 'struttura_id', 'tipo_visita', 'stato_visita', 'data_pianificata', 'esito_visita']), [
   table('vi-assignments', 'Valutatori assegnati', dataset.assignments, ['assegnazione_id', 'visita_id', 'valutatore_id', 'stato_conferma', 'ore_stimate'])
 ]);
@@ -252,8 +300,8 @@ sheet('az-scrivania', '06 · La mia scrivania', 'La mia scrivania', 'Attività e
   kpi('wk-urgent', 'Urgenti', dataset.deadlines, 'scadenza_id', 'COUNT', 'Contrassegnate come urgenti'),
   kpi('wk-completed', 'Completate', dataset.deadlines, 'scadenza_id', 'COUNT', 'Azioni concluse')
 ], [
-  donut('wk-status', 'Stato delle attività', dataset.deadlines, 'stato_azione', 'scadenza_id'),
-  bar('wk-types', 'Azioni per tipologia', dataset.deadlines, 'tipo_azione', 'scadenza_id', 'HORIZONTAL', 'COUNT', '#238A95')
+  heatmap('wk-priority-matrix', 'Priorità × stato delle attività', dataset.deadlines, 'priorita', 'stato_azione', 'scadenza_id'),
+  line('wk-deadline-trend', 'Scadenze per mese', dataset.deadlines, 'data_scadenza', 'scadenza_id')
 ], table('wk-detail', 'Attività e scadenze', dataset.deadlines, [
   'scadenza_id', 'procedimento_id', 'tipo_azione', 'data_scadenza', 'stato_azione', 'priorita', 'responsabile_azione'
 ]));
