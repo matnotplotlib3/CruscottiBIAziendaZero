@@ -1,0 +1,68 @@
+body[data-variant="quicksight-only"] .main-area {
+  background: #f4f7fa;
+}
+
+body[data-variant="quicksight-only"] main {
+  max-width: 1620px;
+  padding: 26px 28px 54px;
+}
+
+body[data-variant="quicksight-only"] .topbar {
+  box-shadow: 0 2px 12px #10294508;
+}
+
+body[data-variant="quicksight-only"] .environment-pill {
+  background: #e5f4f3;
+  color: #0d6b73;
+  letter-spacing: .02em;
+}
+
+body[data-variant="quicksight-only"] #main {
+  --section-accent: #b84f61;
+}
+
+body[data-variant="quicksight-only"] #main[data-view="strutture"] { --section-accent: #138b80; }
+body[data-variant="quicksight-only"] #main[data-view="autorizzazione"] { --section-accent: #306da7; }
+body[data-variant="quicksight-only"] #main[data-view="accreditamento"] { --section-accent: #aa7133; }
+body[data-variant="quicksight-only"] #main[data-view="visite"] { --section-accent: #655b9b; }
+body[data-variant="quicksight-only"] #main[data-view="workspace"] { --section-accent: #2c7186; }
+
+body[data-variant="quicksight-only"] #pageHeader {
+  border-left: 4px solid var(--section-accent);
+  padding: 3px 0 3px 18px;
+  margin-bottom: 22px;
+}
+
+body[data-variant="quicksight-only"] #pageHeader .page-head { margin-bottom: 0; }
+body[data-variant="quicksight-only"] #pageHeader .eyebrow { margin-bottom: 7px; }
+body[data-variant="quicksight-only"] #pageHeader h1 { margin-bottom: 7px; }
+
+body[data-variant="quicksight-only"] .quicksight-panel {
+  border-color: #dce5ec;
+  border-radius: 11px;
+  box-shadow: 0 5px 24px #2447630b;
+}
+
+body[data-variant="quicksight-only"] .embed-guidance {
+  align-items: flex-start;
+  gap: 14px;
+  padding: 15px 20px;
+  background: #edf5f8;
+  border-bottom-color: #dce5ec;
+  color: #42657a;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+body[data-variant="quicksight-only"] .embed-guidance strong {
+  color: #153753;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+body[data-variant="quicksight-only"] .embed-container { background: #f4f7fa; }
+
+@media (max-width: 760px) {
+  body[data-variant="quicksight-only"] main { padding: 22px 16px 42px; }
+  body[data-variant="quicksight-only"] .embed-guidance { flex-direction: column; gap: 4px; }
+}

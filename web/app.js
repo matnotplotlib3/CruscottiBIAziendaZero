@@ -1,4 +1,5 @@
 import { formatDisplayDate } from './date.js';
+import { quicksightTheme } from './quicksight-theme.js';
 
 const labels = {
   'control-tower': 'Control Tower',
@@ -183,6 +184,7 @@ async function render() {
   }
   const renderId = ++state.renderId;
   const { view, ulss, type } = state;
+  if (quicksightOnly) main.dataset.view = view;
   const reuseEmbed = state.mode === 'quicksight' && state.embedExperience && document.getElementById('embedContainer');
   if (!reuseEmbed) main.innerHTML = '<div class="loading">Caricamento del cruscotto…</div>';
   try {
@@ -244,7 +246,9 @@ async function render() {
         state.embedContext ||= await window.QuickSightEmbedding.createEmbeddingContext();
         state.embedExperience = await state.embedContext.embedDashboard(
           { url: result.url, container: '#embedContainer', width: '100%', height: '1050px', withIframePlaceholder: true },
-          { locale: 'it-IT', sheetOptions: { initialSheetId: state.bootstrap.quicksight.sheets[view], singleSheet: true }, toolbarOptions: { export: true, reset: true, undoRedo: true }, onMessage: event => {
+          { locale: 'it-IT', sheetOptions: { initialSheetId: state.bootstrap.quicksight.sheets[view], singleSheet: true }, toolbarOptions: { export: true, reset: true, undoRedo: true },
+            ...(quicksightOnly ? { themeOptions: { themeOverride: quicksightTheme } } : {}),
+            onMessage: event => {
             const message = document.getElementById('embedMessage');
             if (message && event.eventName === 'ERROR_OCCURRED') message.textContent = `QuickSight: ${event.message?.errorCode || 'errore di caricamento'}. Ricarica la pagina per ottenere una nuova sessione.`;
           } }
