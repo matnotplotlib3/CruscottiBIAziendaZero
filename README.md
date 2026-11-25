@@ -87,6 +87,8 @@ aws quicksight update-data-set --cli-input-json file://quicksight/sedi-geo.reque
 
 `update-data-set` avvia una nuova ingestione del dataset SPICE esistente. Verificarne l'esito con `describe-ingestion` prima della pubblicazione. Il precedente profilo `structures` dello script resta disponibile per assegnare il ruolo **CITY** a `comune_principale` del dataset anagrafico, se serve ad altri visual. Non assegnare un ruolo geografico a `ulss_nome`: ULSS è una classificazione amministrativa, non una posizione sulla mappa.
 
+Il dataset usa la nuova esperienza di preparazione dati QuickSight, che non accetta `ColumnGroups` per le gerarchie geografiche. La definizione applica quindi sul visual della mappa colorata una corrispondenza esplicita tra le sette province, il Veneto e l'Italia. La mappa dei pin usa latitudine e longitudine; il dettaglio di ogni sede rimane nell'elenco sotto le mappe.
+
 Per la prima pubblicazione usare `create-dashboard.request.json`. Per una dashboard esistente usare `update-dashboard.request.json`, poi rendere pubblicata la nuova versione con `update-dashboard-published-version`. Queste operazioni si eseguono con la AWS CLI nel profilo autorizzato; consultare la [documentazione AWS QuickSight CLI](https://docs.aws.amazon.com/cli/latest/reference/quicksight/).
 
 ## Test e file principali

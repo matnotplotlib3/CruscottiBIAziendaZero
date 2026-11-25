@@ -143,8 +143,15 @@ function clickFilter(visualId, label, column, targets) {
   };
 }
 function filledMap(id, label, ds, place, value, targets) {
+  // Il dataset usa il nuovo data prep, che non supporta le geo-gerarchie.
+  // La corrispondenza sul visual disambigua le province del Veneto.
+  const venetoProvinces = ['Belluno', 'Padova', 'Rovigo', 'Treviso', 'Venezia', 'Verona', 'Vicenza'];
   return { FilledMapVisual: {
     VisualId: id, Title: title(label), Subtitle: subtitle('Seleziona una provincia per filtrare i pin e le ULSS'),
+    GeocodingPreferences: venetoProvinces.map(province => ({
+      RequestKey: { County: province },
+      Preference: { GeocoderHierarchy: { Country: 'Italy', State: 'Veneto', County: province } }
+    })),
     Actions: [clickFilter(id, 'Esplora la provincia', place, targets)],
     ChartConfiguration: {
       FieldWells: { FilledMapAggregatedFieldWells: {
@@ -167,11 +174,7 @@ function sitePointMap(id, label, ds) {
       MapStyleOptions: { BaseMapStyle: 'LIGHT_GRAY' },
       PointStyleOptions: { SelectedPointStyle: 'POINT' },
       WindowOptions: { MapZoomMode: 'AUTO' },
-      Tooltip: { SelectedTooltipType: 'DETAILED', TooltipVisibility: 'VISIBLE', FieldBasedTooltip: {
-        TooltipTitleType: 'NONE', TooltipFields: ['sede_nome', 'struttura_nome', 'comune', 'provincia', 'ulss_nome', 'stato_sede'].map(name => ({
-          ColumnTooltipItem: { Column: col(ds, name), Label: tableLabels[name] || name, Visibility: 'VISIBLE' }
-        }))
-      } }
+      Tooltip: { SelectedTooltipType: 'BASIC', TooltipVisibility: 'VISIBLE' }
     }
   } };
 }
