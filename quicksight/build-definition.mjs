@@ -43,7 +43,7 @@ function dimension(ds, name, visualId) {
   const base = { FieldId: fieldId(visualId, name, 'dim'), Column: col(ds, name) };
   const type = kind(ds, name);
   if (type === 'STRING') return { CategoricalDimensionField: base };
-  if (type === 'DATETIME') return { DateDimensionField: base };
+  if (type === 'DATETIME') return { DateDimensionField: { ...base, FormatConfiguration: { DateTimeFormat: 'DD/MM/YYYY' } } };
   return { NumericalDimensionField: base };
 }
 function measure(ds, name, visualId, aggregation = 'COUNT') {
@@ -115,7 +115,7 @@ function table(id, label, ds, columns) {
     ChartConfiguration: {
       FieldWells: { TableUnaggregatedFieldWells: { Values: columns.map(name => ({
         FieldId: fieldId(id, name, 'col'), Column: col(ds, name),
-        ...(kind(ds, name) === 'DATETIME' ? { FormatConfiguration: { DateTimeFormatConfiguration: { DateTimeFormat: 'dd/MM/yyyy' } } } : {})
+        ...(kind(ds, name) === 'DATETIME' ? { FormatConfiguration: { DateTimeFormatConfiguration: { DateTimeFormat: 'DD/MM/YYYY' } } } : {})
       })) } },
       FieldOptions: { SelectedFieldOptions: columns.map(name => ({ FieldId: fieldId(id, name, 'col'), CustomLabel: tableLabels[name] || name })) },
       TableOptions: {

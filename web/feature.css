@@ -66,7 +66,7 @@
 .opinion-row strong { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .opinion-row small { text-align: right; color: #9d651f; }
 .opinion-track { display: flex; width: var(--matrix-width); min-width: 4px; height: 14px; border-radius: 5px; overflow: hidden; }
-.schedule-item time { display: grid; place-items: center; flex: none; width: 62px; min-height: 49px; border-radius: 7px; background: #f0eff8; color: #625a9b; font-weight: 750; font-size: 13px; text-transform: lowercase; }
+.schedule-item time { display: grid; place-items: center; flex: none; width: 104px; min-height: 49px; border-radius: 7px; background: #f0eff8; color: #625a9b; font-weight: 750; font-size: 12px; }
 .capacity-list { display: grid; gap: 15px; }
 .capacity-row { display: grid; grid-template-columns: minmax(90px, 1.5fr) minmax(70px, 2fr) 38px; gap: 9px; align-items: center; font-size: 12px; }
 .capacity-track span { display: block; height: 100%; background: #776eb0; border-radius: inherit; }

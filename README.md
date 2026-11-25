@@ -15,6 +15,8 @@ Il menu presenta cinque cruscotti: **Control Tower**, **Strutture e titoli**, **
 
 I filtri delle due modalità non sono sincronizzati. In QuickSight i controlli sono configurati su tutti i visual del foglio e, dove un foglio usa più dataset, su tutti quelli che espongono la chiave condivisa: pratica, struttura, richiesta o visita. Control Tower e Autorizzazione offrono anche filtri per stato/tipologia o fase/ufficio. Un filtro territoriale comune a *tutti* i visual QuickSight richiederà l'esposizione coerente di ULSS anche nelle viste di dettaglio oggi prive di tale campo. **Dati demo** funziona senza AWS; **QuickSight** richiede connessione internet, accesso SSO valido e una dashboard pubblicata nell'account.
 
+Le date visibili nel portale e nei visual QuickSight sono in formato `gg/mm/aaaa`. I CSV esportati conservano le date originali in formato ISO per facilitarne l'elaborazione.
+
 ## Architettura
 
 ```text
