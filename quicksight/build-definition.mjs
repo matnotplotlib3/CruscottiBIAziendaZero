@@ -107,7 +107,9 @@ const tableLabels = {
   stato_visita: 'Stato', data_pianificata: 'Data visita', esito_visita: 'Esito', giorni_netti: 'Giorni netti',
   parere_id: 'Parere', ente_parere: 'Ente', stato_parere: 'Stato parere', data_termine: 'Termine',
   assegnazione_id: 'Assegnazione', valutatore_id: 'Valutatore', stato_conferma: 'Conferma', ore_stimate: 'Ore previste',
-  titolo_id: 'Titolo', tipo_titolo: 'Tipo titolo', stato_titolo: 'Stato titolo', data_scadenza: 'Scadenza'
+  titolo_id: 'Titolo', tipo_titolo: 'Tipo titolo', stato_titolo: 'Stato titolo', data_scadenza: 'Scadenza',
+  scadenza_id: 'Attività', procedimento_id: 'Pratica', tipo_azione: 'Azione',
+  stato_azione: 'Stato attività', responsabile_azione: 'Profilo', priorita: 'Priorità'
 };
 function table(id, label, ds, columns) {
   return { TableVisual: {
@@ -144,7 +146,8 @@ const layouts = {
   'az-strutture': { charts: [[0, 36, 12, 12], [0, 18, 25, 13], [18, 18, 25, 13]], extras: [[0, 36, 39, 15]], detail: [0, 36, 55, 17] },
   'az-autorizzazione': { charts: [[0, 36, 12, 13], [0, 20, 26, 13], [20, 16, 26, 13]], detail: [0, 36, 40, 17] },
   'az-accreditamento': { charts: [[0, 20, 12, 13], [20, 16, 12, 13], [0, 36, 26, 12]], extras: [[0, 36, 39, 15]], detail: [0, 36, 55, 17] },
-  'az-visite': { charts: [[0, 36, 12, 13], [0, 18, 26, 13], [18, 18, 26, 13]], extras: [[0, 36, 40, 14]], detail: [0, 36, 55, 17] }
+  'az-visite': { charts: [[0, 36, 12, 13], [0, 18, 26, 13], [18, 18, 26, 13]], extras: [[0, 36, 40, 14]], detail: [0, 36, 55, 17] },
+  'az-scrivania': { charts: [[0, 18, 35, 14], [18, 18, 35, 14]], detail: [0, 36, 12, 21] }
 };
 function sheet(id, name, heading, description, kpis, charts, detail, extras = []) {
   const visuals = [...kpis, ...charts, detail, ...extras];
@@ -243,9 +246,25 @@ sheet('az-visite', '05 · Visite', 'Visite, valutatori e conformità', 'Pianific
 ]);
 categoryFilter('vi-open-nc-only', dataset.nc, 'stato_nc', ['Chiusa'], 'az-visite', ['vi-nc'], 'DOES_NOT_CONTAIN');
 
+sheet('az-scrivania', '06 · La mia scrivania', 'La mia scrivania', 'Attività e scadenze del profilo sintetico selezionato', [
+  kpi('wk-open', 'Da fare', dataset.deadlines, 'scadenza_id', 'COUNT', 'Azioni non completate'),
+  kpi('wk-overdue', 'Scadute', dataset.deadlines, 'scadenza_id', 'COUNT', 'Richiedono attenzione'),
+  kpi('wk-urgent', 'Urgenti', dataset.deadlines, 'scadenza_id', 'COUNT', 'Contrassegnate come urgenti'),
+  kpi('wk-completed', 'Completate', dataset.deadlines, 'scadenza_id', 'COUNT', 'Azioni concluse')
+], [
+  donut('wk-status', 'Stato delle attività', dataset.deadlines, 'stato_azione', 'scadenza_id'),
+  bar('wk-types', 'Azioni per tipologia', dataset.deadlines, 'tipo_azione', 'scadenza_id', 'HORIZONTAL', 'COUNT', '#238A95')
+], table('wk-detail', 'Attività e scadenze', dataset.deadlines, [
+  'scadenza_id', 'procedimento_id', 'tipo_azione', 'data_scadenza', 'stato_azione', 'priorita', 'responsabile_azione'
+]));
+categoryFilter('wk-open-only', dataset.deadlines, 'stato_azione', ['Completata'], 'az-scrivania', ['wk-open'], 'DOES_NOT_CONTAIN');
+categoryFilter('wk-overdue-only', dataset.deadlines, 'stato_azione', ['Scaduta'], 'az-scrivania', ['wk-overdue']);
+categoryFilter('wk-urgent-only', dataset.deadlines, 'flag_urgente', ['Sì'], 'az-scrivania', ['wk-urgent']);
+categoryFilter('wk-completed-only', dataset.deadlines, 'stato_azione', ['Completata'], 'az-scrivania', ['wk-completed']);
+
 // Questi controlli sono esposti sul foglio e filtrano tutti i visual applicabili.
 // I controlli sulle chiavi condivise attraversano i dataset del rispettivo dominio.
-function sheetControl(sheetId, id, ds, column, label) {
+function sheetControl(sheetId, id, ds, column, label, { type = 'MULTI_SELECT', defaultValues = [] } = {}) {
   const target = definition.Sheets.find(item => item.SheetId === sheetId);
   const filterId = `${id}-filter`;
   const controlId = `${id}-control`;
@@ -253,13 +272,16 @@ function sheetControl(sheetId, id, ds, column, label) {
     FilterGroupId: id, CrossDataset: 'ALL_DATASETS', Status: 'ENABLED',
     Filters: [{ CategoryFilter: {
       FilterId: filterId, Column: col(ds, column),
-      Configuration: { FilterListConfiguration: { MatchOperator: 'CONTAINS', SelectAllOptions: 'FILTER_ALL_VALUES', NullOption: 'ALL_VALUES' } }
+      Configuration: { FilterListConfiguration: {
+        MatchOperator: 'CONTAINS', NullOption: 'ALL_VALUES',
+        ...(defaultValues.length ? { CategoryValues: defaultValues } : { SelectAllOptions: 'FILTER_ALL_VALUES' })
+      } }
     } }],
     ScopeConfiguration: { SelectedSheets: { SheetVisualScopingConfigurations: [{ SheetId: sheetId, Scope: 'ALL_VISUALS' }] } }
   });
   target.FilterControls ||= [];
-  target.FilterControls.push({ Dropdown: { FilterControlId: controlId, SourceFilterId: filterId, Title: label, Type: 'MULTI_SELECT' } });
-  const controls = target.FilterControls.map((control, index) => element(control.Dropdown.FilterControlId, 'FILTER_CONTROL', index * 6, 6, 0, 1));
+  target.FilterControls.push({ Dropdown: { FilterControlId: controlId, SourceFilterId: filterId, Title: label, Type: type } });
+  const controls = target.FilterControls.map((control, index) => element(control.Dropdown.FilterControlId, 'FILTER_CONTROL', (index % 2) * 6, 6, Math.floor(index / 2), 1));
   target.SheetControlLayouts = [{ Configuration: { GridLayout: { Elements: controls, CanvasSizeOptions: { ScreenCanvasSizeOptions: { ResizeOption: 'RESPONSIVE' } } } } }];
 }
 sheetControl('az-control-tower', 'ct-type-control', dataset.ct, 'tipologia_procedimento', 'Tipologia procedimento');
@@ -269,6 +291,9 @@ sheetControl('az-autorizzazione', 'au-phase-control', dataset.ct, 'fase_corrente
 sheetControl('az-autorizzazione', 'au-office-control', dataset.ct, 'ufficio', 'Ufficio');
 sheetControl('az-accreditamento', 'ac-request-control', dataset.requests, 'richiesta_id', 'Richiesta');
 sheetControl('az-visite', 'vi-visit-control', dataset.visits, 'visita_id', 'Visita');
+sheetControl('az-scrivania', 'wk-owner-control', dataset.deadlines, 'responsabile_azione', 'Profilo dimostrativo', { type: 'SINGLE_SELECT', defaultValues: ['S. Ferri'] });
+sheetControl('az-scrivania', 'wk-action-control', dataset.deadlines, 'tipo_azione', 'Tipo di attività');
+sheetControl('az-scrivania', 'wk-status-control', dataset.deadlines, 'stato_azione', 'Stato attività');
 
 const ids = new Set();
 for (const sheetDef of definition.Sheets) {

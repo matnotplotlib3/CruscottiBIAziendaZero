@@ -71,7 +71,7 @@ const server = http.createServer(async (request, response) => {
     }
     if (url.pathname.startsWith('/api/embed/')) {
       const view = url.pathname.split('/').pop();
-      if (!VIEW_IDS.includes(view)) return json(response, 404, { error: 'Vista sconosciuta' });
+      if (!VIEW_IDS.includes(view) && view !== 'workspace') return json(response, 404, { error: 'Vista sconosciuta' });
       if (!config.dashboards?.[view]) return json(response, 409, { error: 'Dashboard QuickSight non ancora configurata per questa vista.' });
       try { return json(response, 200, { url: await embedUrl(view) }); }
       catch (error) { return json(response, 503, { error: error.message, code: error.name || 'EmbedError' }); }

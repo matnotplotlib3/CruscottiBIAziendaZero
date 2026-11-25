@@ -8,8 +8,17 @@ const labels = {
   visite: 'Visite e valutatori',
   workspace: 'La mia scrivania'
 };
+const quicksightOnly = document.body.dataset.variant === 'quicksight-only';
+const quicksightMetadata = {
+  'control-tower': { title: 'Direzionale e Control Tower', subtitle: 'Stato dei procedimenti, tempi, rischio SLA e priorità operative' },
+  strutture: { title: 'Strutture, UdO, Titoli e Scadenze', subtitle: 'Perimetro autorizzato e titoli, con conteggi distinti per struttura' },
+  autorizzazione: { title: 'Autorizzazione all’Esercizio', subtitle: 'Istruttorie, fasi, sospensioni e tempi del procedimento' },
+  accreditamento: { title: 'Accreditamento, Pareri e Rinnovi', subtitle: 'Domande, rinnovi, pareri pendenti e avanzamento' },
+  visite: { title: 'Visite, Valutatori, NC e Prescrizioni', subtitle: 'Pianificazione visite, capacità valutatori ed esiti di verifica' },
+  workspace: { title: 'La mia scrivania', subtitle: 'Attività e scadenze del profilo sintetico selezionato' }
+};
 const colors = ['#17669f','#20a2a9','#e9a348','#cd6870','#8177ba','#80b46d'];
-const state = { view: 'control-tower', mode: 'preview', ulss: '', type: '', search: '', assignee: '', workspaceStatus: 'open', bootstrap: null, data: null, displayedRows: [], embedContext: null, embedExperience: null, renderId: 0 };
+const state = { view: 'control-tower', mode: quicksightOnly ? 'quicksight' : 'preview', ulss: '', type: '', search: '', assignee: '', workspaceStatus: 'open', bootstrap: null, data: null, displayedRows: [], embedContext: null, embedExperience: null, renderId: 0 };
 const main = document.getElementById('main');
 const dialog = document.getElementById('detailDialog');
 
@@ -96,7 +105,8 @@ function downloadCsv() {
 
 function pageHeader(data) {
   const configured = state.bootstrap.quicksight.dashboards.includes(state.view);
-  return `<div id="pageHeader"><div class="eyebrow">Governance degli accreditamenti / ${escapeHtml(labels[state.view])}</div><div class="page-head"><div><h1>${escapeHtml(data.title)}</h1><p>${escapeHtml(data.subtitle)}</p></div><div class="head-actions"><div class="mode-switch" role="group" aria-label="Modalità di visualizzazione"><button id="previewMode" class="${state.mode === 'preview' ? 'selected' : ''}" aria-pressed="${state.mode === 'preview'}">Dati demo</button><button id="quickMode" class="${state.mode === 'quicksight' ? 'selected' : ''}" aria-pressed="${state.mode === 'quicksight'}">QuickSight${configured ? '' : ' · da collegare'}</button></div></div></div></div>`;
+  const modeSwitch = quicksightOnly ? '' : `<div class="head-actions"><div class="mode-switch" role="group" aria-label="Modalità di visualizzazione"><button id="previewMode" class="${state.mode === 'preview' ? 'selected' : ''}" aria-pressed="${state.mode === 'preview'}">Dati demo</button><button id="quickMode" class="${state.mode === 'quicksight' ? 'selected' : ''}" aria-pressed="${state.mode === 'quicksight'}">QuickSight${configured ? '' : ' · da collegare'}</button></div></div>`;
+  return `<div id="pageHeader"><div class="eyebrow">Governance degli accreditamenti / ${escapeHtml(labels[state.view])}</div><div class="page-head"><div><h1>${escapeHtml(data.title)}</h1><p>${escapeHtml(data.subtitle)}</p></div>${modeSwitch}</div></div>`;
 }
 
 function metricCards(data) {
@@ -157,10 +167,11 @@ function workspacePage(data) {
 
 function quicksightPage(data) {
   const configured = state.bootstrap.quicksight.dashboards.includes(state.view);
-  return `${pageHeader(data)}<section class="panel quicksight-panel" id="quickPanel"><div class="quicksight-intro"><div class="qs-icon">◫</div><h2>${configured ? 'Apertura della dashboard QuickSight' : 'Dashboard QuickSight da collegare'}</h2><p>${configured ? 'Apro la dashboard privata con i dati sintetici e seleziono la sezione richiesta.' : 'La dashboard QuickSight non è configurata in questo ambiente.'}</p>${configured ? '<div class="loading">Collegamento in corso…</div>' : '<button class="primary-button" id="backToPreview">Esplora i dati demo</button>'}</div></section>`;
+  return `${pageHeader(data)}<section class="panel quicksight-panel" id="quickPanel"><div class="quicksight-intro"><div class="qs-icon">◫</div><h2>${configured ? 'Apertura della dashboard QuickSight' : 'Dashboard QuickSight da collegare'}</h2><p>${configured ? 'Apro la dashboard privata con i dati sintetici e seleziono la sezione richiesta.' : 'La dashboard QuickSight non è configurata in questo ambiente.'}</p>${configured ? '<div class="loading">Collegamento in corso…</div>' : quicksightOnly ? '' : '<button class="primary-button" id="backToPreview">Esplora i dati demo</button>'}</div></section>`;
 }
 
 function bindModeButtons() {
+  if (quicksightOnly) return;
   document.getElementById('previewMode').onclick = () => { state.mode = 'preview'; state.embedExperience = null; render(); };
   document.getElementById('quickMode').onclick = () => { state.mode = 'quicksight'; render(); };
 }
@@ -175,7 +186,7 @@ async function render() {
   const reuseEmbed = state.mode === 'quicksight' && state.embedExperience && document.getElementById('embedContainer');
   if (!reuseEmbed) main.innerHTML = '<div class="loading">Caricamento del cruscotto…</div>';
   try {
-    if (view === 'workspace') {
+    if (view === 'workspace' && !quicksightOnly) {
       const data = await getJson(`/api/workspace?assignee=${encodeURIComponent(state.assignee)}`);
       if (renderId !== state.renderId) return;
       state.assignee = data.assignee;
@@ -195,7 +206,8 @@ async function render() {
     const params = new URLSearchParams();
     if (ulss) params.set('ulss', ulss);
     if (view === 'control-tower' && type) params.set('type', type);
-    const data = await getJson(`/api/views/${view}?${params}`);
+    const data = quicksightOnly ? quicksightMetadata[view] : await getJson(`/api/views/${view}?${params}`);
+    if (!data) throw new Error('Sezione QuickSight non disponibile.');
     if (renderId !== state.renderId) return;
     state.data = data;
     if (reuseEmbed) {
@@ -225,7 +237,10 @@ async function render() {
         const result = await getJson(`/api/embed/${view}`);
         if (renderId !== state.renderId) return;
         if (!window.QuickSightEmbedding?.createEmbeddingContext) throw new Error('Client QuickSight non disponibile.');
-        document.getElementById('quickPanel').innerHTML = '<div class="embed-guidance"><strong>Filtri del foglio</strong><span>Usa i controlli sopra i visual QuickSight per filtrare l’intero cruscotto selezionato.</span></div><div id="embedContainer" class="embed-container" aria-label="Dashboard QuickSight"></div><div id="embedMessage" class="embed-message" role="status"></div>';
+        const guidance = view === 'workspace'
+          ? '<strong>Profilo dimostrativo</strong><span>Seleziona il profilo nei controlli QuickSight. Questo filtro simula una scrivania personale: tutti i profili sintetici restano consultabili.</span>'
+          : '<strong>Filtri del foglio</strong><span>Usa i controlli sopra i visual QuickSight per filtrare l’intero cruscotto selezionato.</span>';
+        document.getElementById('quickPanel').innerHTML = `<div class="embed-guidance">${guidance}</div><div id="embedContainer" class="embed-container" aria-label="Dashboard QuickSight"></div><div id="embedMessage" class="embed-message" role="status"></div>`;
         state.embedContext ||= await window.QuickSightEmbedding.createEmbeddingContext();
         state.embedExperience = await state.embedContext.embedDashboard(
           { url: result.url, container: '#embedContainer', width: '100%', height: '1050px', withIframePlaceholder: true },
@@ -238,7 +253,7 @@ async function render() {
         state.embedExperience = null;
         document.getElementById('quickPanel').innerHTML = `<div class="error-message">${escapeHtml(error.message)}</div>`;
       }
-    } else document.getElementById('backToPreview').onclick = () => { state.mode = 'preview'; render(); };
+    } else if (!quicksightOnly) document.getElementById('backToPreview').onclick = () => { state.mode = 'preview'; render(); };
   } catch (error) { main.innerHTML = `<div class="error-message">Impossibile caricare il cruscotto: ${escapeHtml(error.message)}</div>`; }
 }
 

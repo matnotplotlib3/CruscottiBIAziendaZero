@@ -11,13 +11,15 @@
     "strutture": "ID_DASHBOARD",
     "autorizzazione": "ID_DASHBOARD",
     "accreditamento": "ID_DASHBOARD",
-    "visite": "ID_DASHBOARD"
+    "visite": "ID_DASHBOARD",
+    "workspace": "ID_DASHBOARD"
   },
   "sheets": {
     "control-tower": "az-control-tower",
     "strutture": "az-strutture",
     "autorizzazione": "az-autorizzazione",
     "accreditamento": "az-accreditamento",
-    "visite": "az-visite"
+    "visite": "az-visite",
+    "workspace": "az-scrivania"
   }
 }
