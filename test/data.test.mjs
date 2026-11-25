@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
-import { loadData, buildView, buildDetail, parseCsv } from '../lib/data.mjs';
+import { loadData, buildView, buildDetail, buildWorkspace, parseCsv } from '../lib/data.mjs';
 
 const data = loadData(fileURLToPath(new URL('../data/', import.meta.url)));
 
@@ -30,4 +30,20 @@ test('drill-down follows declared keys without multiplying parent records', () =
   assert.equal(detail.record.procedimento_id, id);
   assert.ok(detail.sections[0].rows.every(row => row.procedimento_id === id));
   assert.ok(detail.sections[1].rows.every(row => row.procedimento_id === id));
+});
+
+test('personal workspace returns one action per deadline for the selected demo assignee', () => {
+  const assignee = 'S. Ferri';
+  const workspace = buildWorkspace(data, assignee);
+  const source = data.deadlines.filter(row => row.responsabile_azione === assignee);
+  assert.equal(workspace.actions.length, source.length);
+  assert.equal(new Set(workspace.actions.map(row => row.id)).size, source.length);
+  assert.ok(workspace.actions.every(row => source.some(item => item.scadenza_id === row.id)));
+  assert.equal(workspace.summary.open + workspace.summary.completed, workspace.actions.length);
+});
+
+test('domain-specific summaries respect the selected territory', () => {
+  const view = buildView(data, 'strutture', { ulss: 'ULSS 6 Euganea' });
+  assert.ok(view.focus.territories.every(row => row.label === 'ULSS 6 Euganea'));
+  assert.equal(view.focus.horizon.reduce((sum, [, count]) => sum + count, 0), data.titles.filter(row => view.rows.some(structure => structure.struttura_id === row.struttura_id)).length);
 });

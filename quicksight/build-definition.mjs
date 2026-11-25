@@ -87,6 +87,16 @@ function donut(id, label, ds, category, value, aggregation = 'COUNT') {
     }
   } };
 }
+function line(id, label, ds, date, value, aggregation = 'COUNT') {
+  return { LineChartVisual: {
+    VisualId: id, Title: title(label),
+    ChartConfiguration: {
+      FieldWells: { LineChartAggregatedFieldWells: { Category: [dimension(ds, date, id)], Values: [measure(ds, value, id, aggregation)] } },
+      DataLabels: { Visibility: 'VISIBLE', Overlap: 'DISABLE_OVERLAP' },
+      VisualPalette: { ChartColor: '#247E9A' }
+    }
+  } };
+}
 const tableLabels = {
   numero_procedimento: 'Pratica', tipologia_procedimento: 'Tipo', struttura_id: 'Struttura',
   stato_corrente: 'Stato', fase_corrente: 'Fase', data_scadenza_sla: 'Scadenza SLA',
@@ -94,7 +104,10 @@ const tableLabels = {
   stato_struttura: 'Stato', comune_principale: 'Comune', ulss: 'ULSS',
   richiesta_id: 'Richiesta', tipo_richiesta: 'Tipo', stato_richiesta: 'Stato',
   data_scadenza_procedimento: 'Scadenza', visita_id: 'Visita', tipo_visita: 'Tipo',
-  stato_visita: 'Stato', data_pianificata: 'Data visita', esito_visita: 'Esito', giorni_netti: 'Giorni netti'
+  stato_visita: 'Stato', data_pianificata: 'Data visita', esito_visita: 'Esito', giorni_netti: 'Giorni netti',
+  parere_id: 'Parere', ente_parere: 'Ente', stato_parere: 'Stato parere', data_termine: 'Termine',
+  assegnazione_id: 'Assegnazione', valutatore_id: 'Valutatore', stato_conferma: 'Conferma', ore_stimate: 'Ore previste',
+  titolo_id: 'Titolo', tipo_titolo: 'Tipo titolo', stato_titolo: 'Stato titolo', data_scadenza: 'Scadenza'
 };
 function table(id, label, ds, columns) {
   return { TableVisual: {
@@ -126,13 +139,22 @@ function element(id, type, column, span, row, height, background) {
   }
   return result;
 }
-function sheet(id, name, heading, description, kpis, charts, detail) {
-  const visuals = [...kpis, ...charts, detail];
+const layouts = {
+  'az-control-tower': { charts: [[0, 21, 12, 13], [21, 15, 12, 13], [0, 36, 26, 11]], detail: [0, 36, 38, 17] },
+  'az-strutture': { charts: [[0, 36, 12, 12], [0, 18, 25, 13], [18, 18, 25, 13]], extras: [[0, 36, 39, 15]], detail: [0, 36, 55, 17] },
+  'az-autorizzazione': { charts: [[0, 36, 12, 13], [0, 20, 26, 13], [20, 16, 26, 13]], detail: [0, 36, 40, 17] },
+  'az-accreditamento': { charts: [[0, 20, 12, 13], [20, 16, 12, 13], [0, 36, 26, 12]], extras: [[0, 36, 39, 15]], detail: [0, 36, 55, 17] },
+  'az-visite': { charts: [[0, 36, 12, 13], [0, 18, 26, 13], [18, 18, 26, 13]], extras: [[0, 36, 40, 14]], detail: [0, 36, 55, 17] }
+};
+function sheet(id, name, heading, description, kpis, charts, detail, extras = []) {
+  const visuals = [...kpis, ...charts, detail, ...extras];
   const headerId = `${id}-header`;
   const elements = [element(headerId, 'TEXT_BOX', 0, 36, 0, 4, '#EAF3F8')];
   kpis.forEach((item, index) => elements.push(element(Object.values(item)[0].VisualId, 'VISUAL', index * 9, 9, 5, 6, '#F6F9FC')));
-  charts.forEach((item, index) => elements.push(element(Object.values(item)[0].VisualId, 'VISUAL', index * 12, 12, 12, 13, '#FFFFFF')));
-  elements.push(element(Object.values(detail)[0].VisualId, 'VISUAL', 0, 36, 26, 16, '#FFFFFF'));
+  const placement = layouts[id];
+  charts.forEach((item, index) => elements.push(element(Object.values(item)[0].VisualId, 'VISUAL', ...placement.charts[index], '#FFFFFF')));
+  elements.push(element(Object.values(detail)[0].VisualId, 'VISUAL', ...placement.detail, '#FFFFFF'));
+  extras.forEach((item, index) => elements.push(element(Object.values(item)[0].VisualId, 'VISUAL', ...placement.extras[index], '#FFFFFF')));
   definition.Sheets.push({
     SheetId: id, Name: name, Title: heading, ContentType: 'INTERACTIVE',
     TextBoxes: [textBox(headerId, heading, description)], Visuals: visuals,
@@ -158,7 +180,7 @@ sheet('az-control-tower', '01 · Direzionale', 'Control Tower', 'Procedimenti, r
 ], [
   bar('ct-status', 'Procedimenti per stato', dataset.ct, 'stato_corrente', 'procedimento_id'),
   donut('ct-sla', 'Rischio SLA', dataset.ct, 'classe_rischio_sla', 'procedimento_id'),
-  bar('ct-phases', 'Durata media delle fasi', dataset.phases, 'fase', 'durata_giorni', 'HORIZONTAL', 'AVERAGE', '#4C94A8')
+  bar('ct-phases', 'Pratiche per fase', dataset.ct, 'fase_corrente', 'procedimento_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
 ], table('ct-detail', 'Registro procedimenti', dataset.ct, ['numero_procedimento', 'tipologia_procedimento', 'struttura_id', 'stato_corrente', 'fase_corrente', 'data_scadenza_sla']));
 categoryFilter('ct-open-only', dataset.ct, 'stato_corrente', ['Chiuso'], 'az-control-tower', ['ct-open'], 'DOES_NOT_CONTAIN');
 categoryFilter('ct-risk-only', dataset.ct, 'classe_rischio_sla', ['Fuori SLA', 'Alto', 'Medio'], 'az-control-tower', ['ct-risk']);
@@ -170,9 +192,11 @@ sheet('az-strutture', '02 · Strutture', 'Strutture, UdO e titoli', 'Perimetro a
   kpi('st-expiry', 'In scadenza 60 gg', dataset.titles, 'titolo_id', 'COUNT', 'Titoli da presidiare')
 ], [
   bar('st-ulss', 'Strutture per ULSS', dataset.structures, 'ulss', 'struttura_id'),
-  donut('st-title-status', 'Stato dei titoli', dataset.titles, 'stato_titolo', 'titolo_id'),
+  bar('st-title-status', 'Stato dei titoli', dataset.titles, 'stato_titolo', 'titolo_id', 'HORIZONTAL', 'COUNT', '#228E87'),
   bar('st-types', 'Tipologia di struttura', dataset.structures, 'tipologia_struttura', 'struttura_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
-], table('st-detail', 'Anagrafica strutture', dataset.structures, ['struttura_nome', 'ulss', 'tipologia_struttura', 'natura_giuridica', 'stato_struttura', 'comune_principale']));
+], table('st-detail', 'Anagrafica strutture', dataset.structures, ['struttura_nome', 'ulss', 'tipologia_struttura', 'natura_giuridica', 'stato_struttura', 'comune_principale']), [
+  table('st-titles-table', 'Titoli e date di scadenza', dataset.titles, ['titolo_id', 'struttura_id', 'tipo_titolo', 'stato_titolo', 'data_scadenza'])
+]);
 categoryFilter('st-expiry-only', dataset.titles, 'flag_in_scadenza_60gg', ['Sì'], 'az-strutture', ['st-expiry']);
 
 sheet('az-autorizzazione', '03 · Autorizzazione', 'Autorizzazione all’esercizio', 'Istruttorie, fasi, tempi netti e superamenti SLA', [
@@ -181,8 +205,8 @@ sheet('az-autorizzazione', '03 · Autorizzazione', 'Autorizzazione all’eserciz
   kpi('au-days', 'Tempo medio netto', dataset.ct, 'giorni_netti', 'AVERAGE', 'Giorni, sospensioni escluse'),
   kpi('au-overdue', 'Fuori SLA', dataset.ct, 'procedimento_id', 'COUNT', 'Da esaminare')
 ], [
+  line('au-trend', 'Avvio dei procedimenti nel tempo', dataset.ct, 'data_avvio', 'procedimento_id'),
   bar('au-phase', 'Fase corrente', dataset.ct, 'fase_corrente', 'procedimento_id'),
-  donut('au-status', 'Stato del procedimento', dataset.ct, 'stato_corrente', 'procedimento_id'),
   bar('au-priority', 'Priorità', dataset.ct, 'priorita', 'procedimento_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
 ], table('au-detail', 'Pratiche di autorizzazione', dataset.ct, ['numero_procedimento', 'struttura_id', 'fase_corrente', 'stato_corrente', 'giorni_netti', 'data_scadenza_sla']));
 categoryFilter('au-type-only', dataset.ct, 'tipologia_procedimento', ['Autorizzazione esercizio'], 'az-autorizzazione');
@@ -196,9 +220,11 @@ sheet('az-accreditamento', '04 · Accreditamento', 'Accreditamento, pareri e rin
   kpi('ac-integrations', 'Integrazioni aperte', dataset.requests, 'richiesta_id', 'COUNT', 'Riscontro necessario')
 ], [
   bar('ac-status', 'Stato delle richieste', dataset.requests, 'stato_richiesta', 'richiesta_id'),
-  donut('ac-types', 'Tipologia richiesta', dataset.requests, 'tipo_richiesta', 'richiesta_id'),
-  bar('ac-entities', 'Pareri per ente', dataset.opinions, 'ente_parere', 'parere_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
-], table('ac-detail', 'Domande e rinnovi', dataset.requests, ['richiesta_id', 'struttura_id', 'tipo_richiesta', 'stato_richiesta', 'fase_corrente', 'data_scadenza_procedimento']));
+  bar('ac-entities', 'Pareri per ente', dataset.opinions, 'ente_parere', 'parere_id', 'HORIZONTAL', 'COUNT', '#B87924'),
+  line('ac-trend', 'Richieste presentate nel tempo', dataset.requests, 'data_presentazione', 'richiesta_id')
+], table('ac-detail', 'Domande e rinnovi', dataset.requests, ['richiesta_id', 'struttura_id', 'tipo_richiesta', 'stato_richiesta', 'fase_corrente', 'data_scadenza_procedimento']), [
+  table('ac-opinion-detail', 'Pareri richiesti agli enti', dataset.opinions, ['parere_id', 'richiesta_id', 'ente_parere', 'stato_parere', 'data_termine'])
+]);
 categoryFilter('ac-renewals-only', dataset.requests, 'tipo_richiesta', ['Rinnovo'], 'az-accreditamento', ['ac-renewals']);
 categoryFilter('ac-opinions-only', dataset.opinions, 'stato_parere', ['Mancante oltre termine', 'In attesa'], 'az-accreditamento', ['ac-opinions']);
 categoryFilter('ac-integrations-only', dataset.requests, 'flag_integrazione_aperta', ['Sì'], 'az-accreditamento', ['ac-integrations']);
@@ -209,11 +235,40 @@ sheet('az-visite', '05 · Visite', 'Visite, valutatori e conformità', 'Pianific
   kpi('vi-nc', 'NC aperte', dataset.nc, 'nc_id', 'COUNT', 'Non conformità da seguire'),
   kpi('vi-prescriptions', 'Prescrizioni', dataset.prescriptions, 'prescrizione_id', 'DISTINCT_COUNT', 'Azioni correttive')
 ], [
-  bar('vi-status', 'Stato delle visite', dataset.visits, 'stato_visita', 'visita_id'),
-  donut('vi-outcome', 'Esito delle visite', dataset.visits, 'esito_visita', 'visita_id'),
-  bar('vi-gravity', 'Gravità non conformità', dataset.nc, 'gravita', 'nc_id', 'HORIZONTAL', 'COUNT', '#4C94A8')
-], table('vi-detail', 'Piano visite', dataset.visits, ['visita_id', 'struttura_id', 'tipo_visita', 'stato_visita', 'data_pianificata', 'esito_visita']));
+  line('vi-schedule', 'Calendario delle visite', dataset.visits, 'data_pianificata', 'visita_id'),
+  bar('vi-gravity', 'Gravità non conformità', dataset.nc, 'gravita', 'nc_id', 'HORIZONTAL', 'COUNT', '#8A729F'),
+  bar('vi-status', 'Stato delle visite', dataset.visits, 'stato_visita', 'visita_id')
+], table('vi-detail', 'Piano visite', dataset.visits, ['visita_id', 'struttura_id', 'tipo_visita', 'stato_visita', 'data_pianificata', 'esito_visita']), [
+  table('vi-assignments', 'Valutatori assegnati', dataset.assignments, ['assegnazione_id', 'visita_id', 'valutatore_id', 'stato_conferma', 'ore_stimate'])
+]);
 categoryFilter('vi-open-nc-only', dataset.nc, 'stato_nc', ['Chiusa'], 'az-visite', ['vi-nc'], 'DOES_NOT_CONTAIN');
+
+// Questi controlli sono esposti sul foglio e filtrano tutti i visual applicabili.
+// I controlli sulle chiavi condivise attraversano i dataset del rispettivo dominio.
+function sheetControl(sheetId, id, ds, column, label) {
+  const target = definition.Sheets.find(item => item.SheetId === sheetId);
+  const filterId = `${id}-filter`;
+  const controlId = `${id}-control`;
+  definition.FilterGroups.push({
+    FilterGroupId: id, CrossDataset: 'ALL_DATASETS', Status: 'ENABLED',
+    Filters: [{ CategoryFilter: {
+      FilterId: filterId, Column: col(ds, column),
+      Configuration: { FilterListConfiguration: { MatchOperator: 'CONTAINS', SelectAllOptions: 'FILTER_ALL_VALUES', NullOption: 'ALL_VALUES' } }
+    } }],
+    ScopeConfiguration: { SelectedSheets: { SheetVisualScopingConfigurations: [{ SheetId: sheetId, Scope: 'ALL_VISUALS' }] } }
+  });
+  target.FilterControls ||= [];
+  target.FilterControls.push({ Dropdown: { FilterControlId: controlId, SourceFilterId: filterId, Title: label, Type: 'MULTI_SELECT' } });
+  const controls = target.FilterControls.map((control, index) => element(control.Dropdown.FilterControlId, 'FILTER_CONTROL', index * 6, 6, 0, 1));
+  target.SheetControlLayouts = [{ Configuration: { GridLayout: { Elements: controls, CanvasSizeOptions: { ScreenCanvasSizeOptions: { ResizeOption: 'RESPONSIVE' } } } } }];
+}
+sheetControl('az-control-tower', 'ct-type-control', dataset.ct, 'tipologia_procedimento', 'Tipologia procedimento');
+sheetControl('az-control-tower', 'ct-status-control', dataset.ct, 'stato_corrente', 'Stato pratica');
+sheetControl('az-strutture', 'st-structure-control', dataset.structures, 'struttura_id', 'Struttura');
+sheetControl('az-autorizzazione', 'au-phase-control', dataset.ct, 'fase_corrente', 'Fase pratica');
+sheetControl('az-autorizzazione', 'au-office-control', dataset.ct, 'ufficio', 'Ufficio');
+sheetControl('az-accreditamento', 'ac-request-control', dataset.requests, 'richiesta_id', 'Richiesta');
+sheetControl('az-visite', 'vi-visit-control', dataset.visits, 'visita_id', 'Visita');
 
 const ids = new Set();
 for (const sheetDef of definition.Sheets) {

@@ -4,14 +4,16 @@ Demo **solo BI** per la Governance degli Accreditamenti. Comprende un portale we
 
 ## Cosa si può mostrare
 
-Il menu presenta cinque aree: **Control Tower**, **Strutture e titoli**, **Autorizzazione**, **Accreditamento**, **Visite e valutatori**.
+Il menu presenta cinque cruscotti: **Control Tower**, **Strutture e titoli**, **Autorizzazione**, **Accreditamento**, **Visite e valutatori**. Ogni area usa una composizione adatta al dominio: priorità SLA, copertura territoriale e titoli, flusso delle istruttorie, pareri e rinnovi, agenda visite e capacità dei valutatori.
+
+**La mia scrivania** è un'area operativa trasversale, non un sesto cruscotto. Mostra le azioni e scadenze assegnate a un profilo sintetico, con accesso al dettaglio della pratica. Il profilo è selezionabile solo per la dimostrazione: il portale locale non autentica gli utenti e non applica controlli di accesso reali. In produzione il perimetro personale deve essere determinato dal backend o da RLS, come richiesto dal contratto dati.
 
 | Modalità | Origine dei dati | Funzioni |
 | --- | --- | --- |
 | **Dati demo** | CSV sintetici in `data/`, elaborati dal backend locale | KPI, filtri territoriali e per tipologia, grafici, dettaglio dei record, esportazione CSV |
-| **QuickSight** | Gli stessi domini caricati come dataset QuickSight in SPICE | Dashboard AWS privata con cinque fogli, visual interattivi e tabelle, mostrata nel portale tramite l'Embedding SDK |
+| **QuickSight** | Gli stessi domini caricati come dataset QuickSight in SPICE | Dashboard AWS privata con cinque fogli, layout diversi e controlli di filtro nella parte superiore dei fogli, mostrata nel portale tramite l'Embedding SDK |
 
-I filtri delle due modalità non sono sincronizzati. **Dati demo** funziona senza AWS; **QuickSight** richiede connessione internet, accesso SSO valido e una dashboard pubblicata nell'account.
+I filtri delle due modalità non sono sincronizzati. In QuickSight i controlli sono configurati su tutti i visual del foglio e, dove un foglio usa più dataset, su tutti quelli che espongono la chiave condivisa: pratica, struttura, richiesta o visita. Control Tower e Autorizzazione offrono anche filtri per stato/tipologia o fase/ufficio. Un filtro territoriale comune a *tutti* i visual QuickSight richiederà l'esposizione coerente di ULSS anche nelle viste di dettaglio oggi prive di tale campo. **Dati demo** funziona senza AWS; **QuickSight** richiede connessione internet, accesso SSO valido e una dashboard pubblicata nell'account.
 
 ## Architettura
 
@@ -34,7 +36,7 @@ cd CruscottiBIAziendaZero
 node server.mjs
 ```
 
-Aprire [http://localhost:4173](http://localhost:4173) sullo stesso computer. Tenere aperto il terminale durante la presentazione; `Ctrl+C` arresta il server. Il server accetta connessioni solo da `127.0.0.1`, quindi per mostrare la demo da remoto serve la condivisione schermo.
+Aprire [http://localhost:4173](http://localhost:4173) sullo stesso computer. Tenere aperto il terminale durante la presentazione; `Ctrl+C` arresta il server. Dopo un aggiornamento del codice, arrestare e riavviare il server. Il server accetta connessioni solo da `127.0.0.1`, quindi per mostrare la demo da remoto serve la condivisione schermo.
 
 ### Attivare anche la modalità QuickSight
 

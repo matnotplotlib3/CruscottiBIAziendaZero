@@ -4,7 +4,7 @@ import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
-import { loadData, buildView, buildDetail, filtersFor, VIEW_IDS } from './lib/data.mjs';
+import { loadData, buildView, buildDetail, buildWorkspace, filtersFor, VIEW_IDS } from './lib/data.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const data = loadData(path.join(root, 'data'));
@@ -35,7 +35,17 @@ async function embedUrl(view) {
     '--output', 'json'
   ];
   if (config.awsProfile) args.push('--profile', config.awsProfile);
-  const { stdout } = await execFileAsync(awsCli, args, { windowsHide: true, timeout: 30000, maxBuffer: 1024 * 1024 });
+  let stdout;
+  try {
+    ({ stdout } = await execFileAsync(awsCli, args, { windowsHide: true, timeout: 30000, maxBuffer: 1024 * 1024 }));
+  } catch (error) {
+    const detail = `${error.stderr || ''} ${error.message || ''}`;
+    if (/token has expired|refresh failed|UnauthorizedSSOTokenError|SSO session/i.test(detail)) {
+      throw new Error(`Sessione AWS scaduta. Esegui aws sso login --profile "${config.awsProfile || 'NOME_PROFILO'}" in un altro terminale, poi riprova.`);
+    }
+    if (/AccessDenied|not authorized|UnsupportedUserEdition/i.test(detail)) throw new Error('Accesso QuickSight non consentito: verifica i permessi di embedding e la condivisione della dashboard.');
+    throw new Error('Impossibile aprire QuickSight. Verifica la connessione AWS e riprova.');
+  }
   const result = JSON.parse(stdout);
   if (!result.EmbedUrl) throw new Error('QuickSight non ha restituito un URL incorporabile.');
   return result.EmbedUrl;
@@ -49,6 +59,9 @@ const server = http.createServer(async (request, response) => {
     if (!['GET', 'HEAD'].includes(request.method)) return json(response, 405, { error: 'Metodo non consentito' });
     if (url.pathname === '/api/bootstrap') {
       return json(response, 200, { views: VIEW_IDS, filters: filtersFor(data), quicksight: { configured: Boolean(config.accountId && config.userArn), dashboards: Object.keys(config.dashboards || {}), sheets: config.sheets || {} } });
+    }
+    if (url.pathname === '/api/workspace') {
+      return json(response, 200, buildWorkspace(data, url.searchParams.get('assignee')));
     }
     if (url.pathname.startsWith('/api/views/')) {
       const view = url.pathname.split('/').pop();
