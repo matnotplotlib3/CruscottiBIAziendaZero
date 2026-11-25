@@ -164,6 +164,10 @@ function bindModeButtons() {
 }
 
 async function render() {
+  if (state.bootstrap?.apiVersion !== 2) {
+    main.innerHTML = '<section class="version-notice"><h1>Riavvia il server della demo</h1><p>Il browser ha caricato il frontend aggiornato, ma il processo Node.js in esecuzione è ancora quello precedente.</p><ol><li>Nel terminale della demo premi <kbd>Ctrl+C</kbd>.</li><li>Esegui di nuovo <code>node server.mjs</code>.</li><li>Aggiorna questa pagina nel browser.</li></ol></section>';
+    return;
+  }
   const renderId = ++state.renderId;
   const { view, ulss, type } = state;
   const reuseEmbed = state.mode === 'quicksight' && state.embedExperience && document.getElementById('embedContainer');

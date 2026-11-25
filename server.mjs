@@ -58,7 +58,7 @@ const server = http.createServer(async (request, response) => {
     if (request.headers.origin && request.headers.origin !== `http://localhost:${port}` && request.headers.origin !== `http://127.0.0.1:${port}`) return json(response, 403, { error: 'Origine non consentita' });
     if (!['GET', 'HEAD'].includes(request.method)) return json(response, 405, { error: 'Metodo non consentito' });
     if (url.pathname === '/api/bootstrap') {
-      return json(response, 200, { views: VIEW_IDS, filters: filtersFor(data), quicksight: { configured: Boolean(config.accountId && config.userArn), dashboards: Object.keys(config.dashboards || {}), sheets: config.sheets || {} } });
+      return json(response, 200, { apiVersion: 2, views: VIEW_IDS, filters: filtersFor(data), quicksight: { configured: Boolean(config.accountId && config.userArn), dashboards: Object.keys(config.dashboards || {}), sheets: config.sheets || {} } });
     }
     if (url.pathname === '/api/workspace') {
       return json(response, 200, buildWorkspace(data, url.searchParams.get('assignee')));
