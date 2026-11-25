@@ -38,6 +38,14 @@ node server.mjs
 
 Aprire [http://localhost:4173](http://localhost:4173) sullo stesso computer. Tenere aperto il terminale durante la presentazione; `Ctrl+C` arresta il server. Dopo un aggiornamento del codice, arrestare e riavviare il server. Il server accetta connessioni solo da `127.0.0.1`, quindi per mostrare la demo da remoto serve la condivisione schermo.
 
+Se Node.js è stato installato con `fnm` ma una nuova finestra PowerShell non riconosce `node`, si può avviare la versione predefinita direttamente, senza cambiare il `PATH`:
+
+```powershell
+& "$env:APPDATA\fnm\aliases\default\node.exe" server.mjs
+```
+
+Se la porta `4173` è già occupata, arrestare prima il precedente server della demo con `Ctrl+C` nel terminale in cui è in esecuzione.
+
 ### Attivare anche la modalità QuickSight
 
 Servono AWS CLI v2, un profilo AWS IAM Identity Center/SSO, un utente QuickSight registrato con accesso alla dashboard privata e il permesso IAM `quicksight:GenerateEmbedUrlForRegisteredUser`.
